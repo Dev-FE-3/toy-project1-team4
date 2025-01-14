@@ -1,11 +1,10 @@
-import style from './employee-info.module.css';
+import './employee-info.css';
 
 export const employeeInfo = function (content) {
 
   content.innerHTML = `
-    <div class="${style.title}">
-      css연결하여 색깔 변경까지 구현
+    <div id="employee-info">
+      employee-info
     </div>
   `;
-
 }

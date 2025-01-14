@@ -1,13 +1,12 @@
-import style from './error.module.css';
+import './error.css';
 
 export const error = function (content,err) {
 
   alert(err);
   
   content.innerHTML = `
-    <div class="${style.title}">
+    <div id="error">
       ERROR!
     </div>
   `;
-
 }

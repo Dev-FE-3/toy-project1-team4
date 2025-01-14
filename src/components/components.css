@@ -1,0 +1,193 @@
+@import url(./../style/_reset.css);
+@import url(./../style/_font.css);
+@import url(./header.css);
+@import url(./nav.css);
+
+:root {
+  --pointColor: #0064FF;
+  --pointColor2: #E9F2FF;
+  --pointColor3: #E7F1FF;
+  --superBrightPoint: #F6EDFF;
+  --grey: #202632;
+  --grey2: #4D515B;
+  --grey3: #797D84;
+  --grey4: #A0A6B1;
+  --Black: #1D1B20;
+  --black-700-black: #121212;
+  --background: #F3F5F6;
+}
+
+/* layout */
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.wrap {
+  width: calc(100% - 236px);
+  margin-left: 236px;
+  padding: 24px;
+  background-color: var(--background);
+  box-sizing: border-box;
+}
+
+#content {
+  min-height: calc(100vh - 176px - 48px);
+}
+
+/* button */
+.btn {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: var(--superBrightPoint);
+  border-radius: 8px;
+}
+
+.btn.btn--primary {
+  background-color: var(--pointColor);
+}
+
+.btn.btn--secondary {
+  background-color: var(--grey4);
+}
+
+/* section */
+.section {
+  padding: 20px;
+  background-color: #FFF;
+  border-radius: 16px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.section .section__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section .section__top .section__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--black-700-black);
+}
+
+.section .section__top .section__more {
+  width: 20px;
+  height: 20px;
+  background-image: url(./../../public/images/icon_more.png);
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+/* input */
+.input-wrap .input-label {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: var(--Black);
+}
+
+.input-wrap .input-text {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--Black);
+  border: 1px solid var(--Black);
+  border-radius: 4px;
+}
+
+.input-wrap .input-text::placeholder {
+  font-weight: 400;
+  color: var(--grey);
+}
+
+.input-wrap .input-text--textarea {
+  font-weight: 400;
+}
+
+/* select */
+.select {
+  padding: 12px 40px 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--Black);
+  border: 1px solid var(--Black);
+  border-radius: 4px;
+  background: #fff url(./../../public/images/icon_arrow-down.png) right 10px center no-repeat;
+  background-size: 24px;
+}
+
+/* table */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 2px;
+  background-color: #fff;
+}
+
+.table thead tr th {
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: var(--grey3);
+}
+
+.table tbody tr {
+  background-color: var(--pointColor2);
+}
+
+.table tbody tr td {
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: var(--Black);
+}
+
+.table tbody tr td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.table tbody tr td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.table tbody tr td .label {
+  padding: 4px 16px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  border-radius: 8px;
+}
+
+.table tbody tr td .label--red {
+  color: #F28C8C;
+  background-color: #FFF2F2;
+}
+
+.table tbody tr td .label--orange {
+  color: #FABC84;
+  background-color: #FCE7D8;
+}
+
+.table tbody tr td .label--green {
+  color: #93E9B8;
+  background-color: #EAFCF1;
+}
+
+.table tbody tr td .label--purple {
+  color: #C9B3ED;
+  background-color: #F4F0FB;
+}
