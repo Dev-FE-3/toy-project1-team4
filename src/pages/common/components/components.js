@@ -77,5 +77,20 @@ export const components = function (content) {
         </tr>
       </tbody>
     </table>
+
+    <h1>5. pagination</h1>
+
+    <div class="pagination">
+      <a href="#" class="pagination--prev">prev</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">7</a>
+      <a href="#">8</a>
+      <a href="#" class="pagination--next">next</a>
+    </div>
   `;
 }

@@ -1,8 +1,2 @@
 #home {
-  display: flex;
-  gap: 24px;
-}
-
-#home .section.section--user {
-  width: 50%;
 }
