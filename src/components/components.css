@@ -15,6 +15,7 @@
   --Black: #1D1B20;
   --black-700-black: #121212;
   --background: #F3F5F6;
+  --gutter: 24px;
 }
 
 /* layout */
@@ -33,6 +34,75 @@ body {
 #content {
   min-height: calc(100vh - 176px - 48px);
 }
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + var(--gutter));
+  gap: 24px;
+}
+
+.col-1 {
+  flex: 0 0 auto;
+  width: calc(8.33333333% - var(--gutter));
+}
+
+.col-2 {
+  flex: 0 0 auto;
+  width: calc(16.66666667% - var(--gutter));
+}
+
+.col-3 {
+  flex: 0 0 auto;
+  width: calc(25% - var(--gutter));
+}
+
+.col-4 {
+  flex: 0 0 auto;
+  width: calc(33.33333333% - var(--gutter));
+}
+
+.col-5 {
+  flex: 0 0 auto;
+  width: calc(41.66666667% - var(--gutter));
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: calc(50% - var(--gutter));
+}
+
+.col-7 {
+  flex: 0 0 auto;
+  width: calc(58.33333333% - var(--gutter));
+}
+
+.col-8 {
+  flex: 0 0 auto;
+  width: calc(66.66666667% - var(--gutter));
+}
+
+.col-9 {
+  flex: 0 0 auto;
+  width: calc(75% - var(--gutter));
+}
+
+.col-10 {
+  flex: 0 0 auto;
+  width: calc(83.33333333% - var(--gutter));
+}
+
+.col-11 {
+  flex: 0 0 auto;
+  width: calc(91.66666667% - var(--gutter));
+}
+
+.col-12 {
+  flex: 0 0 auto;
+  width: calc(100% - var(--gutter));
+}
+
 
 /* button */
 .btn {
@@ -59,6 +129,7 @@ body {
   background-color: #FFF;
   border-radius: 16px;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
 }
 
 .section .section__top {
@@ -191,4 +262,44 @@ body {
 .table tbody tr td .label--purple {
   color: #C9B3ED;
   background-color: #F4F0FB;
+}
+
+/* pagination */
+.pagination {
+  display: inline-flex;
+  padding: 14px 24px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04), 0 8px 16px 0 rgba(0, 0, 0, 0.08);
+}
+
+.pagination a {
+  margin: 0 2px;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 28px;
+  text-align: center;
+  color: var(--grey2);
+}
+
+.pagination a.active {
+  color: #fff;
+  background-color: var(--pointColor);
+  border-radius: 100%;
+}
+
+.pagination .pagination--prev {
+  margin-right: 48px;
+  background: url(./../../public/images/icon_arrow_prev.png) center center no-repeat;
+  background-size: 8px 16px;
+  text-indent: -9999px;
+}
+
+.pagination .pagination--next {
+  margin-left: 48px;
+  background: url(./../../public/images/icon_arrow_next.png) center center no-repeat;
+  background-size: 8px 16px;
+  text-indent: -9999px;
 }
