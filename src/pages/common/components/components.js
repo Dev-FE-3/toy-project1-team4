@@ -1,7 +1,6 @@
 // import style from './components.module.css';
 
 export const components = function (content) {
-  
   content.innerHTML = `
     <h1>1. box</h1>
 
@@ -93,4 +92,4 @@ export const components = function (content) {
       <a href="#" class="pagination--next">next</a>
     </div>
   `;
-}
+};

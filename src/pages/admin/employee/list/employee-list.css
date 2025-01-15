@@ -1,3 +1,66 @@
 #employee-list {
-  color: #000;
+}
+
+#employee-list #employee-tile {
+  border-radius: 16px;
+
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+#employee-list #employee-tile__action-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#employee-list .button-container {
+  display: flex;
+  gap: 4px;
+}
+
+#employee-list .employee-table__name {
+  width: 15%;
+}
+#employee-list .employee-table__id {
+  width: 15%;
+}
+#employee-list .employee-table__department {
+  width: 15%;
+}
+#employee-list .employee-table__position {
+  width: auto;
+}
+#employee-list .employee-table__status {
+  width: 15%;
+}
+
+/*.employee-table__position(직급) 가로폭 178px 되는 지점*/
+@media screen and (max-width: 1280px) {
+  #employee-list .employee-table__name {
+    width: 12%;
+  }
+  #employee-list .employee-table__id {
+    width: 12%;
+  }
+  #employee-list .employee-table__department {
+    width: auto;
+  }
+  #employee-list .employee-table__position {
+    display: none;
+  }
+  #employee-list .employee-table__status {
+    width: 12%;
+  }
+}
+
+/* pagination bar */
+
+#employee-list .pagination {
+  position: fixed;
+  /* left: calc((100vw - 236px) / 2 + 236px); */
+  left: calc(50vw + 118px);
+  bottom: 16px;
+  transform: translate(-50%);
 }
