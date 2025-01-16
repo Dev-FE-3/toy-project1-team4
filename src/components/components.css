@@ -1,7 +1,7 @@
 @import url(./../style/_reset.css);
 @import url(./../style/_font.css);
-@import url(./header.css);
-@import url(./nav.css);
+@import url(./header/header.css);
+@import url(./nav/nav.css);
 
 :root {
   --pointColor: #0064FF;
@@ -34,7 +34,6 @@ body {
 #content {
   min-height: calc(100vh - 176px - 48px);
 }
-
 
 .row {
   display: flex;
@@ -123,8 +122,8 @@ body {
   background-color: var(--grey4);
 }
 
-/* section */
-.section {
+/* box */
+.box {
   padding: 20px;
   background-color: #FFF;
   border-radius: 16px;
@@ -132,19 +131,19 @@ body {
   box-sizing: border-box;
 }
 
-.section .section__top {
+.box .box__top {
   display: flex;
   justify-content: space-between;
 }
 
-.section .section__top .section__title {
+.box .box__top .box__title {
   font-size: 24px;
   font-weight: 700;
   line-height: 28px;
   color: var(--black-700-black);
 }
 
-.section .section__top .section__more {
+.box .box__top .box__more {
   width: 20px;
   height: 20px;
   background-image: url(./../../public/images/icon_more.png);
