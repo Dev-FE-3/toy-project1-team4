@@ -22,37 +22,37 @@
   gap: 4px;
 }
 
-#employee-list .employee-table__name {
+#employee-list .table__name {
   width: 15%;
 }
-#employee-list .employee-table__id {
+#employee-list .table__id {
   width: 15%;
 }
-#employee-list .employee-table__department {
+#employee-list .table__department {
   width: 15%;
 }
-#employee-list .employee-table__position {
+#employee-list .table__position {
   width: auto;
 }
-#employee-list .employee-table__status {
+#employee-list .table__status {
   width: 15%;
 }
 
 /*.employee-table__position(직급) 가로폭 178px 되는 지점*/
 @media screen and (max-width: 1280px) {
-  #employee-list .employee-table__name {
+  #employee-list .table__name {
     width: 12%;
   }
-  #employee-list .employee-table__id {
+  #employee-list .table__id {
     width: 12%;
   }
-  #employee-list .employee-table__department {
+  #employee-list .table__department {
     width: auto;
   }
-  #employee-list .employee-table__position {
+  #employee-list .table__position {
     display: none;
   }
-  #employee-list .employee-table__status {
+  #employee-list .table__status {
     width: 12%;
   }
 }

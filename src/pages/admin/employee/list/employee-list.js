@@ -18,31 +18,31 @@ export const employeeList = function (content) {
         <table class="table">
           <thead>
             <tr>
-              <th scope="col" class="employee-table__name">
+              <th scope="col" class="table__name">
                 이름
               </th>
-              <th scope="col" class="employee-table__id">
+              <th scope="col" class="table__id">
                 사원번호
               </th>
-              <th scope="col" class="employee-table__department">
+              <th scope="col" class="table__department">
                 소속
               </th>
-              <th scope="col" class="employee-table__position">
+              <th scope="col" class="table__position">
                 직급
               </th>
-              <th scope="col" class="employee-table__status">
+              <th scope="col" class="table__status">
                 근무 상태
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="employee-table__name">송하영</td>
-              <td class="employee-table__id">12345678</td>
-              <td class="employee-table__department">인사팀</td>
-              <td class="employee-table__position">대리</td>
-              <td>
-                <span class="label label--red employee-table__status">
+              <td class="table__name">송하영</td>
+              <td class="table__id">12345678</td>
+              <td class="table__department">인사팀</td>
+              <td class="table__position">대리</td>
+              <td class="table__status">
+                <span class="label label--red ">
                   결근
                 </span>
               </td>
