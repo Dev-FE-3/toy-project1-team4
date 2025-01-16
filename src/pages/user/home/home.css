@@ -1,2 +1,236 @@
-#home {
+#home .section {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 360px;
+}
+
+/* section--user */
+#home .section--user .section__bottom {
+  padding: 50px 0;
+  text-align: center;
+}
+
+#home .section--user .user-img {
+  width: 174px;
+  border-radius: 100%;
+}
+
+#home .section--user .user-info {
+  margin-top: 8px;
+}
+
+#home .section--user .user-info .user-info__name {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--black-700-black);
+}
+
+#home .section--user .user-info .user-info__position {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: var(--grey3);
+}
+
+/* section--graph */
+#home .section--graph .section__top {
+  margin-bottom: 4px;
+}
+
+#home .section--graph .section__bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+#home .section--graph .graph__time {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: var(--grey3);
+}
+
+#home .section--graph .graph__list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 22px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--grey3);
+}
+
+#home .section--graph .graph__list .graph__item {
+	position: relative;
+  height: 206px;
+  width: 36px;
+	text-align: center;
+  background-color: #F6B3B5;
+}
+
+#home .section--graph .graph__list .graph__item .graph__title {
+  display: block;
+  position: absolute;
+  bottom: -24px;
+  width: 100%;
+  color: var(--grey2);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+}
+
+#home .section--graph .graph__list .graph__item .graph__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 2px solid #fff;
+  background-color: var(--pointColor);
+  transform: scaleY(0);
+	transform-origin: center bottom;
+  transition: all 0.3s ease-in-out;
+}
+
+#home .section--graph .graph__list .graph__item .graph__bar.active {
+	transform: none;
+}
+
+#home .section--graph .graph__list .graph__item:nth-child(1) .graph__bar {
+  height: 60%;
+}
+
+#home .section--graph .graph__list .graph__item:nth-child(2) .graph__bar {
+  height: 80%;
+}
+
+#home .section--graph .graph__list .graph__item:nth-child(3) .graph__bar {
+  height: 40%;
+}
+
+#home .section--graph .graph__list .graph__item:nth-child(4) .graph__bar {
+  height: 20%;
+}
+
+#home .section--graph .graph__list .graph__item:nth-child(5) .graph__bar {
+  height: 90%;
+}
+
+/* section--time */
+#home .section--time .section__top {
+  margin-bottom: 4px;
+}
+
+#home .section--time .section__bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+#home .section--time .time-view .time-view__countdown {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+  color: var(--grey);
+}
+#home .section--time .time-view .time-view__now {
+  display: block;
+  color: var(--grey3);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+#home .section--time .time-state {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#home .section--time .time-state .time-state__now .now__title {
+  display: block;
+  color: var(--black-700-black);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+#home .section--time .time-state .time-state__now .now__label {
+  color: #9369FF;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+/* section--work */
+#home .section--work .section__bottom {
+  margin-top: auto;
+}
+
+/* section--notice */
+#home .section--notice .section__bottom {
+  margin-top: auto;
+}
+
+#home .section--notice .notice-list li:last-child a {
+  padding-bottom: 0;
+}
+
+#home .section--notice .notice-list li a {
+  display: block;
+  padding: 8px 0;
+  color: var(--Black);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* section--meeting */
+#home .section--meeting .section__bottom {
+  margin-top: auto;
+}
+
+#home .section--meeting .meeting-list .meeting-list__item {
+  position: relative;
+}
+
+#home .section--meeting .meeting-list .meeting-list__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--pointColor);
+  border-radius: 2px;
+}
+
+#home .section--meeting .meeting-list .meeting-list__item + .meeting-list__item {
+  margin-top: 18px;
+}
+
+#home .section--meeting .meeting-list .meeting-list__item .item__link {
+  display: block;
+  padding-left: 14px;
+}
+
+#home .section--meeting .meeting-list .meeting-list__item .item__link .item__title {
+  color: #1B2559;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.32px;
+}
+
+#home .section--meeting .meeting-list .meeting-list__item .item__link .item__time {
+  color: #A3AED0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.24px;
 }
