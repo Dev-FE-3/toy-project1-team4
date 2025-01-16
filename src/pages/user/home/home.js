@@ -4,8 +4,8 @@ export const home = function (content) {
 
   content.innerHTML = `
     <div id="home" class="row">
-      <section class="section section--user col-3">
-        <div class="section__bottom">
+      <section class="box box--user col-3">
+        <div class="box__bottom">
           <img src="./../../../public/images/img_profile.png" class="user-img" alt="">
           <div class="user-info">
             <span class="user-info__name">김빵긋</span>
@@ -13,12 +13,12 @@ export const home = function (content) {
           </div>
         </div>
       </section>
-      <section class="section section--graph col-5">
-        <div class="section__top">
-          <h5 class="section__title">이번주 근무 시간</h5>
-          <a href="#" class="section__more">더보기</a>
+      <section class="box box--graph col-5">
+        <div class="box__top">
+          <h5 class="box__title">이번주 근무 시간</h5>
+          <a href="#" class="box__more">더보기</a>
         </div>
-        <div class="section__bottom">
+        <div class="box__bottom">
           <span class="graph__time">25시간 39분</span>
           <ul class="graph__list">
             <li class="graph__item">
@@ -44,12 +44,12 @@ export const home = function (content) {
           </ul>
         </div>
       </section>
-      <section class="section section--time col-4">
-        <div class="section__top">
-          <h5 class="section__title">남은 근무시간</h5>
-          <a href="#" class="section__more">더보기</a>
+      <section class="box box--time col-4">
+        <div class="box__top">
+          <h5 class="box__title">남은 근무시간</h5>
+          <a href="#" class="box__more">더보기</a>
         </div>
-        <div class="section__bottom">
+        <div class="box__bottom">
           <div class="time-view">
             <span class="time-view__countdown">04:28</span>
             <span class="time-view__now">현재 시각: <b class="time">00:00</b></span>
@@ -63,12 +63,12 @@ export const home = function (content) {
           </div>
         </div>
       </section>
-      <section class="section section--work col-5">
-        <div class="section__top">
-          <h5 class="section__title">근태 신청 현황</h5>
-          <a href="#" class="section__more">더보기</a>
+      <section class="box box--work col-5">
+        <div class="box__top">
+          <h5 class="box__title">근태 신청 현황</h5>
+          <a href="#" class="box__more">더보기</a>
         </div>
-        <div class="section__bottom">
+        <div class="box__bottom">
           <table class="table">
             <thead>
               <tr>
@@ -102,12 +102,12 @@ export const home = function (content) {
           </table>
         </div>
       </section>
-      <section class="section section--notice col-4">
-        <div class="section__top">
-          <h5 class="section__title">사내 공지</h5>
-          <a href="#" class="section__more">더보기</a>
+      <section class="box box--notice col-4">
+        <div class="box__top">
+          <h5 class="box__title">사내 공지</h5>
+          <a href="#" class="box__more">더보기</a>
         </div>
-        <div class="section__bottom">
+        <div class="box__bottom">
           <ul class="notice-list">
             <li><a href="#">[개발팀] 신규 프로젝트 런칭 안내: Project Phoenix]</a></li>
             <li><a href="#">[개발팀] 신규 프로젝트 런칭 안내: Project Phoenix]</a></li>
@@ -119,12 +119,12 @@ export const home = function (content) {
           </ul>
         </div>
       </section>
-      <section class="section section--meeting col-3">
-        <div class="section__top">
-          <h5 class="section__title">1월 10일</h5>
-          <a href="#" class="section__more">더보기</a>
+      <section class="box box--meeting col-3">
+        <div class="box__top">
+          <h5 class="box__title">1월 10일</h5>
+          <a href="#" class="box__more">더보기</a>
         </div>
-        <div class="section__bottom">
+        <div class="box__bottom">
           <ul class="meeting-list">
             <li class="meeting-list__item">
               <a href="#" class="item__link">
@@ -157,7 +157,7 @@ export const home = function (content) {
   `;
 
   function graphFunc () {
-    const graphList = document.querySelector('.section--graph .graph__list')
+    const graphList = document.querySelector('.box--graph .graph__list')
     const graphItems = graphList.querySelectorAll('.graph__item')
   
     graphItems.forEach((item) => {
@@ -165,19 +165,19 @@ export const home = function (content) {
     })
   }
   
-  function timeFunc () {
+  function timerFunc () {
     let date = new Date()
     const hours = String(date.getHours()).padStart(2, '0')
     const minutes = String(date.getMinutes()).padStart(2, '0')
     const seconds = String(date.getSeconds()).padStart(2, '0')
-    const sectionTime = document.querySelector('#home .section--time')
-    const time = sectionTime.querySelector('.time-view .time')
+    const boxTime = document.querySelector('#home .box--time')
+    const time = boxTime.querySelector('.time-view .time')
 
     time.innerHTML = `${hours}:${minutes}:${seconds} `
   }
 
-  timeFunc()
-  setInterval(timeFunc, 1000)
+  timerFunc()
+  setInterval(timerFunc, 1000)
   
   window.onload = function() {
     graphFunc()
