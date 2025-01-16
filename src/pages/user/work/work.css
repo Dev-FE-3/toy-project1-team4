@@ -1,3 +1,93 @@
-#work {
-	color: #000;
+
+
+
+
+
+
+
+
+
+
+
+/* HOLIDAY */
+
+.holiday {
+	height: 360px;
 }
+
+
+.holiday .holiday__chart {
+	width: 40%;
+	margin: 50px auto 35px;
+	text-align: center;
+}
+
+.holiday .holiday__left {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 10px;
+}
+
+.holiday .holiday__left p {
+	color: #A3AED0;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.holiday .holiday__left strong {
+	color: #2B3674;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 30px; /* 166.667% */
+}
+
+.holiday .holiday__left .left__annual,
+.holiday .holiday__left .left__compensatory,
+.holiday .holiday__left .left__etc {
+	position: relative;
+}	
+
+.holiday .holiday__left .left__annual::before,
+.holiday .holiday__left .left__compensatory::before, 
+.holiday .holiday__left .left__etc::before {
+	position: absolute;
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	top: 2px;
+	left: -10px;
+}
+
+.holiday .holiday__left .left__annual {
+	
+}
+
+.holiday .holiday__left .left__annual::before {
+	background-color:#4318FF;
+}
+
+.holiday .holiday__left .left__compensatory {
+	
+}
+
+.holiday .holiday__left .left__compensatory::before {
+	background-color:#6AD2FF;
+}
+
+.holiday .holiday__left .left__etc {
+	
+}
+
+.holiday .holiday__left .left__etc::before {
+	background-color:#6AD2FF;
+}
+
+
+
+/* absence */
+/* .absence .section__bottom {
+	height:300px; 
+	overflow:auto;
+} */
