@@ -1,3 +1,103 @@
-#notice {
-	color: #000;
+.card--main{
+  display: flex;
+  width: 1152px;
+  height: auto;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.card {
+  border-radius: 16px;
+  background: #FFF;
+  width: 344px;
+  height: 336px;
+  padding: 12px;
+  /* Shadow */
+  box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.07);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  /* flex-shrink: 0; */
+}
+.image-container {
+  border-radius: 8px;
+  width: 344px;
+  height: 157px; 
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-container img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* 이미지 잘림 방지 및 중심 맞추기 */
+  object-position: center; /* 이미지를 중앙으로 배치 */
+}
+li .card__title {
+  padding: 16px 16px 16px 4px;
+}
+li .card__title p {
+  width: 328px;
+  height: 19px;
+  overflow: hidden; /*길면 짤림*/
+  color: var(--Black, #1D1B20);
+  font-feature-settings: 'liga' off, 'clig' off;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  /* Body 1/700 */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+  letter-spacing: 0.2px;
+}
+li .card__content {
+  padding: 0px 16px 16px 6px;
+  
+}
+li .card__content p {
+  color: var(--grey2, #4D515B);
+  font-feature-settings: 'liga' off, 'clig' off;
+  /* text-overflow: ellipsis;
+  white-space: nowrap; */
+  text-overflow: clip; /* 말줄임 없이 텍스트 전체 표시 */
+  white-space: normal; /* 줄바꿈 허용 */
+  overflow: visible; /* 넘치는 텍스트를 숨기지 않음 */
+  /* Body 2/400 */
+  /* font-family: Pretendard; */
+  font-size: 14px;
+  /* font-style: normal;  P태그는 원래 노말*/
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+  letter-spacing: 0.2px;
+}
+li .card__author {
+  border-radius: 12px;
+  background: var(--Gray, #F5F5F5);
+  display: flex;
+  height: 72px;
+  padding: 13px 16px;
+
+}
+li .card__author .author-content {
+  display: flex;
+}
+li .card__author img {
+  width: 44px;
+  height: 44px;
+}
+li .card__author .author-info {
+
+}
+li .card__author .author-info .author__position {
+
+}
+li .card__author .author-info .author__name {
+
+}
+li .card__author time {
+
 }
