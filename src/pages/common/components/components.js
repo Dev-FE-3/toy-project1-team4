@@ -5,15 +5,15 @@ export const components = function (content) {
   content.innerHTML = `
     <h1>1. box</h1>
 
-    <section class="section">
-      <div class="section__top">
-        <h5 class="section__title">제목</h5>
-        <a href="#" class="section__more">더보기</a>
+    <div class="box">
+      <div class="box__top">
+        <h5 class="box__title">제목</h5>
+        <a href="#" class="box__more">더보기</a>
       </div>
-      <div class="section__bottom">
+      <div class="box__bottom">
         내용
       </div>
-    </section>
+    </div>
 
     <h1>2. button</h1>
 
