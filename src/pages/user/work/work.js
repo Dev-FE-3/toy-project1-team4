@@ -47,7 +47,50 @@ export const work = function (content) {
       <section class="box col-12 absence">
         <div class="box__top">
           <h5 class="box__title">부재신청 목록</h5>
-          <button class="btn btn--primary approve">부재 신청서 작성</button>
+          <button class="btn btn--primary absence--approve__modal">부재 신청서 작성</button>
+          <dialog class="absence--modal">
+              <div class="absence--propose">
+                <p>근태 신청하기</p>
+                <form name = "javascipt:void(0)">
+                  <div class="input-wrap">
+                    <label for="input-01" class="input-label">사원번호</label>
+                    <input type="text" class="input-text" id="input-01" placeholder="사원번호를 입력하세요(8자리 숫자)">
+                  </div>
+          
+                  <div class="input-wrap">
+                    <label for="input-01" class="input-label">시작일</label>
+                    <input type="date" class="input-text" id="input-01" placeholder="">
+                  </div>
+
+                  <div class="input-wrap">
+                    <label for="input-01" class="input-label">종료일</label>
+                    <input type="date" class="input-text" id="input-01" placeholder="">
+                  </div>
+
+                  <div class="input-wrap">
+                    <label for="input-01" class="input-label">근태 유형</label>
+                    <select class="select">
+                    <option value="1">연차</option>
+                    <option value="2">병가</option>
+                    <option value="3">기타</option>
+                    </select>
+                  </div>
+
+                  <div class="input-wrap">
+                    <label for="textarea-01" class="input-label">신청 사유</label>
+                    <textarea class="input-text input-text--textarea" id="textarea-01" rows="3"></textarea>
+                  </div>
+                  <form>
+                  
+                  <input type=submit value="제출하기" class="btn btn--primary">
+                  <span>기타 문의는 <strong>인사팀</strong>에 부탁드립니다</span>
+                </form> 
+
+                <form method="dialog">
+                    <button class="absence--modal__close"></button>
+                </form>
+              </div>
+          </dialog>
         </div>
         <div class="box__bottom">
           <table class="table absence--list">
@@ -114,8 +157,6 @@ export const work = function (content) {
         </div>
       </section>
 
-      // 신청서 modal 
-
 
 
 
@@ -136,12 +177,14 @@ export const work = function (content) {
 
 
 
-  //부재 신청서 작성 버튼
-  const approve = document.querySelector('.approve');
+  //부재 신청서 버튼 클릭시 modal
+  const modalBtn = document.querySelector(".absence--approve__modal");
+  const modal = document.querySelector(".absence--modal");
 
-  approve.addEventListener('click', function () {
-    //모달 창 구현
-  })
+  modalBtn.addEventListener("click", function () {
+      modal.showModal();
+  });
+
 
   //부재 신청서 작성 
 

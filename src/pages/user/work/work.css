@@ -87,7 +87,78 @@
 
 
 /* absence */
-/* .absence .section__bottom {
-	height:300px; 
-	overflow:auto;
-} */
+.absence {
+	
+}
+
+.absence .box__top {
+}
+
+
+.absence .box__top .absence--modal {
+	width: 30vh;
+	height: 100vh;
+	margin-right : 0;
+	padding-top: 200px;
+	padding-left: 72px;
+	padding-right: 72px;
+	border-radius: 16px 0px 0px 16px;
+	box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
+	border: none;
+}
+
+.absence .box__top .absence--modal .absence--propose {
+	text-align: center;
+}
+
+.absence .box__top .absence--modal .absence--propose p {
+	color: var(--black-700-black, #121212);
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 44px; /* 110% */
+	margin-bottom: 100px;
+}
+
+.absence .box__top .absence--modal .absence--propose form {
+	text-align: start;
+	margin: 10px;
+}
+
+.absence .box__top .absence--modal .absence--propose form .input-wrap {
+	margin-bottom: 20px;
+}
+
+.absence .box__top .absence--modal .absence--propose form input,
+.absence .box__top .absence--modal .absence--propose form select,
+.absence .box__top .absence--modal .absence--propose form textarea {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.absence .box__top .absence--modal .absence--propose form input[type='submit'] {
+	border: none;
+}
+
+.absence .box__top .absence--modal .absence--propose form span {
+	display: block;
+	text-align: center;
+	margin-top: 8px;
+	font-size: 12px;
+	line-height: 18px; /* 150% */
+	}
+
+.absence .box__top .absence--modal .absence--propose form span strong {
+	color: var(--pointColor, #0064FF);
+	font-weight: 400;
+}
+
+
+.absence .box__top .absence--modal .absence--propose .absence--modal__close {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+}
+.absence .box__top .absence--modal .absence--propose .absence--modal__close::after {
+	content: "\00d7";
+	font-size: 30px;
+}
