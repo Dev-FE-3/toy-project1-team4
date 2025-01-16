@@ -2,12 +2,9 @@
 }
 
 #employee-list #employee-tile {
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: 36px;
-  padding: 20px;
-  background-color: #ffffff;
 }
 
 #employee-list #employee-tile__action-button {

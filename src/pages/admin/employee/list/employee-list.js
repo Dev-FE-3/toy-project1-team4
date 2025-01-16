@@ -5,7 +5,7 @@ import './employee-list.css';
 export const employeeList = function (content) {
   content.innerHTML = `
     <div id="employee-list">
-      <section id="employee-tile">
+      <section class="box" id="employee-tile">
         <div id="employee-tile__action-button">
           <div class="button-container">
             <button type="button" class="btn btn--secondary">csv 저장</button>
