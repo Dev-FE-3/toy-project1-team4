@@ -4,28 +4,28 @@
   gap: 24px;
 }
 
-#employee-info .tile-container {
+#employee-info > section {
   height: 616px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-#employee-info .tile-container:nth-child(2) > div {
+#employee-info > section:nth-child(2) > div {
   height: calc(100% / 3);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-#employee-info .tile__name-photo {
+#employee-info .name-photo {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-#employee-info .tile__name-photo-contents {
+#employee-info .name-photo__contents {
   text-align: center;
 }
 
@@ -65,7 +65,7 @@
   color: var(--grey);
 }
 
-#employee-info .tile__edit-details {
+#employee-info .name-photo__edit-details {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,7 +80,7 @@
   color: var(--Black);
 }
 
-#employee-info .tile__contents {
+#employee-info .box__contents {
   text-align: right;
 }
 
