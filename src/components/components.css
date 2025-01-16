@@ -1,7 +1,7 @@
 @import url(./../style/_reset.css);
 @import url(./../style/_font.css);
-@import url(./header.css);
-@import url(./nav.css);
+@import url(./header/header.css);
+@import url(./nav/nav.css);
 
 :root {
   --pointColor: #0064FF;
