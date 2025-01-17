@@ -198,7 +198,7 @@ export const home = function (content) {
     if (switchInput.checked === true) {
       nowLabel.innerHTML = '근무 시작'
     } else {
-      nowLabel.innerHTML = '근무 완료'
+      nowLabel.innerHTML = '근무 종료'
     };
   };
 
