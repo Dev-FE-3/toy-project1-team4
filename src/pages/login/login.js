@@ -23,7 +23,7 @@ export const login = function (content) {
                 <a href="javascript:void(0)">아이디/패스워드 <span class="search">찾기</span></a>
               </div>
             </div>
-            <input type="submit" class="btn btn--primary" value="로그인">
+            <input type="submit" class="btn btn--primary btn--submit" value="로그인">
             <span class="register__recommand">아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
         </form>
       </div>

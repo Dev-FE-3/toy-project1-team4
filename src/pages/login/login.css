@@ -18,13 +18,14 @@
 
 #login .login--form {
   width: 360px;
-  margin: 12% auto;
+  height: calc(100vh - 82px);
+  display: flex;
+  margin: 0 auto;
 }
 
 #login form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  align-self: center;
 }
 
 #login form .login--form__title {
@@ -42,7 +43,7 @@
   margin-bottom: 10px;
 }
 
-#login form input[type='submit'] {
+#login form .btn--submit {
   border: none;
   cursor: pointer;
 }
