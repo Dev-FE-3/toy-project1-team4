@@ -17,7 +17,7 @@ export const work = function (content) {
       <section class="box col-7 holiday">
         <div class="box__top">
           <h5 class="box__title">잔여 휴가</h5>
-          <a href="#" class="sbox__more">더보기</a>
+          <a href="#" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
           <div class="holiday__chart">
@@ -49,47 +49,47 @@ export const work = function (content) {
           <h5 class="box__title">부재신청 목록</h5>
           <button class="btn btn--primary absence--approve__modal">부재 신청서 작성</button>
           <dialog class="absence--modal">
-              <div class="absence--propose">
-                <p>근태 신청하기</p>
-                <form name = "javascipt:void(0)">
-                  <div class="input-wrap">
-                    <label for="input-01" class="input-label">사원번호</label>
-                    <input type="text" class="input-text" id="input-01" placeholder="사원번호를 입력하세요(8자리 숫자)">
-                  </div>
-          
-                  <div class="input-wrap">
-                    <label for="input-01" class="input-label">시작일</label>
-                    <input type="date" class="input-text" id="input-01" placeholder="">
-                  </div>
+            <div class="absence--title">
+              <h2>근태 신청하기</h2>
+              <form method="dialog">
+                  <button class="absence--modal__close"></button>
+              </form>
+            </div>
 
-                  <div class="input-wrap">
-                    <label for="input-01" class="input-label">종료일</label>
-                    <input type="date" class="input-text" id="input-01" placeholder="">
-                  </div>
-
-                  <div class="input-wrap">
-                    <label for="input-01" class="input-label">근태 유형</label>
-                    <select class="select">
+            <div class="absence--propose">
+              <form name = "javascipt:void(0)">
+                <ul class="absence--propose__info">
+                  <li class="input-wrap">
+                    <label for="absence-id" class="input-label">사원번호</label>
+                    <input type="text" class="input-text" id="absence-id" placeholder="사원번호를 입력하세요(8자리 숫자)">
+                  </li>
+                  <li class="input-wrap">
+                    <label for="absence--start--date" class="input-label">시작일</label>
+                    <input type="date" class="input-text" id="absence--start--date" placeholder="">
+                  </li>
+                  <li class="input-wrap">
+                    <label for="absence--end--date" class="input-label">종료일</label>
+                    <input type="date" class="input-text" id="absence--end--date" placeholder="">
+                  </li>
+                  <li class="input-wrap">
+                    <label for="absence--type" class="input-label">근태 유형</label>
+                    <select id="absence--type" class="select">
                     <option value="1">연차</option>
                     <option value="2">병가</option>
                     <option value="3">기타</option>
                     </select>
-                  </div>
-
-                  <div class="input-wrap">
-                    <label for="textarea-01" class="input-label">신청 사유</label>
-                    <textarea class="input-text input-text--textarea" id="textarea-01" rows="3"></textarea>
-                  </div>
-                  <form>
-                  
-                  <input type=submit value="제출하기" class="btn btn--primary">
-                  <span>기타 문의는 <strong>인사팀</strong>에 부탁드립니다</span>
-                </form> 
-
-                <form method="dialog">
-                    <button class="absence--modal__close"></button>
-                </form>
-              </div>
+                  </li>
+                  <li class="input-wrap">
+                    <label for="absence-reason" class="input-label">신청 사유</label>
+                    <textarea class="input-text input-text--textarea" id="absence-reason" rows="3"></textarea>
+                  </li>
+                  <li class="input-wrap">
+                    <input type=submit value="제출하기" class="btn btn--primary ">
+                    <span>기타 문의는 <strong>인사팀</strong>에 부탁드립니다</span>
+                  </li>
+                </ul>
+              <form>
+            </div>
           </dialog>
         </div>
         <div class="box__bottom">

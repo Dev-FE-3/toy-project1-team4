@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
 /* HOLIDAY */
 
 .holiday {
@@ -48,9 +37,9 @@
 	position: relative;
 }	
 
-.holiday .holiday__left .left__annual::before,
-.holiday .holiday__left .left__compensatory::before, 
-.holiday .holiday__left .left__etc::before {
+.holiday .holiday__left .left__annual p::before,
+.holiday .holiday__left .left__compensatory p::before, 
+.holiday .holiday__left .left__etc p::before {
 	position: absolute;
 	content: "";
 	width: 8px;
@@ -64,7 +53,7 @@
 	
 }
 
-.holiday .holiday__left .left__annual::before {
+.holiday .holiday__left .left__annual p::before {
 	background-color:#4318FF;
 }
 
@@ -72,7 +61,7 @@
 	
 }
 
-.holiday .holiday__left .left__compensatory::before {
+.holiday .holiday__left .left__compensatory p::before {
 	background-color:#6AD2FF;
 }
 
@@ -80,7 +69,7 @@
 	
 }
 
-.holiday .holiday__left .left__etc::before {
+.holiday .holiday__left .left__etc p::before {
 	background-color:#6AD2FF;
 }
 
@@ -97,32 +86,43 @@
 
 
 .absence .box__top .absence--modal {
-	width: 30vh;
+	width: 504px;
 	height: 100vh;
 	margin-right : 0;
-	padding-top: 200px;
-	padding-left: 72px;
-	padding-right: 72px;
 	border-radius: 16px 0px 0px 16px;
 	box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
 	border: none;
 }
 
-.absence .box__top .absence--modal .absence--propose {
-	text-align: center;
+.absence .box__top .absence--modal .absence--title .absence--modal__close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+.absence .box__top .absence--modal .absence--title .absence--modal__close::after {
+	content: "\00d7";
+	font-size: 30px;
 }
 
-.absence .box__top .absence--modal .absence--propose p {
-	color: var(--black-700-black, #121212);
-	font-size: 40px;
-	font-weight: 700;
-	line-height: 44px; /* 110% */
+.absence .box__top .absence--modal .absence--title {
+	margin-top: 112px;
 	margin-bottom: 100px;
 }
 
+.absence .box__top .absence--modal .absence--title h2 {
+	color: var(--black-700-black, #121212);
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 44px;
+	text-align: center;
+}
+
+.absence .box__top .absence--modal .absence--propose {
+	margin: 0 72px;
+}
+
 .absence .box__top .absence--modal .absence--propose form {
-	text-align: start;
-	margin: 10px;
+
 }
 
 .absence .box__top .absence--modal .absence--propose form .input-wrap {
@@ -145,7 +145,7 @@
 	text-align: center;
 	margin-top: 8px;
 	font-size: 12px;
-	line-height: 18px; /* 150% */
+	line-height: 18px;
 	}
 
 .absence .box__top .absence--modal .absence--propose form span strong {
@@ -153,13 +153,3 @@
 	font-weight: 400;
 }
 
-
-.absence .box__top .absence--modal .absence--propose .absence--modal__close {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-}
-.absence .box__top .absence--modal .absence--propose .absence--modal__close::after {
-	content: "\00d7";
-	font-size: 30px;
-}
