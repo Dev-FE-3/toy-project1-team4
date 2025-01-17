@@ -176,14 +176,17 @@ export const work = function (content) {
 
 
 
-
-  //부재 신청서 버튼 클릭시 modal
-  const modalBtn = document.querySelector(".absence--approve__modal");
-  const modal = document.querySelector(".absence--modal");
-
-  modalBtn.addEventListener("click", function () {
-      modal.showModal();
+  //부재 신청서 버튼 클릭시 modal & 스크롤 방지
+  const modalBtn = document.querySelector('.absence--approve__modal');
+  const modal = document.querySelector('.absence--modal');
+  modalBtn.addEventListener('click', function () {
+    modal.showModal();
+    document.body.style.overflow = 'hidden';
   });
+  
+  modal.addEventListener('close', function () {
+    document.body.style.overflow = 'auto';
+  })
 
 
   //부재 신청서 작성 
