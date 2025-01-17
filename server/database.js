@@ -14,15 +14,15 @@ const pool = mariadb.createPool({
 });
 
 // DB 연결 테스트
-export async function poolDb(query, params = []) {
+export async function poolDb() {
   let connection;
   try {
     connection = await pool.getConnection();
-    const result = await connection.query('SELECT 1 FROM DUAL', params);
-    console.log('result ---> ' + JSON.stringify(result))
-    return result;
-  } finally {
-    if (connection) connection.release();
+    console.log('MariaDB에 성공적으로 연결되었습니다.');
+    return connection;
+  } catch {
+    console.error('MariaDB 연결 실패:', err);
+    throw err;
   }
 }
 
