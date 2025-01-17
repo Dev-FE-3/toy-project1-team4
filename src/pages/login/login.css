@@ -27,7 +27,7 @@
   justify-content: center;
 }
 
-#login form p {
+#login form .login--form__title {
   text-align: center;
   color: var(--Black);
   font-size: 40px;
@@ -56,7 +56,7 @@
   letter-spacing: 0.3px;
 }
 
-#login form span {
+#login form .register__recommand {
   text-align: center;
   color: var(--black-700-black);
   font-size: 12px;
