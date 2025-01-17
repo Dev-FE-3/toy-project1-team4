@@ -13,16 +13,28 @@ const pool = mariadb.createPool({
   connectionLimit: 100,
 });
 
-
-export async function connectDb() {
+// DB 연결 테스트
+export async function poolDb(query, params = []) {
   let connection;
   try {
-    // 연결 획득
     connection = await pool.getConnection();
-    console.log('connection: ' + connection);
-    return connection;
-  } catch (err) {
-    console.error(err);
-    throw err;
+    const result = await connection.query('SELECT 1 FROM DUAL', params);
+    console.log('result ---> ' + JSON.stringify(result))
+    return result;
+  } finally {
+    if (connection) connection.release();
+  }
+}
+
+// 로그인 체크
+export async function checkLogin(query, params = []) {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const result = await connection.query('SELECT * FROM USER', params);
+    console.log('result ---> ' + JSON.stringify(result))
+    return result;
+  } finally {
+    if (connection) connection.release();
   }
 }

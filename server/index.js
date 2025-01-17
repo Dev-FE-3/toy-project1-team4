@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import fs from 'fs'
-import { connectDb } from './database.js';
+import { poolDb } from './database.js';
 
 const THRESHOLD = 2000
 const port = process.env.PORT || 5174
@@ -20,19 +20,10 @@ app.use(express.static('dist'))
 app.use(express.json())
 
 
-connectDb();
+// DB connection Check!!
+poolDb();
 
-
-
-
-
-
-
-
-
-
-
-app.get('/api/counter', (req, res) => {
+app.get('/api/login', (req, res) => {
   
 })
 
@@ -60,7 +51,6 @@ app.get('/api/users.json', (req, res) => {
     }
   })
 })
-
 
 app.listen(port, () => {
   console.log(`ready to ${port}`)
