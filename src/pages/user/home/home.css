@@ -161,6 +161,51 @@
   font-weight: 700;
   line-height: 24px;
 }
+
+#home .box--time .time-state .time-state__now .now__switch {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+#home .box--time .time-state .time-state__now .now__switch .switch__input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  background-color: var(--grey2);
+  border-radius: 20px;
+  transition: background-color 0.2s linear;
+  cursor: pointer;
+}
+
+#home .box--time .time-state .time-state__now .now__switch .switch__input::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+#home .box--time .time-state .time-state__now .now__switch .switch__input:checked {
+  background-color: var(--pointColor);
+}
+
+#home .box--time .time-state .time-state__now .now__switch .switch__input:checked::before,
+#home .box--time .time-state .time-state__now .now__switch .switch__input:checked::after {
+  transform: translateX(calc(60px - 20px - 12px));
+}
+
+#home .box--time .time-state .time-state__now .now__switch .switch__input:checked::after {
+  opacity: 1;
+}
+
 #home .box--time .time-state .time-state__now .now__label {
   color: #9369FF;
   font-size: 40px;

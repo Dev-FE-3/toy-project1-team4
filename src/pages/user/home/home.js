@@ -52,12 +52,15 @@ export const home = function (content) {
         <div class="box__bottom">
           <div class="time-view">
             <span class="time-view__countdown">04:28</span>
-            <span class="time-view__now">현재 시각: <b class="time">00:00</b></span>
+            <span class="time-view__now">현재 시각: <b class="time">00:00:00</b></span>
           </div>
           <div class="time-state">
             <div class="time-state__now">
               <span class="now__title">현재 상태</span>
-              <span class="now__label">외출중</span>
+              <label for="btn-toggle" class="now__switch">
+                <input type="checkbox" id="btn-toggle" class="switch__input">
+              </label>
+              <span class="now__label">근무 종료</span>
             </div>
             <button type="button" class="btn btn--primary">근무 시작</button>
           </div>
@@ -156,30 +159,50 @@ export const home = function (content) {
     </div>
   `;
 
+  // graphFunc
   function graphFunc () {
-    const graphList = document.querySelector('.box--graph .graph__list')
-    const graphItems = graphList.querySelectorAll('.graph__item')
+    const graphList = document.querySelector('.box--graph .graph__list');
+    const graphItems = graphList.querySelectorAll('.graph__item');
   
     graphItems.forEach((item) => {
       item.querySelector('.graph__bar').classList.add('active')
-    })
-  }
-  
-  function timerFunc () {
-    let date = new Date()
-    const hours = String(date.getHours()).padStart(2, '0')
-    const minutes = String(date.getMinutes()).padStart(2, '0')
-    const seconds = String(date.getSeconds()).padStart(2, '0')
-    const boxTime = document.querySelector('#home .box--time')
-    const time = boxTime.querySelector('.time-view .time')
+    });
+  };
 
-    time.innerHTML = `${hours}:${minutes}:${seconds} `
-  }
-
-  timerFunc()
-  setInterval(timerFunc, 1000)
-  
   window.onload = function() {
-    graphFunc()
-  }
+    graphFunc();
+  };
+  
+  // timerFunc
+  function timerFunc () {
+    let date = new Date();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    const boxTime = document.querySelector('#home .box--time');
+    const time = boxTime.querySelector('.time-view .time');
+
+    time.innerHTML = `${hours}:${minutes}:${seconds}`;
+  };
+
+  timerFunc();
+  setInterval(timerFunc, 1000);
+
+  // userStateFunc
+  const timeState = document.querySelector('.box--time .time-state');
+  const switchInput = timeState.querySelector('.switch__input');
+  const nowSwitch = timeState.querySelector('.now__switch');
+  const nowLabel = timeState.querySelector('.now__label');
+
+  function userStateFunc () {
+    if (switchInput.checked === true) {
+      nowLabel.innerHTML = '근무 시작'
+    } else {
+      nowLabel.innerHTML = '근무 완료'
+    };
+  };
+
+  nowSwitch.addEventListener('click', function () {
+    userStateFunc();
+  });
 }
