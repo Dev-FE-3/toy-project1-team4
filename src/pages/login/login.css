@@ -1,18 +1,24 @@
-#login {
-  position: fixed;
-  width: 360px;
-  height: 362px;
-  margin: 0 auto;
-  top: 20%;
-  right: 0;
-  left: 0;
+.login-wrap {
+  /* all: unset; */
 }
 
-#login img {
-  position: fixed;
+#login {
+
+}
+
+#login .logo {
+  padding: 24px;
+}
+
+#login .logo .logo__img {
   top: 24px;
   left: 24px;
   height: 32px;
+}
+
+#login .login--form {
+  width: 360px;
+  margin: 12% auto;
 }
 
 #login form {
@@ -23,10 +29,10 @@
 
 #login form p {
   text-align: center;
-  color: var(--Black, #1D1B20);
+  color: var(--Black);
   font-size: 40px;
   font-weight: 700;
-  line-height: 44px; /* 110% */
+  line-height: 44px;
   margin-bottom: 60px;
 }
 
@@ -43,18 +49,18 @@
 #login form .input-wrap a {
   display: block;
   text-align: right;
-  color: var(--grey, #202632);
+  color: var(--grey);
   font-size: 10px;
   font-weight: 700;
-  line-height: 16px; /* 160% */
+  line-height: 16px;
   letter-spacing: 0.3px;
 }
 
 #login form span {
   text-align: center;
-  color: var(--black-700-black, #121212);
+  color: var(--black-700-black);
   font-size: 12px;
   font-weight: 400;
-  line-height: 18px; /* 150% */
+  line-height: 18px;
   letter-spacing: 0.2px;
 }

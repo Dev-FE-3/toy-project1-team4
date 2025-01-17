@@ -4,34 +4,37 @@ export const login = function (content) {
 
   content.innerHTML = `
     <section id="login">
-    <img src="./../public/images/img_logo.png" class="logo__img" alt="PPangGeut">
-    <form action="javascipt:void(0)" method="post">
-        <p>로그인</p>
-        <div class="input-wrap">
-            <label for="input-01" class="input-label">아이디</label>
-            <input type="text" class="input-text" id="input-01" placeholder="사원번호 또는 이메일 주소를 입력해주세요">
-        </div>    
-        <div class="input-wrap">
-          <label for="input-01" class="input-label">패스워드</label>
-          <input type="password" class="input-text" id="input-01" placeholder="">
-          <a href="javascript:void(0)">아이디/패스워드 찾기</a>
-        </div>
-        <input type="submit" class="btn btn--primary" value="로그인">
-        <span>아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
+    <div class="logo">
+      <img src="./../public/images/img_logo.png" class="logo__img" alt="PPangGeut">
+    </div>
+    <div class="login--form">
+      <form action="javascipt:void(0)" method="post">
+          <p>로그인</p>
+          <div class="input-wrap">
+              <label for="input-01" class="input-label">아이디</label>
+              <input type="text" class="input-text" id="input-01" placeholder="사원번호 또는 이메일 주소를 입력해주세요">
+          </div>    
+          <div class="input-wrap">
+            <label for="input-01" class="input-label">패스워드</label>
+            <input type="password" class="input-text" id="input-01" placeholder="">
+            <a href="javascript:void(0)">아이디/패스워드 찾기</a>
+          </div>
+          <input type="submit" class="btn btn--primary" value="로그인">
+          <span>아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
       </form>
+    </div>
+
     </section>
+
   `;
 
-  const header = document.querySelector('.menu');
-  const nav = document.querySelector('.wrap');
-
-  header.remove();
-  nav.remove();
-
+  const menu = document.querySelector('.menu');
+  const header = document.querySelector('.header');
   const wrap = document.querySelector('.wrap');
-  wrap.style.backgroundColor = '#FFF';
 
-
-
+  menu.remove();
+  header.remove();
+  wrap.classList.add('.login-wrap');
+  wrap.style.all = 'unset';
 
 }
