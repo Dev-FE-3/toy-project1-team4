@@ -1,15 +1,49 @@
 import './home.css';
+import homeJson from './../../../../server/data/home.json';
 
 export const home = function (content) {
+  const user = homeJson.user;
+  const graph = homeJson.graph;
+  const work = homeJson.work;
+  const notice = homeJson.notice;
+  const meeting = homeJson.meeting;
+
+  const graphItems = graph.bar.map((item) => `
+    <li class="graph__item">
+      <div class="graph__bar" style="height: ${item.height}%"></div>
+      <span class="graph__title">${item.title}</span>
+    </li>
+  `).join('');
+
+  const workItems = work.map((item) => `
+    <tr>
+      <td>${item.date}</td>
+      <td>${item.type}</td>
+      <td><span class="label label--${item.label === true ? 'purple' : 'green'}">${item.state}</span></td>
+    </tr>
+  `).join('');
+
+  const noticeItems = notice.map((item) => `
+    <li><a href="#">${item}</a></li>
+  `).join('');
+
+  const meetingItems = meeting.map((item) => `
+    <li class="meeting-list__item">
+      <a href="#" class="item__link">
+        <p class="item__title">${item.title}</p>
+        <span class="item__time">${item.time}</span>
+      </a>
+    </li>
+  `).join('');
 
   content.innerHTML = `
     <div id="home" class="row">
       <section class="box box--user col-3">
         <div class="box__bottom">
-          <img src="./../../../public/images/img_profile.png" class="user-img" alt="">
+          <img src="${user.imgSrc}" class="user-img" alt="profile">
           <div class="user-info">
-            <span class="user-info__name">김빵긋</span>
-            <span class="user-info__position">CS 팀 ∙ 고객 성공 매니저</span>
+            <span class="user-info__name">${user.name}</span>
+            <span class="user-info__position">${user.position}</span>
           </div>
         </div>
       </section>
@@ -19,28 +53,9 @@ export const home = function (content) {
           <a href="#" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
-          <span class="graph__time">25시간 39분</span>
+          <span class="graph__time">${graph.time}</span>
           <ul class="graph__list">
-            <li class="graph__item">
-              <div class="graph__bar"></div>
-              <span class="graph__title">01/08</span>
-            </li>
-            <li class="graph__item">
-              <div class="graph__bar"></div>
-              <span class="graph__title">01/09</span>
-            </li>
-            <li class="graph__item">
-              <div class="graph__bar"></div>
-              <span class="graph__title">01/10</span>
-            </li>
-            <li class="graph__item">
-              <div class="graph__bar"></div>
-              <span class="graph__title">01/11</span>
-            </li>
-            <li class="graph__item">
-              <div class="graph__bar"></div>
-              <span class="graph__title">01/12</span>
-            </li>
+            ${graphItems}
           </ul>
         </div>
       </section>
@@ -81,26 +96,7 @@ export const home = function (content) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>2025-01-08</td>
-                <td>연차휴가</td>
-                <td><span class="label label--purple">결재중</span></td>
-              </tr>
-              <tr>
-                <td>2024-09-12</td>
-                <td>병가</td>
-                <td><span class="label label--green">결재완료</span></td>
-              </tr>
-              <tr>
-                <td>2024-08-10</td>
-                <td>조퇴</td>
-                <td><span class="label label--green">결재완료</span></td>
-              </tr>
-              <tr>
-                <td>2024-07-02</td>
-                <td>조퇴</td>
-                <td><span class="label label--green">결재완료</span></td>
-              </tr>
+              ${workItems}
             </tbody>
           </table>
         </div>
@@ -112,13 +108,7 @@ export const home = function (content) {
         </div>
         <div class="box__bottom">
           <ul class="notice-list">
-            <li><a href="#">[개발팀] 신규 프로젝트 런칭 안내: Project Phoenix]</a></li>
-            <li><a href="#">[개발팀] 신규 프로젝트 런칭 안내: Project Phoenix]</a></li>
-            <li><a href="#">[인사팀] 2025년 상반기 워크숍 일정 안내</a></li>
-            <li><a href="#">[인사팀] 2025년 상반기 워크숍 일정 안내</a></li>
-            <li><a href="#">[인사팀] 2025년 상반기 워크숍 일정 안내</a></li>
-            <li><a href="#">[인사팀] 2025년 상반기 워크숍 일정 안내</a></li>
-            <li><a href="#">[인사팀] 2025년 상반기 워크숍 일정 안내</a></li>
+            ${noticeItems}
           </ul>
         </div>
       </section>
@@ -129,30 +119,7 @@ export const home = function (content) {
         </div>
         <div class="box__bottom">
           <ul class="meeting-list">
-            <li class="meeting-list__item">
-              <a href="#" class="item__link">
-                <p class="item__title">데일리 스크럼</p>
-                <span class="item__time">10:00 AM - 11:00 AM</span>
-              </a>
-            </li>
-            <li class="meeting-list__item">
-              <a href="#" class="item__link">
-                <p class="item__title">데일리 스크럼</p>
-                <span class="item__time">01:00 PM - 02:00 PM</span>
-              </a>
-            </li>
-            <li class="meeting-list__item">
-              <a href="#" class="item__link">
-                <p class="item__title">Swift 세미나</p>
-                <span class="item__time">02:00 PM - 03:00 PM</span>
-              </a>
-            </li>
-            <li class="meeting-list__item">
-              <a href="#" class="item__link">
-                <p class="item__title">사내 독서 모임</p>
-                <span class="item__time">06:00 PM - 07:00 PM</span>
-              </a>
-            </li>
+            ${meetingItems}
           </ul>
         </div>
       </section>

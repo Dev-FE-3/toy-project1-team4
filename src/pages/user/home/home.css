@@ -100,26 +100,6 @@
 	transform: none;
 }
 
-#home .box--graph .graph__list .graph__item:nth-child(1) .graph__bar {
-  height: 60%;
-}
-
-#home .box--graph .graph__list .graph__item:nth-child(2) .graph__bar {
-  height: 80%;
-}
-
-#home .box--graph .graph__list .graph__item:nth-child(3) .graph__bar {
-  height: 40%;
-}
-
-#home .box--graph .graph__list .graph__item:nth-child(4) .graph__bar {
-  height: 20%;
-}
-
-#home .box--graph .graph__list .graph__item:nth-child(5) .graph__bar {
-  height: 90%;
-}
-
 /* box--time */
 #home .box--time .box__top {
   margin-bottom: 4px;
