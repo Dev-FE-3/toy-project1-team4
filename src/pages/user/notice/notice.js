@@ -2,31 +2,38 @@ import './notice.css';
 import noticeData from '../../../../server/data/notice.json';
 
 export const notice = function (content) {
-  const cardId = noticeData.cardId;
-console.log("cardId는??? "+ cardId);
+  const noticeItems = noticeData.data[0];
+  const cardId = noticeItems.cardId;
+  const cardImg = noticeItems.cardImg;
+  const cardTitle = noticeItems.cardTitle;
+  const cardDescription = noticeItems.cardDescription;
+  const authorImg = noticeItems.authorImg;
+  const authorPosition = noticeItems.authorPosition;
+  const authorName = noticeItems.authorName;
+  const date = noticeItems.date;
 
   content.innerHTML = `
     <ul id="notice" class="row">
-      <li class="notice-card col-4 ">
+      <li class="notice-card col-4" id="${cardId}">
         <a href="#" class="notice-card__link">
           <div class="card-image__container">
-            <img src="./../public/images/img_IT.png" alt="게시글 이미지" class="card-image" /> 
+            <img src="${cardImg}" alt="게시글 이미지" class="card-image" /> 
           </div> 
           <div class="card__details">
-            <h4 class="detail__title">[신규 프로젝트 런칭 안내: Project Phoenix ]</h4>
+            <h4 class="detail__title">${cardTitle}</h4>
             <p class="detail__description">
-              본사에서 신규 프로젝트인 "Project Phoenix"를 다음 달부터 진행합니다. 참여 희망자는 개발팀 김민재 팀장에게 문의주세요
+            ${cardDescription}
             </p>
           </div>
           <div class="card__author">
-            <img src="./../public/images/img_men.png" class="author__img" />
+            <img src="${authorImg}" class="author__img" />
             <div class="author__details">
               <div class="author__description">
-                <span class="author__position">백그라운드개발드림팀</span>
-                <span class="author__name">김수완거북이와두루미삼척갑사동방석</span>
+                <span class="author__position">${authorPosition}</span>
+                <span class="author__name">${authorName}</span>
               </div>
               <time>
-                2025-01-14
+              ${date}
               </time>
             </div>
           </div>
