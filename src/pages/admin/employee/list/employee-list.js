@@ -1,6 +1,154 @@
 import './employee-list.css';
 
+//가짜데이터 삽입하여 테스트함.
 const rawEmployeeData = [
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
+  {
+    name: '이채영',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'purple', title: '근무중' },
+  },
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
+  {
+    name: '이채영',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'purple', title: '근무중' },
+  },
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
+  {
+    name: '이채영',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'purple', title: '근무중' },
+  },
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
   {
     name: '송하영',
     id: '12345678',
@@ -31,20 +179,56 @@ const rawEmployeeData = [
   },
 ];
 
+const employees = rawEmployeeData.map(function (rawEmployee) {
+  return `
+          <tr>
+            <td class="table__name">${rawEmployee.name}</td>
+            <td class="table__id">${rawEmployee.id}</td>
+            <td class="table__department">${rawEmployee.department}</td>
+            <td class="table__position">${rawEmployee.position}</td>
+            <td class="table__status">
+              <span class="label label--${rawEmployee.status.color}">${rawEmployee.status.title}</span>
+            </td>
+          </tr>
+          `;
+});
+
+const listLength = 8;
+const initialIndex = 1;
+const totalIndex = Math.ceil(employees.length / listLength);
+let currentIndex = initialIndex;
+
+//함수 재호출 트리거 함수
+const triggerRender = function (content) {
+  // employeeList(content);
+};
+
 export const employeeList = function (content) {
-  const employees = rawEmployeeData.map(function (rawEmployee) {
-    return `
-            <tr>
-              <td class="table__name">${rawEmployee.name}</td>
-              <td class="table__id">${rawEmployee.id}</td>
-              <td class="table__department">${rawEmployee.department}</td>
-              <td class="table__position">${rawEmployee.position}</td>
-              <td class="table__status">
-                <span class="label label--${rawEmployee.status.color}">${rawEmployee.status.title}</span>
-              </td>
-            </tr>
-            `;
-  });
+  console.log('run page render'); // 함수 재호출 트리거 함수를 비활성화했는데 왜 페이지가 재호출 되는것인지?
+  const paginationBtnsRender = function () {
+    console.log('run btn render');
+    const paginationBtnList = [];
+    for (let i = 1; i <= totalIndex; i++) {
+      paginationBtnList[i] = `<a href="#" id="${'pageBtn' + i}" class="${
+        i == currentIndex ? 'active' : ''
+      }">${i}</a>`;
+    }
+    return paginationBtnList.join('');
+  };
+
+  const paginationBtnsAddEvent = function () {
+    const btnObjects = [];
+    for (let i = 1; i <= totalIndex; i++) {
+      btnObjects[i] = document.querySelector(`#pageBtn${i}`);
+      btnObjects[i].addEventListener('click', function () {
+        currentIndex = i;
+        triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
+      });
+    }
+    return;
+  };
+
+  const paginationBtns = paginationBtnsRender();
 
   content.innerHTML = `
     <div id="employee-list">
@@ -79,15 +263,14 @@ export const employeeList = function (content) {
             </tr>
           </thead>
           <tbody>
-            ${employees.join('')}
+            ${employees.slice(currentIndex, currentIndex + 8).join('')}
           </tbody>
         </table>
       </section>
 
       <section class="pagination">
-        <a href="#" class="pagination--prev">
-          prev
-        </a>
+        <a href="#" class="pagination--prev">prev</a>
+        <!--
         <a href="#" class="active">
           1
         </a>
@@ -98,10 +281,11 @@ export const employeeList = function (content) {
         <a href="#">6</a>
         <a href="#">7</a>
         <a href="#">8</a>
-        <a href="#" class="pagination--next">
-          next
-        </a>
+        -->
+        ${paginationBtns}
+        <a href="#" class="pagination--next">next</a>
       </section>
     </div>
     `;
+  paginationBtnsAddEvent();
 };
