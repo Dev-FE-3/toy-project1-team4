@@ -1,8 +1,51 @@
 import './employee-list.css';
 
-// const renderList = function (list) {}
+const rawEmployeeData = [
+  {
+    name: '송하영',
+    id: '12345678',
+    department: '인사팀',
+    position: '대리',
+    status: { color: 'red', title: '결근' },
+  },
+  {
+    name: '백지헌',
+    id: '12342516',
+    department: '기술지원팀',
+    position: '팀장',
+    status: { color: 'orange', title: '휴가' },
+  },
+  {
+    name: '박지원',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'green', title: '근무중' },
+  },
+  {
+    name: '이채영',
+    id: '19293847',
+    department: '회계팀',
+    position: '사원',
+    status: { color: 'purple', title: '근무중' },
+  },
+];
 
 export const employeeList = function (content) {
+  const employees = rawEmployeeData.map(function (rawEmployee) {
+    return `
+            <tr>
+              <td class="table__name">${rawEmployee.name}</td>
+              <td class="table__id">${rawEmployee.id}</td>
+              <td class="table__department">${rawEmployee.department}</td>
+              <td class="table__position">${rawEmployee.position}</td>
+              <td class="table__status">
+                <span class="label label--${rawEmployee.status.color}">${rawEmployee.status.title}</span>
+              </td>
+            </tr>
+            `;
+  });
+
   content.innerHTML = `
     <div id="employee-list">
       <section class="box" id="employee-tile">
@@ -36,44 +79,7 @@ export const employeeList = function (content) {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="table__name">송하영</td>
-              <td class="table__id">12345678</td>
-              <td class="table__department">인사팀</td>
-              <td class="table__position">대리</td>
-              <td class="table__status">
-                <span class="label label--red ">
-                  결근
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>내용1</td>
-              <td>내용2</td>
-              <td>내용3</td>
-              <td>내용3</td>
-              <td>
-                <span class="label label--orange">휴가</span>
-              </td>
-            </tr>
-            <tr>
-              <td>내용1</td>
-              <td>내용2</td>
-              <td>내용3</td>
-              <td>내용3</td>
-              <td>
-                <span class="label label--green">근무중</span>
-              </td>
-            </tr>
-            <tr>
-              <td>내용1</td>
-              <td>내용2</td>
-              <td>내용3</td>
-              <td>내용3</td>
-              <td>
-                <span class="label label--purple">자리비움</span>
-              </td>
-            </tr>
+            ${employees.join('')}
           </tbody>
         </table>
       </section>
