@@ -34,9 +34,31 @@ export const notice = function (content) {
     .join(''); 
 
   content.innerHTML = `
-    <ul id="notice" class="row">
-      ${cardsHTML}
-    </ul>
+    <div id="notice">
+      <ul class="row">
+        ${cardsHTML}
+      </ul>
+      <div class="notice__bottom">
+        <section class="pagination">
+          <a href="#" class="pagination--prev">
+            prev
+          </a>
+          <a href="#" class="active">
+            1
+          </a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">6</a>
+          <a href="#">7</a>
+          <a href="#">8</a>
+          <a href="#" class="pagination--next">
+            next
+          </a>
+        </section>
+      </div>
+    </div>
   `;
 };
 

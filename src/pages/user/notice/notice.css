@@ -1,8 +1,14 @@
-
+#notice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
 #notice .row {
   /* 너비를 어떻게 줘야할지 모르겠음 피그마에서의 각각 카드가 차지하는 높이가 맞지 않는거 같음 */
   align-items: flex-start;
   align-content: flex-start;
+  margin-bottom: auto;
 }
 
 #notice li {
@@ -118,6 +124,13 @@ letter-spacing: 0.2px;
 }
 
 /* PAGINATION */
-.pagination {
-  
+.notice__bottom {
+  display: flex;
+  margin-top: 9px;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice__bottom .pagination {
+  width: 436px;
 }
