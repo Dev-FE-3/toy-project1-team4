@@ -1,16 +1,40 @@
-import sqlite3 from 'sqlite3'
+import mariadb from 'mariadb';
+import dotenv from 'dotenv';
 
-const databaseName = 'toyprj1'
-const database = new sqlite3.Database(`./${databaseName}.db`)
+dotenv.config();
 
-database.serialize(() => {
-  database.run(`
-    CREATE TABLE IF NOT EXISTS Users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      userId TEXT NOT NULL,
-      email TEXT NOT NULL,
-      password TEXT NOT NULL
-    )`)
-})
+// MariaDB 연결 풀 생성
+const pool = mariadb.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT,
+  connectionLimit: 100,
+});
 
-export default database
+// DB 연결 테스트
+export async function poolDb() {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    console.log('MariaDB에 성공적으로 연결되었습니다.');
+    return connection;
+  } catch {
+    console.error('MariaDB 연결 실패:', err);
+    throw err;
+  }
+}
+
+// 로그인 체크
+export async function checkLogin(query, params = []) {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const result = await connection.query('SELECT * FROM USER', params);
+    console.log('result ---> ' + JSON.stringify(result))
+    return result;
+  } finally {
+    if (connection) connection.release();
+  }
+}
