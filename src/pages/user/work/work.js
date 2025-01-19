@@ -1,4 +1,6 @@
 import './work.css';
+import axios from 'axios';
+import { formatDateTime, approveStatusStyle } from '/src/util/utils.js'
 
 export const work = function (content) {
 
@@ -30,15 +32,15 @@ export const work = function (content) {
           <div class="holiday__left">
             <div class="left__annual">
               <p>연차휴가</p>
-              <strong>9일</strong>
+              <strong>0일</strong>
             </div>
             <div class="left__compensatory">
               <p>보상휴가</p>
-              <strong>3일</strong>
+              <strong>0일</strong>
             </div>
             <div class="left__etc">
               <p>기타휴가</p>
-              <strong>3일</strong>            
+              <strong>0일</strong>            
             </div>
           </div>
         </div>
@@ -57,11 +59,11 @@ export const work = function (content) {
             </div>
 
             <div class="absence--propose">
-              <form name = "javascipt:void(0)">
+              <form method="POST">
                 <ul class="absence--propose__info">
                   <li class="input-wrap">
                     <label for="absence-id" class="input-label">사원번호</label>
-                    <input type="text" class="input-text" id="absence-id" placeholder="사원번호를 입력하세요(8자리 숫자)">
+                    <input type="text" class="input-text" id="absence-id" placeholder="" disabled>
                   </li>
                   <li class="input-wrap">
                     <label for="absence--start--date" class="input-label">시작일</label>
@@ -74,9 +76,9 @@ export const work = function (content) {
                   <li class="input-wrap">
                     <label for="absence--type" class="input-label">근태 유형</label>
                     <select id="absence--type" class="select">
-                    <option value="1">연차</option>
-                    <option value="2">병가</option>
-                    <option value="3">기타</option>
+                    <option value="연차 휴가">연차 휴가</option>
+                    <option value="보상 휴가">보상 휴가</option>
+                    <option value="기타 휴가">기타 휴가</option>
                     </select>
                   </li>
                   <li class="input-wrap">
@@ -84,7 +86,7 @@ export const work = function (content) {
                     <textarea class="input-text input-text--textarea" id="absence-reason" rows="3"></textarea>
                   </li>
                   <li class="input-wrap">
-                    <input type=submit value="제출하기" class="btn btn--primary ">
+                    <input type=submit value="제출하기" class="btn btn--primary">
                     <span>기타 문의는 <strong>인사팀</strong>에 부탁드립니다</span>
                   </li>
                 </ul>
@@ -102,95 +104,130 @@ export const work = function (content) {
                 <th scope="col">결제 상태</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="absence--list__content">
               <tr>
                 <td>Jeffrey Bezos</td>
                 <td>2025-01-01</td>
                 <td>연차</td>
-                <td><span class="label label--red">결근</span></td>
+                <td><span class="label label--red">결제 중</span></td>
               </tr>
-              <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--orange">휴가</span></td>
-              </tr>
-              <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--green">근무중</span></td>
-              </tr>
-              <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--purple">자리비움</span></td>
-              </tr>
-                            <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--purple">자리비움</span></td>
-              </tr>
-                            <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--purple">자리비움</span></td>
-              </tr>
-                            <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--purple">자리비움</span></td>
-              </tr>
-                            <tr>
-                <td>Jeffrey Bezos</td>
-                <td>2025-01-01</td>
-                <td>연차</td>
-                <td><span class="label label--purple">자리비움</span></td>
-              </tr>
-
             </tbody>
           </table>
         </div>
       </section>
 
-
-
-
     </div>
   `;
 
-  // 잔여 휴가 기능 API
+  // 남은 휴가일 API + 차트 동적 바인딩
+  function dayoffStyle(str) {
+    switch (str){
+      case '연차휴가':
+        str = 'left__annual'
+        break;
+      case '보상휴가':
+        str = 'left__compensatory'
+        break;
+      case '기타휴가':
+        str = 'left__etc'
+        break;
+    }
+    return str;
+  }
 
-  // 휴가 일자에 따른 차트 동적 바인딩
+  async function getDayOff() {
+    const leftAnnual = document.querySelector('.holiday__left');
+    const response = await axios.post('api/work', { num : 2 });
 
+    const dayOff = response.data.map((item) => {
+      const offStyle = dayoffStyle(`${item.TYPE}`);
 
+      return `
+        <div class="${offStyle}">
+          <p>${item.TYPE}</p>
+          <strong>${item.AMOUNT}일</strong>
+        </div>
+      `
+    }).join('');
+
+    leftAnnual.innerHTML = dayOff;
+  }
 
   //부재 신청 목록 API
+  async function getAbsenceList() {
+    const absenceList = document.querySelector('.absence--list__content');
+    const response = await axios.post('api/absence', { num : 2 });
 
+    const absenceData = response.data.map((item) => {
+      const startDate = formatDateTime(`${item.START_DATE}`);
+      const endDate = formatDateTime(`${item.END_DATE}`);
+      const statusStyle = approveStatusStyle(`${item.STATUS}`);
 
-  //부재 신청 목록 스크롤 기능
+      return `
+        <tr>
+          <td>Jeffrey Bezos</td>
+          <td>${startDate} ~ ${endDate}</td>
+          <td>${item.TYPE}</td>
+          <td><span class="label ${statusStyle}">${item.STATUS}</span></td>
+        </tr>
+      `
 
+    }).join('');
 
+    absenceList.innerHTML = absenceData;
+
+  }
+
+  // 초기 데이터 로드
+  getDayOff();
+  getAbsenceList();
 
   //부재 신청서 버튼 클릭시 modal & 스크롤 방지
   const modalBtn = document.querySelector('.absence--approve__modal');
   const modal = document.querySelector('.absence--modal');
+  const userNum = document.querySelector('#absence-id');
+
   modalBtn.addEventListener('click', function () {
     modal.showModal();
     document.body.style.overflow = 'hidden';
+    userNum.value = '2';
   });
   
   modal.addEventListener('close', function () {
     document.body.style.overflow = 'auto';
+
+    // 모달이 닫힌 후 UI 갱신
+    getDayOff();
+    getAbsenceList();
   })
 
 
-  //부재 신청서 작성 
+  //form 태그 페이지 이동 방지하고 POST 전송 
+  const absenceForm = document.querySelector('.absence--propose form');
 
+  absenceForm.addEventListener('submit', async function (event) {
+    event.preventDefault(); // 기본 동작(페이지 이동) 방지
 
+    const absence = {
+      num : document.querySelector('#absence-id').value,
+      start_date : document.querySelector('#absence--start--date').value,
+      end_date : document.querySelector('#absence--end--date').value,
+      type : document.querySelector('#absence--type').value,
+      reason : document.querySelector('#absence-reason').value,
+      status : '결제 중',
+    }
+
+    try{
+      const response = await axios.post('/api/approve', absence);
+
+      alert('신청이 완료되었습니다.');
+      modal.close();
+    } catch (error) {
+
+      // 오류 처리
+      console.error('Form submission error:', error);
+      alert('신청에 실패했습니다. 다시 시도해주세요.');
+    }
+  });
 
 }

@@ -25,16 +25,3 @@ export async function poolDb() {
     throw err;
   }
 }
-
-// 로그인 체크
-export async function checkLogin(query, params = []) {
-  let connection;
-  try {
-    connection = await pool.getConnection();
-    const result = await connection.query('SELECT * FROM USER', params);
-    console.log('result ---> ' + JSON.stringify(result))
-    return result;
-  } finally {
-    if (connection) connection.release();
-  }
-}
