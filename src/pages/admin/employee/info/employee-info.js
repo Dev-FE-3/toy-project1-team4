@@ -1,12 +1,24 @@
 import './employee-info.css';
 
-export const employeeInfo = function (content) {
-  const serviceYears = 2;
-  const serviceMonths = 5;
-  const conatctCall = '010-1234-5678';
-  const conatctEmail = 'jeff@amazon.com';
-  const performanceRate = 4.5;
+const employeeDetails = {
+  //임의로 필요한 정보 모아놓음
+  id: '12345678',
+  userId: 'abcd',
+  email: 'abcd@company.com',
+  status: { color: 'red', title: '결근' },
+  name: 'Jeffrey Bezos',
+  department: 'CS 팀',
+  position: '고객 성공 매니저',
+  serviceYears: 2,
+  serviceMonths: 5,
+  contactCall: '010-1234-5678',
+  contactEmail: 'jeff@amazon.com',
+  performanceRate: 4.5,
+  profileSrc: '../../../../../public/images/profile_face.png',
+  editedDate: '2024.12.03',
+};
 
+export const employeeInfo = function (content) {
   content.innerHTML = `
 <div id="employee-info">
   <section class="col-7">
@@ -14,16 +26,16 @@ export const employeeInfo = function (content) {
       <div class="name-photo__contents">
         <div class="contents--background-img">
           <img
-            src="../../../../../public/images/profile_face.png"
+            src="${employeeDetails.profileSrc}"
             alt="profile image"
             class="contents--profile-img"
           />
         </div>
-        <h5 class="contents--name">Jeffrey Bezos</h5>
-        <p class="contents--position">CS 팀 ∙ 고객 성공 매니저</p>
+        <h5 class="contents--name">${employeeDetails.name}</h5>
+        <p class="contents--position">${employeeDetails.department} ∙ ${employeeDetails.position}</p>
       </div>
       <div class="name-photo__edit-details">
-        <span class="edit-details__date">2024.12.03 수정됨</span>
+        <span class="edit-details__date">${employeeDetails.editedDate} 수정됨</span>
         <button type="button" class="btn btn--primary">
           프로필 사진 수정하기
         </button>
@@ -40,7 +52,7 @@ export const employeeInfo = function (content) {
       </div>
       <div class="box__bottom box__contents">
         <p class="work-period__text">
-          ${serviceYears}년 ${serviceMonths}개월
+          ${employeeDetails.serviceYears}년 ${employeeDetails.serviceMonths}개월
         </p>
       </div>
     </div>
@@ -52,8 +64,8 @@ export const employeeInfo = function (content) {
         </a>
       </div>
       <div class="box__bottom box__contents">
-        <p class="contact__text">${conatctCall}</p>
-        <p class="contact__text">${conatctEmail}</p>
+        <p class="contact__text">${employeeDetails.contactCall}</p>
+        <p class="contact__text">${employeeDetails.contactEmail}</p>
       </div>
     </div>
     <div class="box performance">
@@ -65,7 +77,7 @@ export const employeeInfo = function (content) {
       </div>
       <div class="box__bottom box__contents">
         <p class="performance__text">
-          <span class="performance__text--my-rate">${performanceRate}</span>/5
+          <span class="performance__text--my-rate">${employeeDetails.performanceRate}</span>/5
         </p>
       </div>
     </div>
