@@ -1,7 +1,7 @@
 import mariadb from 'mariadb';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: '.env.development' });
 
 // MariaDB 연결 풀 생성
 const pool = mariadb.createPool({
