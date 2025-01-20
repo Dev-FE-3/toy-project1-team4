@@ -1,23 +1,22 @@
 #notice {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   
 }
 #notice .row {
-  /* 너비를 어떻게 줘야할지 모르겠음 피그마에서의 각각 카드가 차지하는 높이가 맞지 않는거 같음 */
-  align-items: flex-start;
+  /* align-items: flex-start;
   align-content: flex-start;
-  margin-bottom: auto;
+  margin-bottom: auto; */
 }
 
 #notice li {
   background-color: #FFF;
-  width: 368px;
   height: 367px;
   padding: 12px;
   border-radius: 16px;
   box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.07); 
+  box-sizing: border-box; 
 }
 #notice li a{
   color: black;
@@ -49,13 +48,13 @@ padding: 16px 16px 16px 6px;
   height: 19px;
   font-size: 16px;
   margin-bottom: 16px;
-  color: #1D1B20;
+  color: var(--Black);
   overflow: hidden; 
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 #notice li a .card__details .detail__description {
-  color:#4D515B;
+  color: var(--grey2);
   text-overflow: ellipsis;
   white-space: normal;
   overflow: hidden;
@@ -106,16 +105,16 @@ padding: 16px 16px 16px 6px;
   letter-spacing: 0.2px;
 }
 #notice li a .card__author .author__details .author__description .author__position {
-  color: #0064FF;
+  color: var(--pointColor);
 }
 #notice li a .card__author .author__details .author__description .author__name {
-  color: #1D1B20;
+  color: var(--Black);
   
 }
 #notice li a .card__author .author__details time {
 margin-top: auto;
 
-color: #4D515B;
+color: var(--grey2);
 font-size: 12px;
 font-style: normal;
 font-weight: 400;
@@ -124,7 +123,7 @@ letter-spacing: 0.2px;
 }
 
 /* PAGINATION */
-.notice__bottom {
+/* .notice__bottom {
   display: flex;
   margin-top: 9px;
   justify-content: center;
@@ -133,4 +132,12 @@ letter-spacing: 0.2px;
 
 .notice__bottom .pagination {
   width: 436px;
+} */
+
+.pagination {
+  position: fixed;
+  /* left: calc((100vw - 236px) / 2 + 236px); */
+  left: calc(50vw + 118px);
+  bottom: 16px;
+  transform: translate(-50%);
 }

@@ -2,7 +2,7 @@
   "status": "OK",
   "data": [
     {
-      "cardId": 1,
+      "cardNum": 1,
       "cardImg": "./../public/images/img_IT.png",
       "cardTitle": "[신규 프로젝트 런칭 안내: Project Phoenix ]",
       "cardDescription": "본사에서 신규 프로젝트인 \"Project Phoenix\"를 다음 달부터 진행합니다. 참여 희망자는 개발팀 김민재 팀장에게 문의주세요",
@@ -12,7 +12,7 @@
       "date": "2025-01-14"
     },
     {
-      "cardId": 2,
+      "cardNum": 2,
       "cardImg": "./../public/images/img_sport.png",
       "cardTitle": "[야유회 일정 공지]",
       "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
@@ -22,7 +22,17 @@
       "date": "2025-01-20"
     },
     {
-      "cardId": 3,
+      "cardNum": 3,
+      "cardImg": "./../public/images/img_조세호.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 4,
       "cardImg": "./../public/images/img_sport.png",
       "cardTitle": "[야유회 일정 공지]",
       "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
@@ -32,7 +42,7 @@
       "date": "2025-01-20"
     },
     {
-      "cardId": 4,
+      "cardNum": 5,
       "cardImg": "./../public/images/img_sport.png",
       "cardTitle": "[야유회 일정 공지]",
       "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
@@ -42,17 +52,7 @@
       "date": "2025-01-20"
     },
     {
-      "cardId": 5,
-      "cardImg": "./../public/images/img_sport.png",
-      "cardTitle": "[야유회 일정 공지]",
-      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
-      "authorImg": "./../public/images/img_profile.png",
-      "authorPosition": "CS 팀",
-      "authorName": "김빵긋",
-      "date": "2025-01-20"
-    },
-    {
-      "cardId": 6,
+      "cardNum": 6,
       "cardImg": "./../public/images/img_sport.png",
       "cardTitle": "[야유회 일정 공지]",
       "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
