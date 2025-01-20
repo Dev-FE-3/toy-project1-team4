@@ -39,9 +39,9 @@
 	position: relative;
 }	
 
-#work .holiday .holiday__left .left__annual p::before,
-#work .holiday .holiday__left .left__compensatory p::before, 
-#work .holiday .holiday__left .left__etc p::before {
+#work .holiday .holiday__left .left__annual h6::before,
+#work .holiday .holiday__left .left__compensatory h6::before, 
+#work .holiday .holiday__left .left__etc h6::before {
 	position: absolute;
 	content: "";
 	width: 8px;
@@ -55,7 +55,7 @@
 	
 }
 
-#work .holiday .holiday__left .left__annual p::before {
+#work .holiday .holiday__left .left__annual h6::before {
 	background-color:#4318FF;
 }
 
@@ -63,7 +63,7 @@
 	
 }
 
-#work .holiday .holiday__left .left__compensatory p::before {
+#work .holiday .holiday__left .left__compensatory h6::before {
 	background-color:#6AD2FF;
 }
 
@@ -71,7 +71,7 @@
 	
 }
 
-#work .holiday .holiday__left .left__etc p::before {
+#work .holiday .holiday__left .left__etc h6::before {
 	background-color:#6AD2FF;
 }
 
@@ -110,7 +110,7 @@
 }
 
 #work .absence .box__top .absence--modal .absence--title h2 {
-	color: var(--black-700-black, #121212);
+	color: var(--black-700-black);
 	font-size: 40px;
 	font-weight: 700;
 	line-height: 44px;
@@ -153,6 +153,14 @@
 	font-weight: 400;
 }
 
+#work .absence .absence--propose .absence--id {
+	
+}
+
+#work .absence .absence--propose .absence--start--date,
+#work .absence .absence--propose .absence--end--date,
+#work .absence .absence--propose .absence--type,
 #work .absence .absence--propose .absence--submit {
 	cursor: pointer;
 }
+

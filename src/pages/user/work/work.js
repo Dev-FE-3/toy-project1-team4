@@ -63,19 +63,19 @@ export const work = function (content) {
                 <ul class="absence--propose__info">
                   <li class="input-wrap">
                     <label for="absence--id" class="input-label">사원번호</label>
-                    <input type="text" class="input-text" id="absence--id" placeholder="" disabled>
+                    <input type="text" class="input-text absence--id" id="absence--id" placeholder="" disabled>
                   </li>
                   <li class="input-wrap">
                     <label for="absence--start--date" class="input-label">시작일</label>
-                    <input type="date" class="input-text" id="absence--start--date" placeholder="">
+                    <input type="date" class="input-text absence--start--date" id="absence--start--date" placeholder="">
                   </li>
                   <li class="input-wrap">
                     <label for="absence--end--date" class="input-label">종료일</label>
-                    <input type="date" class="input-text" id="absence--end--date" placeholder="">
+                    <input type="date" class="input-text absence--end--date" id="absence--end--date" placeholder="">
                   </li>
                   <li class="input-wrap">
                     <label for="absence--type" class="input-label">근태 유형</label>
-                    <select id="absence--type" class="select">
+                    <select id="absence--type" class="select absence--type">
                     <option value="연차 휴가">연차 휴가</option>
                     <option value="보상 휴가">보상 휴가</option>
                     <option value="기타 휴가">기타 휴가</option>
