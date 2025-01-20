@@ -187,10 +187,14 @@
 }
 
 #home .box--time .time-state .time-state__now .now__label {
-  color: #9369FF;
+  color: var(--grey2);
   font-size: 40px;
   font-weight: 700;
   line-height: 44px;
+}
+
+#home .box--time .time-state .time-state__now .now__label.active {
+  color: var(--pointColor);
 }
 
 /* box--work */

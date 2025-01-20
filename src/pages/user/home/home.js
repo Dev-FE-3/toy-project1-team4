@@ -179,8 +179,10 @@ export const home = function (content) {
   function userStateFunc () {
     if (switchInput.checked === true) {
       nowLabel.innerHTML = '근무 시작'
+      nowLabel.classList.add('active')
     } else {
       nowLabel.innerHTML = '근무 종료'
+      nowLabel.classList.remove('active')
     };
   };
 
