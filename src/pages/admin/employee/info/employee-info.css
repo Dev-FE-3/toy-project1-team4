@@ -102,3 +102,7 @@
 #employee-info .performance__text--my-rate {
   color: var(--pointColor);
 }
+
+/* #employee-info .invisible {
+  display: none;
+} */
