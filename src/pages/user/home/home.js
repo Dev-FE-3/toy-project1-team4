@@ -204,10 +204,5 @@ export const home = function (content) {
 
   btnSbmit.addEventListener('click', function () {
     workStateModal.close();
-
-    if (switchInput.checked === false) {
-      switchInput.checked = true;
-      nowLabel.innerHTML = '근무 시작';
-    };
   });
 }
