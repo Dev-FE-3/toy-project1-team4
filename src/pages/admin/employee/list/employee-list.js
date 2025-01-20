@@ -1,6 +1,11 @@
 import './employee-list.css';
 import rawEmployeeData from '../../../../../server/data/employee-list.json';
 
+//함수 재호출 트리거 함수
+const triggerRender = function (content) {
+  employeeList(content);
+};
+
 const employees = rawEmployeeData.data.map(function (rawEmployee) {
   return `
           <tr>
@@ -15,40 +20,31 @@ const employees = rawEmployeeData.data.map(function (rawEmployee) {
           `;
 });
 
-console.log(employees);
-
 const listLength = 9;
 const initialIndex = 1;
 const totalIndex = Math.ceil(employees.length / listLength);
 let currentIndex = initialIndex;
 
-//함수 재호출 트리거 함수
-const triggerRender = function (content) {
-  employeeList(content);
-};
-
 export const employeeList = function (content) {
-  console.log('run page render'); // 함수 재호출 트리거 함수를 비활성화했는데 왜 페이지가 재호출 되는것인지?
   const paginationBtnsRender = function () {
-    console.log('run btn render');
     const paginationBtnList = [];
     for (let i = 1; i <= totalIndex; i++) {
-      paginationBtnList[i] = `<a href="javascript:;" id="${
-        'pageBtn' + i
-      }" class="${i == currentIndex ? 'active' : ''}">${i}</a>`;
+      paginationBtnList[i] = `<a href="javascript:;"
+      data-btn-index = "${i}"
+      class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</a>`;
     }
     return paginationBtnList.join('');
   };
 
   const paginationBtnsAddEvent = function () {
-    const btnObjects = [];
-    for (let i = 1; i <= totalIndex; i++) {
-      btnObjects[i] = document.querySelector(`#pageBtn${i}`);
-      btnObjects[i].addEventListener('click', function () {
-        currentIndex = i;
+    const btnObjects = document.querySelectorAll('.pagination--index');
+    btnObjects.forEach(function (btnObject) {
+      btnObject.addEventListener('click', function () {
+        // console.log(btnObject.dataset.btnIndex);
+        currentIndex = btnObject.dataset.btnIndex;
         triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
       });
-    }
+    });
     return;
   };
 
