@@ -35,6 +35,22 @@ app.post('/api/login', async (req, res) => {
   }
 })
 
+// 본인 정보 가져오기
+app.get('/api/user/:num', async (req, res) => {
+  const { num } = req.params;
+
+  const query = 'SELECT * FROM USERS where num = ?';
+  try {
+    const conn = await poolDb();
+    const rows = await conn.query(query, [ num ]);
+    res.send(rows);
+    conn.end();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('사용자 조회 중 오류가 발생했습니다.');
+  }
+})
+
 // 메뉴
 app.get('/api/menu/:role', async (req, res) => {
   const { role } = req.params;
@@ -42,7 +58,7 @@ app.get('/api/menu/:role', async (req, res) => {
   const query = 'SELECT * FROM menu where role = ?';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query,[role]);
+    const rows = await conn.query(query,[ role ]);
     res.send(rows);
     conn.end();
   } catch (err) {
@@ -73,7 +89,7 @@ app.post('/api/meet', async (req, res) => {
   const query = 'SELECT * FROM meeting where num = ? order by time asc';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.query(query, [ num ]);
     res.send(rows);
     conn.end();
   } catch (err) {
@@ -89,7 +105,7 @@ app.post('/api/work', async (req, res) => {
   const query = 'SELECT * FROM dayoff where num = ?';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.query(query, [ num ]);
     res.send(rows);
     conn.end();
   } catch (err) {
@@ -105,7 +121,7 @@ app.post('/api/absence', async (req, res) => {
   const query = 'SELECT * FROM approve where num = ? order by start_date desc';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.query(query, [ num ]);
     res.send(rows);
     conn.end();
   } catch (err) {
