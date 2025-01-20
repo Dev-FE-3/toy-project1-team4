@@ -51,6 +51,22 @@ app.get('/api/user/:num', async (req, res) => {
   }
 })
 
+// 모든 User 정보 가져오기
+app.get('/api/users', async (req, res) => {
+
+  const query = 'SELECT * FROM USERS';
+  try {
+    const conn = await poolDb();
+    const rows = await conn.query(query);
+    res.send(rows);
+    conn.end();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('사용자 조회 중 오류가 발생했습니다.');
+  }
+})
+
+
 // 메뉴
 app.get('/api/menu/:role', async (req, res) => {
   const { role } = req.params;
