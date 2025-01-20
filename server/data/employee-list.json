@@ -1,0 +1,425 @@
+{
+  "status": "OK",
+  "data": [
+    {
+      "name": "1",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "2",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "3",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "4",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "purple",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "5",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "6",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "7",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "8",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "purple",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "9",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "10",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "11",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "12",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "13",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "14",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "15",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "16",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "이채영",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "purple",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "이채영",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "purple",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "이채영",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "purple",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지웡",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "송하영",
+      "id": "12345678",
+      "department": "인사팀",
+      "position": "대리",
+      "status": {
+        "color": "red",
+        "title": "결근"
+      }
+    },
+    {
+      "name": "백지헌",
+      "id": "12342516",
+      "department": "기술지원팀",
+      "position": "팀장",
+      "status": {
+        "color": "orange",
+        "title": "휴가"
+      }
+    },
+    {
+      "name": "박지원",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "green",
+        "title": "근무중"
+      }
+    },
+    {
+      "name": "이채영",
+      "id": "19293847",
+      "department": "회계팀",
+      "position": "사원",
+      "status": {
+        "color": "purple",
+        "title": "근무중"
+      }
+    }
+  ]
+}

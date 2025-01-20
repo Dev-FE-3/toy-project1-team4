@@ -1,185 +1,7 @@
 import './employee-list.css';
+import rawEmployeeData from '../../../../../server/data/employee-list.json';
 
-//가짜데이터 삽입하여 테스트함.
-const rawEmployeeData = [
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '이채영',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'purple', title: '근무중' },
-  },
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '이채영',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'purple', title: '근무중' },
-  },
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '이채영',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'purple', title: '근무중' },
-  },
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '송하영',
-    id: '12345678',
-    department: '인사팀',
-    position: '대리',
-    status: { color: 'red', title: '결근' },
-  },
-  {
-    name: '백지헌',
-    id: '12342516',
-    department: '기술지원팀',
-    position: '팀장',
-    status: { color: 'orange', title: '휴가' },
-  },
-  {
-    name: '박지원',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'green', title: '근무중' },
-  },
-  {
-    name: '이채영',
-    id: '19293847',
-    department: '회계팀',
-    position: '사원',
-    status: { color: 'purple', title: '근무중' },
-  },
-];
-
-const employees = rawEmployeeData.map(function (rawEmployee) {
+const employees = rawEmployeeData.data.map(function (rawEmployee) {
   return `
           <tr>
             <td class="table__name">${rawEmployee.name}</td>
@@ -193,14 +15,16 @@ const employees = rawEmployeeData.map(function (rawEmployee) {
           `;
 });
 
-const listLength = 8;
+console.log(employees);
+
+const listLength = 9;
 const initialIndex = 1;
 const totalIndex = Math.ceil(employees.length / listLength);
 let currentIndex = initialIndex;
 
 //함수 재호출 트리거 함수
 const triggerRender = function (content) {
-  // employeeList(content);
+  employeeList(content);
 };
 
 export const employeeList = function (content) {
@@ -209,9 +33,9 @@ export const employeeList = function (content) {
     console.log('run btn render');
     const paginationBtnList = [];
     for (let i = 1; i <= totalIndex; i++) {
-      paginationBtnList[i] = `<a href="#" id="${'pageBtn' + i}" class="${
-        i == currentIndex ? 'active' : ''
-      }">${i}</a>`;
+      paginationBtnList[i] = `<a href="javascript:;" id="${
+        'pageBtn' + i
+      }" class="${i == currentIndex ? 'active' : ''}">${i}</a>`;
     }
     return paginationBtnList.join('');
   };
@@ -263,27 +87,20 @@ export const employeeList = function (content) {
             </tr>
           </thead>
           <tbody>
-            ${employees.slice(currentIndex, currentIndex + 8).join('')}
+            ${employees
+              .slice(
+                (currentIndex - 1) * listLength,
+                (currentIndex - 1) * listLength + listLength,
+              )
+              .join('')}
           </tbody>
         </table>
       </section>
 
       <section class="pagination">
-        <a href="#" class="pagination--prev">prev</a>
-        <!--
-        <a href="#" class="active">
-          1
-        </a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">7</a>
-        <a href="#">8</a>
-        -->
+        <a href="javascript:;" class="pagination--prev">prev</a>
         ${paginationBtns}
-        <a href="#" class="pagination--next">next</a>
+        <a href="javascript:;" class="pagination--next">next</a>
       </section>
     </div>
     `;
