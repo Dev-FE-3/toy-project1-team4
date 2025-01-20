@@ -54,7 +54,7 @@ export const work = function (content) {
             <div class="absence--title">
               <h2>근태 신청하기</h2>
               <form method="dialog">
-                  <button class="absence--modal__close"></button>
+                <button class="absence--modal__close"></button>
               </form>
             </div>
 
@@ -86,7 +86,7 @@ export const work = function (content) {
                     <textarea class="input-text input-text--textarea" id="absence-reason" rows="3"></textarea>
                   </li>
                   <li class="input-wrap">
-                    <input type=submit value="제출하기" class="btn btn--primary">
+                    <input type=submit value="제출하기" class="btn btn--primary absence--submit">
                     <span>기타 문의는 <strong>인사팀</strong>에 부탁드립니다</span>
                   </li>
                 </ul>
