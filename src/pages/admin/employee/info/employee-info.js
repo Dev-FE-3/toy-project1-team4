@@ -1,22 +1,7 @@
 import './employee-info.css';
+import employeeDetails from '../../../../../server/data/employee-info.json';
 
-const employeeDetails = {
-  //임의로 필요한 정보 모아놓음
-  id: '12345678',
-  userId: 'abcd',
-  email: 'abcd@company.com',
-  status: { color: 'red', title: '결근' },
-  name: 'Jeffrey Bezos',
-  department: 'CS 팀',
-  position: '고객 성공 매니저',
-  serviceYears: 2,
-  serviceMonths: 5,
-  contactCall: '010-1234-5678',
-  contactEmail: 'jeff@amazon.com',
-  performanceRate: 4.5,
-  profileSrc: '../../../../../public/images/profile_face.png',
-  editedDate: '2024.12.03',
-};
+employeeDetails = employeeDetails.data;
 
 export const employeeInfo = function (content) {
   content.innerHTML = `
