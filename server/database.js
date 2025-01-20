@@ -1,7 +1,7 @@
 import mariadb from 'mariadb';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: '.env.development' });
 
 // MariaDB 연결 풀 생성
 const pool = mariadb.createPool({
@@ -23,18 +23,5 @@ export async function poolDb() {
   } catch {
     console.error('MariaDB 연결 실패:', err);
     throw err;
-  }
-}
-
-// 로그인 체크
-export async function checkLogin(query, params = []) {
-  let connection;
-  try {
-    connection = await pool.getConnection();
-    const result = await connection.query('SELECT * FROM USER', params);
-    console.log('result ---> ' + JSON.stringify(result))
-    return result;
-  } finally {
-    if (connection) connection.release();
   }
 }
