@@ -29,20 +29,20 @@ export const work = function (content) {
               <path d="M71.9999 0.00017779C83.0151 0.000179322 93.8813 2.54519 103.751 7.43668C113.62 12.3282 122.226 19.4338 128.897 28.1993C135.568 36.9647 140.123 47.1529 142.208 57.969C144.292 68.7851 143.85 79.9366 140.914 90.5534C137.979 101.17 132.63 110.965 125.286 119.175C117.941 127.384 108.799 133.785 98.573 137.879C88.3469 141.972 77.3132 143.648 66.3327 142.775C55.3522 141.902 44.7219 138.504 35.2712 132.845L71.9999 71.5001L71.9999 0.00017779Z" fill="#4318FF"/>
             </svg>
           </div>
-          <div class="holiday__left">
-            <div class="left__annual">
-              <p>연차휴가</p>
+          <ul class="holiday__left">
+            <li class="left__annual">
+              <h6>연차휴가</h6>
               <strong>0일</strong>
-            </div>
-            <div class="left__compensatory">
-              <p>보상휴가</p>
+            </li>
+            <li class="left__compensatory">
+              <h6>보상휴가</h6>
               <strong>0일</strong>
-            </div>
-            <div class="left__etc">
-              <p>기타휴가</p>
+            </li>
+            <li class="left__etc">
+              <h6>기타휴가</h6>
               <strong>0일</strong>            
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -62,8 +62,8 @@ export const work = function (content) {
               <form method="POST">
                 <ul class="absence--propose__info">
                   <li class="input-wrap">
-                    <label for="absence-id" class="input-label">사원번호</label>
-                    <input type="text" class="input-text" id="absence-id" placeholder="" disabled>
+                    <label for="absence--id" class="input-label">사원번호</label>
+                    <input type="text" class="input-text" id="absence--id" placeholder="" disabled>
                   </li>
                   <li class="input-wrap">
                     <label for="absence--start--date" class="input-label">시작일</label>
@@ -185,7 +185,7 @@ export const work = function (content) {
   //부재 신청서 버튼 클릭시 modal & 스크롤 방지
   const modalBtn = document.querySelector('.absence--approve__modal');
   const modal = document.querySelector('.absence--modal');
-  const userNum = document.querySelector('#absence-id');
+  const userNum = document.querySelector('#absence--id');
 
   modalBtn.addEventListener('click', function () {
     modal.showModal();
@@ -209,7 +209,7 @@ export const work = function (content) {
     event.preventDefault(); // 기본 동작(페이지 이동) 방지
 
     const absence = {
-      num : document.querySelector('#absence-id').value,
+      num : document.querySelector('#absence--id').value,
       start_date : document.querySelector('#absence--start--date').value,
       end_date : document.querySelector('#absence--end--date').value,
       type : document.querySelector('#absence--type').value,

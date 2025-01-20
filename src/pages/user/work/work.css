@@ -20,7 +20,7 @@
 	padding: 10px;
 }
 
-#work .holiday .holiday__left p {
+#work .holiday .holiday__left h6 {
 	color: #A3AED0;
 	font-size: 12px;
 	font-weight: 500;
@@ -97,7 +97,7 @@
 #work .absence .box__top .absence--modal .absence--title .absence--modal__close {
 	position: absolute;
 	top: 15px;
-	right: 15px;
+	right: 22px;
 }
 #work .absence .box__top .absence--modal .absence--title .absence--modal__close::after {
 	content: "\00d7";
