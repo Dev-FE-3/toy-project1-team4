@@ -187,10 +187,14 @@
 }
 
 #home .box--time .time-state .time-state__now .now__label {
-  color: #9369FF;
+  color: var(--grey2);
   font-size: 40px;
   font-weight: 700;
   line-height: 44px;
+}
+
+#home .box--time .time-state .time-state__now .now__label.active {
+  color: var(--pointColor);
 }
 
 /* box--work */
@@ -265,4 +269,40 @@
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.24px;
+}
+
+/* modal */
+#home .modal {
+  width: 400px;
+  padding: 30px 20px 20px;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+#home .modal::backdrop {
+  background-color: #000;
+  opacity: 0.5;
+}
+
+#home .modal .modal__header {
+  margin-bottom: 40px;
+}
+
+#home .modal .modal__header .modal__title {
+  color: var(--black-700-black);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+#home .modal .modal__body .modal__content {
+  margin-bottom: 60px;
+  font-size: 20px;
+}
+
+#home .modal .modal__footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
 }

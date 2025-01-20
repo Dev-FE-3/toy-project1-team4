@@ -78,6 +78,21 @@ export const home = function (content) {
               <span class="now__label">근무 종료</span>
             </div>
             <button type="button" class="btn btn--primary">근무 시작</button>
+
+            <!-- modal -->
+            <dialog class="modal" id="workStateModal">
+              <div class="modal__header">
+                <h5 class="modal__title">근무 시작</h5>
+              </div>
+              <div class="modal__body">
+                <p class="modal__content">근무를 시작하시겠습니까?</p>
+              </div>
+              <div class="modal__footer">
+                <button type="button" class="btn btn--secondary btn__close">취소</button>
+                <button type="button" class="btn btn--primary btn__sbmit">저장</button>
+              </div>
+            </dialog>
+
           </div>
         </div>
       </section>
@@ -164,12 +179,32 @@ export const home = function (content) {
   function userStateFunc () {
     if (switchInput.checked === true) {
       nowLabel.innerHTML = '근무 시작'
+      nowLabel.classList.add('active')
     } else {
       nowLabel.innerHTML = '근무 종료'
+      nowLabel.classList.remove('active')
     };
   };
 
   nowSwitch.addEventListener('click', function () {
     userStateFunc();
+  });
+
+  // modal
+  const workStateModal = document.getElementById('workStateModal');
+  const modalBtn = timeState.querySelector('.time-state .btn');
+  const btnClose = timeState.querySelector('.modal__footer .btn__close');
+  const btnSbmit = timeState.querySelector('.modal__footer .btn__sbmit');
+
+  modalBtn.addEventListener('click', function () {
+    workStateModal.showModal();
+  });
+
+  btnClose.addEventListener('click', function () {
+    workStateModal.close();
+  });
+
+  btnSbmit.addEventListener('click', function () {
+    workStateModal.close();
   });
 }
