@@ -143,10 +143,10 @@ export const work = function (content) {
       const offStyle = dayoffStyle(`${item.TYPE}`);
 
       return `
-        <div class="${offStyle}">
-          <p>${item.TYPE}</p>
+        <li class="${offStyle}">
+          <h6>${item.TYPE}</h6>
           <strong>${item.AMOUNT}일</strong>
-        </div>
+        </li>
       `
     }).join('');
 
