@@ -1,49 +1,99 @@
 import './employee-list.css';
-import rawEmployeeData from '../../../../../server/data/employee-list.json';
-
-//함수 재호출 트리거 함수
-const triggerRender = function (content) {
-  employeeList(content);
-};
-
-const employees = rawEmployeeData.data.map(function (rawEmployee) {
-  return `
-          <tr>
-            <td class="table__name">${rawEmployee.name}</td>
-            <td class="table__id">${rawEmployee.id}</td>
-            <td class="table__department">${rawEmployee.department}</td>
-            <td class="table__position">${rawEmployee.position}</td>
-            <td class="table__status">
-              <span class="label label--${rawEmployee.status.color}">${rawEmployee.status.title}</span>
-            </td>
-          </tr>
-          `;
-});
+import axios from 'axios';
 
 const listLength = 9; // 한 페이지에 들어갈 직원 수
 const indexLength = 8; // pagination bar 에 표시할 최대 인덱스 버튼 개수
 const initialIndex = 1; // 처음 접속 시 인덱스 값
-const totalIndex = Math.ceil(employees.length / listLength); // 총 인덱스 개수(리스트 요소 개수를 기준)
+let cachedEmployees = null;
+let totalIndex = 1; // 총 인덱스 개수(리스트 요소 개수를 기준)
 let paginationBarIndex = 1; // 인덱스 버튼세트 리스트 값 1~8 : 1, 9~16 : 2 ...
 let currentIndex = initialIndex;
 
-// console.log(totalIndex);
+//함수 재호출 트리거 함수
+const triggerRender = function (content) {
+  employeeList(content);
+  return;
+};
 
-export const employeeList = function (content) {
-  const paginationBtnsRender = function () {
-    const paginationBtnList = [];
-    for (
-      let i = 1 + indexLength * (paginationBarIndex - 1);
-      i <= indexLength * paginationBarIndex && i <= totalIndex;
-      i++
-    ) {
-      paginationBtnList[i] = `<a href="javascript:;"
-      data-btn-index = "${i}"
-      class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</a>`;
-    }
-    return paginationBtnList.join('');
-  };
+const getEmployees = async function () {
+  try {
+    const response = await axios.get('/api/users');
+    const employeeDataList = response.data;
+    // console.log(employeeDataList);
+    const employeeHtmlList = employeeDataList.map(function (item) {
+      return `
+            <tr>
+              <td class="table__name">${item.NAME}</td>
+              <td class="table__id">${item.ID}</td>
+              <td class="table__department">${item.DEPARTMENT}</td>
+              <td class="table__position">${item.POSITION}</td>
+              <td class="table__status">
+                <span class="label label--green">근무중</span>
+              </td>
+            </tr>
+            `;
+    });
+    cachedEmployees = employeeHtmlList;
+    return employeeHtmlList;
+  } catch (error) {
+    console.error('Error occurred:', error);
+    return [];
+  }
+};
 
+const makeEmployees = async function (content) {
+  let employeeHtmlList = null;
+  if (cachedEmployees == null) {
+    employeeHtmlList = await getEmployees();
+  } else {
+    employeeHtmlList = cachedEmployees;
+  }
+  totalIndex = Math.ceil(employeeHtmlList.length / listLength);
+  const employeeHtmlResult = employeeHtmlList
+    .slice(
+      (currentIndex - 1) * listLength,
+      (currentIndex - 1) * listLength + listLength,
+    )
+    .join('');
+  console.log(employeeHtmlResult ? 'good' : 'bad');
+  // triggerRender(content);
+  return employeeHtmlResult;
+};
+
+const putEmployees = async function () {
+  const employeeListTable = document.querySelector('.table__employee-list');
+  const employeeHtmlResult = await makeEmployees();
+
+  employeeListTable.innerHTML = employeeHtmlResult;
+  return;
+};
+
+const renderPaginationBtns = function () {
+  const paginationBtnList = [];
+  for (
+    let i = 1 + indexLength * (paginationBarIndex - 1);
+    i <= indexLength * paginationBarIndex && i <= totalIndex;
+    i++
+  ) {
+    paginationBtnList[i] = `<a href="javascript:;"
+    data-btn-index = "${i}"
+    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</a>`;
+  }
+  return `<a href="javascript:;" class="pagination--prev">prev</a> 
+          ${paginationBtnList.join('')} 
+          <a href="javascript:;" class="pagination--next">next</a>`;
+};
+
+const putPaginationBtns = async function () {
+  const paginationBtnContainer = document.querySelector(
+    '#employee-list .pagination',
+  );
+  const paginationBtns = await renderPaginationBtns();
+  paginationBtnContainer.innerHTML = paginationBtns;
+  return;
+};
+
+export const employeeList = async function (content) {
   const paginationBtnsAddEvent = function () {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
@@ -83,11 +133,8 @@ export const employeeList = function (content) {
       }
       triggerRender(content);
     });
-
     return;
   };
-
-  const paginationBtns = paginationBtnsRender();
 
   content.innerHTML = `
     <div id="employee-list">
@@ -121,23 +168,31 @@ export const employeeList = function (content) {
               </th>
             </tr>
           </thead>
-          <tbody>
-            ${employees
-              .slice(
-                (currentIndex - 1) * listLength,
-                (currentIndex - 1) * listLength + listLength,
-              )
-              .join('')}
+          <tbody class="table__employee-list">
+            <tr>
+              <td class="table__name">로딩중..</td>
+              <td class="table__id"></td>
+              <td class="table__department"></td>
+              <td class="table__position"></td>
+              <td class="table__status">
+                <span class="label label--green">근무상태</span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </section>
 
       <section class="pagination">
-        <a href="javascript:;" class="pagination--prev">prev</a>
-        ${paginationBtns}
-        <a href="javascript:;" class="pagination--next">next</a>
+      <a href="javascript:;" class="pagination--prev">prev</a> 
+          <a href="javascript:;" class="pagination--index active">1</a>
+          <a href="javascript:;" class="pagination--index">2</a>
+          <a href="javascript:;" class="pagination--index">3</a>
+          <a href="javascript:;" class="pagination--next">next</a>
       </section>
     </div>
     `;
+  await putEmployees();
+  await putPaginationBtns();
   paginationBtnsAddEvent();
+  return;
 };
