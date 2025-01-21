@@ -1,7 +1,8 @@
 import './login.css';
+import { route } from '../../router/router.js';
+import axios from 'axios';
 
 export const login = function (content) {
-
   content.innerHTML = `
     <section id="login">
       <div class="logo">
@@ -23,20 +24,36 @@ export const login = function (content) {
                 <a href="javascript:void(0)">아이디/패스워드 <span class="search">찾기</span></a>
               </div>
             </div>
-            <input type="submit" class="btn btn--primary btn--submit" value="로그인">
+            <a href="javascript:void(0)" class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
             <span class="register__recommand">아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
         </form>
       </div>
     </section>
   `;
 
-  const menu = document.querySelector('.menu');
-  const header = document.querySelector('.header');
-  const wrap = document.querySelector('.wrap');
+  const loginSubmit = document.querySelector('.login--submit');
+  loginSubmit.addEventListener('click', async function () {
+    let path = '/login';
 
-  menu.remove();
-  header.remove();
-  wrap.classList.add('.login-wrap');
-  wrap.style.all = 'unset';
+    (await checkLogin())
+      ? (path = '/')
+      : alert('사용자 정보를 다시 확인해 주세요');
 
-}
+    history.pushState(null, null, path);
+    route();
+  });
+
+  async function checkLogin() {
+    const userId = document.querySelector('#login__id').value;
+    const userPw = document.querySelector('#login__pw').value;
+
+    const request = {
+      id: userId,
+      pw: userPw,
+    };
+
+    const response = await axios.post('/api/login', request);
+
+    return response.data.length > 0 ? true : false;
+  }
+};

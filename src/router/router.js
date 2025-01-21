@@ -1,7 +1,7 @@
 import { home } from '../pages/user/home/home.js'
 import { login } from '../pages/login/login.js'
 import { register } from '../pages/register/register.js'
-import { components } from '../components/components.js'
+import { guide } from '../pages/guide/guide.js'
 import { work } from '../pages/user/work/work.js'
 import { notice } from '../pages/user/notice/notice.js'
 import { employeeList } from '../pages/admin/employee/list/employee-list.js'
@@ -12,7 +12,7 @@ const routes = {
   '/': home,
   '/login': login,
   '/register': register,
-  '/components': components,
+  '/guide': guide,
   '/work': work,
   '/notice': notice,
   '/admin/employee-list': employeeList,
