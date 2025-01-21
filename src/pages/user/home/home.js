@@ -124,7 +124,7 @@ export const home = function (content) {
           <img src="${item.IMG_LOCATION}" class="user-img" alt="profile">
           <div class="user-info">
             <span class="user-info__name">${item.NAME}</span>
-            <span class="user-info__position">${item.POSITION}</span>
+            <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
           </div>
         `
       }).join('');
