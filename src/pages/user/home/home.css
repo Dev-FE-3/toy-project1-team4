@@ -173,16 +173,16 @@
   transition: transform 0.2s ease-in-out;
 }
 
-#home .box--time .time-state .time-state__now .now__switch .switch__input:checked {
+#home .box--time .time-state .time-state__now .now__switch .switch__input.active {
   background-color: var(--pointColor);
 }
 
-#home .box--time .time-state .time-state__now .now__switch .switch__input:checked::before,
-#home .box--time .time-state .time-state__now .now__switch .switch__input:checked::after {
+#home .box--time .time-state .time-state__now .now__switch .switch__input.active::before,
+#home .box--time .time-state .time-state__now .now__switch .switch__input.active::after {
   transform: translateX(calc(60px - 20px - 12px));
 }
 
-#home .box--time .time-state .time-state__now .now__switch .switch__input:checked::after {
+#home .box--time .time-state .time-state__now .now__switch .switch__input.active::after {
   opacity: 1;
 }
 

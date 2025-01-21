@@ -236,20 +236,16 @@ export const home = function (content) {
   const switchInput = timeState.querySelector('.switch__input');
   const nowSwitch = timeState.querySelector('.now__switch');
   const nowLabel = timeState.querySelector('.now__label');
+  let isChecked = switchInput.checked;
 
-  function userStateFunc () {
-    if (switchInput.checked === true) {
-      nowLabel.innerHTML = '근무 시작'
-      nowLabel.classList.add('active')
-    } else {
-      nowLabel.innerHTML = '근무 종료'
-      nowLabel.classList.remove('active')
-    };
-  };
+  function userStateFunc() {
+    isChecked = !isChecked;
+    isChecked ? nowLabel.innerHTML = '근무 시작' : nowLabel.innerHTML = '근무 종료';
+    switchInput.classList.toggle('active');
+    nowLabel.classList.toggle('active');
+  }
 
-  nowSwitch.addEventListener('click', function () {
-    userStateFunc();
-  });
+  nowSwitch.addEventListener('click', userStateFunc);
 
   // modal
   const workStateModal = document.getElementById('workStateModal');
