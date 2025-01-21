@@ -16,7 +16,7 @@ function getType(data) {
 }
 
 // 날짜 포멧 함수
-function formatDateTime(isoString) {
+function formatDateTime(isoString, mode = 'date') {
   // ISO 날짜 문자열을 JavaScript Date 객체로 변환
   const date = new Date(isoString);
 
@@ -26,11 +26,13 @@ function formatDateTime(isoString) {
   const day = String(date.getDate()).padStart(2, '0');
 
   // 시각 추출
-  // const hours = String(date.getHours()).padStart(2, '0');
-  // const minutes = String(date.getMinutes()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
 
   // 원하는 형식으로 반환
-  // return `${year}-${month}-${day} ${hours}:${minutes}`;
+  if (mode === 'time') {
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
   return `${year}-${month}-${day}`;
 }
 

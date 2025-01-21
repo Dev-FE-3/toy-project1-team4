@@ -180,7 +180,7 @@ export const home = function (content) {
           <li class="meeting-list__item">
             <a href="javascript:;" class="item__link">
               <p class="item__title">${item.TITLE}</p>
-              <span class="item__time">${formatDateTime(item.TIME)}</span>
+              <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
             </a>
           </li>
         `
