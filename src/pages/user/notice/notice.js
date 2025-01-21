@@ -9,7 +9,7 @@ const triggerRender = function (content) {
 const noticeItems = noticeData.data;
 const cardsHTML = noticeItems.map((item) => {
   return `
-      <li class="notice-card col-4" data--notion--num="${item.cardNum}">
+      <li class="notice-card col-4" data-notion-num="${item.cardNum}">
         <a href="#" class="notice-card__link">
           <div class="card-image__container">
             <img src="${item.cardImg}" alt="게시글 이미지" class="card-image" />
