@@ -1,7 +1,7 @@
 import './login.css';
+import { route } from '../../router/router.js';
 
 export const login = function (content) {
-
   content.innerHTML = `
     <section id="login">
       <div class="logo">
@@ -23,20 +23,22 @@ export const login = function (content) {
                 <a href="javascript:void(0)">아이디/패스워드 <span class="search">찾기</span></a>
               </div>
             </div>
-            <input type="submit" class="btn btn--primary btn--submit" value="로그인">
+            <a href="javascript:" class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
             <span class="register__recommand">아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
         </form>
       </div>
     </section>
   `;
 
-  const menu = document.querySelector('.menu');
-  const header = document.querySelector('.header');
-  const wrap = document.querySelector('.wrap');
+  const loginSubmit = document.querySelector('.login--submit');
+  loginSubmit.addEventListener('click', function () {
+    let path = '/login';
 
-  menu.remove();
-  header.remove();
-  wrap.classList.add('.login-wrap');
-  wrap.style.all = 'unset';
+    if (true) {
+      path = '/';
+    }
 
-}
+    history.pushState(null, null, path);
+    route();
+  });
+};
