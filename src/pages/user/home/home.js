@@ -1,5 +1,6 @@
 import './home.css';
 import axios from 'axios';
+import { formatDateTime, approveStatusStyle } from './../../../util/utils.js';
 
 export const home = function (content) {
   content.innerHTML = `
@@ -138,16 +139,14 @@ export const home = function (content) {
     try {
       const workTbody = document.querySelector('.box--work .table tbody');
       const response = await axios.post('api/absence', { num : 2 });
-      const workTableTr = response.data.map((item, index) => {
-        if (index <= 3) {
-          return `
-            <tr>
-              <td>${item.START_DATE.slice(0, 10)}</td>
-              <td>${item.TYPE}</td>
-              <td><span class="label label--${item.STATUS === '결제 중' ? 'purple' : 'green'}">${item.STATUS}</span></td>
-            </tr>
-          `
-        }
+      const workTableTr = response.data.slice(0, 4).map((item) => {
+        return `
+          <tr>
+            <td>${formatDateTime(item.START_DATE)}</td>
+            <td>${item.TYPE}</td>
+            <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
+          </tr>
+        `
       }).join('');
 
       workTbody.innerHTML = workTableTr;
@@ -160,12 +159,10 @@ export const home = function (content) {
     try {
       const noticeList = document.querySelector('.box--notice .notice-list');
       const response = await axios.get('api/notice', { num : 2 });
-      const noticeItem = response.data.map((item, index) => {
-        if (index <= 6) {
-          return `
+      const noticeItem = response.data.slice(0, 7).map((item) => {
+        return `
           <li><a href="javascript:;">${item.title}</a></li>
         `
-        }
       }).join('');
 
       noticeList.innerHTML = noticeItem;
@@ -178,17 +175,15 @@ export const home = function (content) {
     try {
       const meetingList = document.querySelector('.box--meeting .meeting-list');
       const response = await axios.post('api/meet', { num : 2 });
-      const meetingItem = response.data.map((item, index) => {
-        if (index <= 3) {
-          return `
-            <li class="meeting-list__item">
-              <a href="javascript:;" class="item__link">
-                <p class="item__title">${item.TITLE}</p>
-                <span class="item__time">${item.TIME.slice(0, -8).replace('T', ' ')}</span>
-              </a>
-            </li>
-          `
-        }
+      const meetingItem = response.data.slice(0, 4).map((item) => {
+        return `
+          <li class="meeting-list__item">
+            <a href="javascript:;" class="item__link">
+              <p class="item__title">${item.TITLE}</p>
+              <span class="item__time">${formatDateTime(item.TIME)}</span>
+            </a>
+          </li>
+        `
       }).join('');
 
       meetingList.innerHTML = meetingItem;
