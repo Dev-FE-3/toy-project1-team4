@@ -1,166 +1,311 @@
+/* 공통 */
+#work .box {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 360px;
+}
 
+#work .box:last-child {
+  height: auto;
+}
 
+/* Work Time */
+#work .box--time .box__top {
+  margin-bottom: 4px;
+}
+
+#work .box--time .box__bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+#work .box--time .time-view .time-view__countdown {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 60px;
+  color: var(--grey);
+}
+
+#work .box--time .time-view .time-view__now {
+  display: block;
+  color: var(--grey3);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+#work .box--time .time-state {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#work .box--time .time-state .time-state__now .now__title {
+  display: block;
+  color: var(--black-700-black);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+#work .box--time .time-state .time-state__now .now__switch {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+#work .box--time .time-state .time-state__now .now__switch .switch__input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  background-color: var(--grey2);
+  border-radius: 20px;
+  transition: background-color 0.2s linear;
+  cursor: pointer;
+}
+
+#work
+  .box--time
+  .time-state
+  .time-state__now
+  .now__switch
+  .switch__input::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+#work
+  .box--time
+  .time-state
+  .time-state__now
+  .now__switch
+  .switch__input:checked {
+  background-color: var(--pointColor);
+}
+
+#work
+  .box--time
+  .time-state
+  .time-state__now
+  .now__switch
+  .switch__input:checked::before,
+#work
+  .box--time
+  .time-state
+  .time-state__now
+  .now__switch
+  .switch__input:checked::after {
+  transform: translateX(calc(60px - 20px - 12px));
+}
+
+#work
+  .box--time
+  .time-state
+  .time-state__now
+  .now__switch
+  .switch__input:checked::after {
+  opacity: 1;
+}
+
+#work .box--time .time-state .time-state__now .now__label {
+  color: var(--grey2);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+#work .box--time .time-state .time-state__now .now__label.active {
+  color: var(--pointColor);
+}
 
 /* HOLIDAY */
 #work .holiday {
-	height: 360px;
+  height: 360px;
 }
 
-
 #work .holiday .holiday__chart {
-	width: 40%;
-	margin: 50px auto 35px;
-	text-align: center;
+  width: 40%;
+  margin: 50px auto 35px;
+  text-align: center;
 }
 
 #work .holiday .holiday__left {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
 }
 
 #work .holiday .holiday__left h6 {
-	color: #A3AED0;
-	font-size: 12px;
-	font-weight: 500;
+  color: #a3aed0;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 #work .holiday .holiday__left strong {
-	color: #2B3674;
-	font-size: 18px;
-	font-weight: 700;
-	line-height: 30px;
+  color: #2b3674;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
 }
 
 #work .holiday .holiday__left .left__annual,
 #work .holiday .holiday__left .left__compensatory,
 #work .holiday .holiday__left .left__etc {
-	position: relative;
-}	
+  position: relative;
+}
 
 #work .holiday .holiday__left .left__annual h6::before,
-#work .holiday .holiday__left .left__compensatory h6::before, 
+#work .holiday .holiday__left .left__compensatory h6::before,
 #work .holiday .holiday__left .left__etc h6::before {
-	position: absolute;
-	content: "";
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	top: 2px;
-	left: -10px;
+  position: absolute;
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: 2px;
+  left: -10px;
 }
 
 #work .holiday .holiday__left .left__annual {
-	
 }
 
 #work .holiday .holiday__left .left__annual h6::before {
-	background-color:#4318FF;
+  background-color: #4318ff;
 }
 
 #work .holiday .holiday__left .left__compensatory {
-	
 }
 
 #work .holiday .holiday__left .left__compensatory h6::before {
-	background-color:#6AD2FF;
+  background-color: #6ad2ff;
 }
 
 #work .holiday .holiday__left .left__etc {
-	
 }
 
 #work .holiday .holiday__left .left__etc h6::before {
-	background-color:#6AD2FF;
+  background-color: #6ad2ff;
 }
 
 /* absence */
 #work .absence {
-	
 }
 
 #work .absence .box__top {
-	margin-bottom: 36px;
+  margin-bottom: 36px;
 }
-
 
 #work .absence .box__top .absence--modal {
-	width: 504px;
-	height: 100vh;
-	margin-right : 0;
-	border-radius: 16px 0px 0px 16px;
-	box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
-	border: none;
+  width: 504px;
+  height: 100vh;
+  margin-right: 0;
+  border-radius: 16px 0px 0px 16px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  transform: translateX(100%);
+  transition: 0.6s;
 }
 
-#work .absence .box__top .absence--modal .absence--title .absence--modal__close {
-	position: absolute;
-	top: 15px;
-	right: 22px;
+#work .absence .box__top .absence--modal.absence--show {
+  transform: translateX(0);
+  transition: 0.6s;
 }
-#work .absence .box__top .absence--modal .absence--title .absence--modal__close::after {
-	content: "\00d7";
-	font-size: 30px;
+
+#work
+  .absence
+  .box__top
+  .absence--modal
+  .absence--title
+  .absence--modal__close {
+  position: absolute;
+  top: 15px;
+  right: 22px;
+}
+#work
+  .absence
+  .box__top
+  .absence--modal
+  .absence--title
+  .absence--modal__close::after {
+  content: '\00d7';
+  font-size: 30px;
 }
 
 #work .absence .box__top .absence--modal .absence--title {
-	margin-top: 112px;
-	margin-bottom: 100px;
+  margin-top: 112px;
+  margin-bottom: 100px;
 }
 
 #work .absence .box__top .absence--modal .absence--title h2 {
-	color: var(--black-700-black);
-	font-size: 40px;
-	font-weight: 700;
-	line-height: 44px;
-	text-align: center;
+  color: var(--black-700-black);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  text-align: center;
 }
 
 #work .absence .box__top .absence--modal .absence--propose {
-	margin: 0 72px;
+  margin: 0 72px;
 }
 
 #work .absence .box__top .absence--modal .absence--propose form {
-
 }
 
 #work .absence .box__top .absence--modal .absence--propose form .input-wrap {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #work .absence .box__top .absence--modal .absence--propose form input,
 #work .absence .box__top .absence--modal .absence--propose form select,
 #work .absence .box__top .absence--modal .absence--propose form textarea {
-	box-sizing: border-box;
-	width: 100%;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-#work .absence .box__top .absence--modal .absence--propose form input[type='submit'] {
-	border: none;
+#work
+  .absence
+  .box__top
+  .absence--modal
+  .absence--propose
+  form
+  input[type='submit'] {
+  border: none;
 }
 
 #work .absence .box__top .absence--modal .absence--propose form span {
-	display: block;
-	text-align: center;
-	margin-top: 8px;
-	font-size: 12px;
-	line-height: 18px;
-	}
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 18px;
+}
 
 #work .absence .box__top .absence--modal .absence--propose form span strong {
-	color: var(--pointColor);
-	font-weight: 400;
+  color: var(--pointColor);
+  font-weight: 400;
 }
 
 #work .absence .absence--propose .absence--id {
-	
 }
 
 #work .absence .absence--propose .absence--start--date,
 #work .absence .absence--propose .absence--end--date,
 #work .absence .absence--propose .absence--type,
 #work .absence .absence--propose .absence--submit {
-	cursor: pointer;
+  cursor: pointer;
 }
-
