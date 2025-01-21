@@ -1,5 +1,6 @@
 import './login.css';
 import { route } from '../../router/router.js';
+import axios from 'axios';
 
 export const login = function (content) {
   content.innerHTML = `
@@ -23,7 +24,7 @@ export const login = function (content) {
                 <a href="javascript:void(0)">아이디/패스워드 <span class="search">찾기</span></a>
               </div>
             </div>
-            <a href="javascript:" class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
+            <a href="javascript:void(0)" class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
             <span class="register__recommand">아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
         </form>
       </div>
@@ -31,14 +32,28 @@ export const login = function (content) {
   `;
 
   const loginSubmit = document.querySelector('.login--submit');
-  loginSubmit.addEventListener('click', function () {
+  loginSubmit.addEventListener('click', async function () {
     let path = '/login';
 
-    if (true) {
-      path = '/';
-    }
+    (await checkLogin())
+      ? (path = '/')
+      : alert('사용자 정보를 다시 확인해 주세요');
 
     history.pushState(null, null, path);
     route();
   });
+
+  async function checkLogin() {
+    const userId = document.querySelector('#login__id').value;
+    const userPw = document.querySelector('#login__pw').value;
+
+    const request = {
+      id: userId,
+      pw: userPw,
+    };
+
+    const response = await axios.post('/api/login', request);
+
+    return response.data.length > 0 ? true : false;
+  }
 };
