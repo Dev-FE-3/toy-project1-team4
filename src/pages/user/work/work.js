@@ -1,9 +1,8 @@
 import './work.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle } from '/src/util/utils.js'
+import { formatDateTime, approveStatusStyle } from '/src/util/utils.js';
 
 export const work = function (content) {
-
   content.innerHTML = `
     <div id="work" class="row">
       <section class="box col-5">
@@ -121,15 +120,15 @@ export const work = function (content) {
 
   // 남은 휴가일 API + 차트 동적 바인딩
   function dayoffStyle(str) {
-    switch (str){
+    switch (str) {
       case '연차휴가':
-        str = 'left__annual'
+        str = 'left__annual';
         break;
       case '보상휴가':
-        str = 'left__compensatory'
+        str = 'left__compensatory';
         break;
       case '기타휴가':
-        str = 'left__etc'
+        str = 'left__etc';
         break;
     }
     return str;
@@ -137,18 +136,20 @@ export const work = function (content) {
 
   async function getDayOff() {
     const leftAnnual = document.querySelector('.holiday__left');
-    const response = await axios.post('api/work', { num : 2 });
+    const response = await axios.post('api/work', { num: 2 });
 
-    const dayOff = response.data.map((item) => {
-      const offStyle = dayoffStyle(`${item.TYPE}`);
+    const dayOff = response.data
+      .map(item => {
+        const offStyle = dayoffStyle(`${item.TYPE}`);
 
-      return `
+        return `
         <li class="${offStyle}">
           <h6>${item.TYPE}</h6>
           <strong>${item.AMOUNT}일</strong>
         </li>
-      `
-    }).join('');
+      `;
+      })
+      .join('');
 
     leftAnnual.innerHTML = dayOff;
   }
@@ -156,26 +157,26 @@ export const work = function (content) {
   //부재 신청 목록 API
   async function getAbsenceList() {
     const absenceList = document.querySelector('.absence--list__content');
-    const response = await axios.post('api/absence', { num : 2 });
+    const response = await axios.post('api/absence', { num: 2 });
 
-    const absenceData = response.data.map((item) => {
-      const startDate = formatDateTime(`${item.START_DATE}`);
-      const endDate = formatDateTime(`${item.END_DATE}`);
-      const statusStyle = approveStatusStyle(`${item.STATUS}`);
+    const absenceData = response.data
+      .map(item => {
+        const startDate = formatDateTime(`${item.START_DATE}`);
+        const endDate = formatDateTime(`${item.END_DATE}`);
+        const statusStyle = approveStatusStyle(`${item.STATUS}`);
 
-      return `
+        return `
         <tr>
           <td>Jeffrey Bezos</td>
           <td>${startDate} ~ ${endDate}</td>
           <td>${item.TYPE}</td>
           <td><span class="label ${statusStyle}">${item.STATUS}</span></td>
         </tr>
-      `
-
-    }).join('');
+      `;
+      })
+      .join('');
 
     absenceList.innerHTML = absenceData;
-
   }
 
   // 초기 데이터 로드
@@ -186,48 +187,59 @@ export const work = function (content) {
   const modalBtn = document.querySelector('.absence--approve__modal');
   const modal = document.querySelector('.absence--modal');
   const userNum = document.querySelector('#absence--id');
+  const absenceModalClose = document.querySelector('.absence--modal__close');
 
   modalBtn.addEventListener('click', function () {
     modal.showModal();
     document.body.style.overflow = 'hidden';
     userNum.value = '2';
   });
-  
+
+  absenceModalClose.addEventListener('click', function () {
+    modal.close();
+  });
+
   modal.addEventListener('close', function () {
     document.body.style.overflow = 'auto';
-
     // 모달이 닫힌 후 UI 갱신
     getDayOff();
     getAbsenceList();
-  })
+  });
 
+  //input type=date에 click 이벤트 주기
+  const absenceStartDate = document.querySelector('.absence--start--date');
+  const absenceEndDate = document.querySelector('.absence--end--date');
 
-  //form 태그 페이지 이동 방지하고 POST 전송 
-  const absenceForm = document.querySelector('.absence--propose form');
+  absenceStartDate.addEventListener('click', function () {
+    absenceStartDate.showPicker();
+  });
 
-  absenceForm.addEventListener('submit', async function (event) {
-    event.preventDefault(); // 기본 동작(페이지 이동) 방지
+  absenceEndDate.addEventListener('click', function () {
+    absenceEndDate.showPicker();
+  });
 
+  //신청하기 버튼 클릭 Logic
+  const absenceSubmit = document.querySelector('.absence--submit');
+
+  absenceSubmit.addEventListener('click', async function () {
     const absence = {
-      num : document.querySelector('#absence--id').value,
-      start_date : document.querySelector('#absence--start--date').value,
-      end_date : document.querySelector('#absence--end--date').value,
-      type : document.querySelector('#absence--type').value,
-      reason : document.querySelector('#absence-reason').value,
-      status : '결제 중',
-    }
+      num: document.querySelector('#absence--id').value,
+      start_date: document.querySelector('#absence--start--date').value,
+      end_date: document.querySelector('#absence--end--date').value,
+      type: document.querySelector('#absence--type').value,
+      reason: document.querySelector('#absence-reason').value,
+      status: '결제 중',
+    };
 
-    try{
+    try {
       const response = await axios.post('/api/approve', absence);
 
       alert('신청이 완료되었습니다.');
       modal.close();
     } catch (error) {
-
       // 오류 처리
       console.error('Form submission error:', error);
       alert('신청에 실패했습니다. 다시 시도해주세요.');
     }
   });
-
-}
+};
