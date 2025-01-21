@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "data": {
+    "id": "12340987",
+    "name": "Jeffrey Bezos",
+    "department": "CS 팀",
+    "position": "고객 성공 매니저",
+    "serviceYears": 2,
+    "serviceMonths": 5,
+    "contactCall": "010-1234-5678",
+    "contactEmail": "jeff@amazon.com",
+    "performanceRate": 4.5,
+    "profileSrc": "../../../../../public/images/profile_face.png",
+    "editedDate": "2024.12.03"
+  }
+}

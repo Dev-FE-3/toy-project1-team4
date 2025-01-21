@@ -1,9 +1,4 @@
-.login-wrap {
-  /* all: unset; */
-}
-
 #login {
-
 }
 
 #login .logo {
@@ -48,7 +43,6 @@
   cursor: pointer;
 }
 
-
 #login form .input-wrap a {
   color: var(--grey);
   font-size: 10px;
@@ -73,7 +67,6 @@
   text-align: right;
 }
 
-
 #login form .register__recommand {
   text-align: center;
   color: var(--black-700-black);
@@ -82,7 +75,6 @@
   line-height: 18px;
   letter-spacing: 0.2px;
 }
-
 
 #login form .register__recommand a {
   font-size: 12px;
