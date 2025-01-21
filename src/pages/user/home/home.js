@@ -1,6 +1,6 @@
 import './home.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle } from './../../../util/utils.js';
+import { formatDateTime, approveStatusStyle, timerFunc } from './../../../util/utils.js';
 
 export const home = function (content) {
   content.innerHTML = `
@@ -212,19 +212,8 @@ export const home = function (content) {
   };
   
   // timerFunc
-  function timerFunc () {
-    let date = new Date();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    const boxTime = document.querySelector('#home .box--time');
-    const time = boxTime.querySelector('.time-view .time');
-
-    time.innerHTML = `${hours}:${minutes}:${seconds}`;
-  };
-
-  timerFunc();
-  setInterval(timerFunc, 1000);
+  const time = document.querySelector('#home .box--time .time-view .time');
+  timerFunc(time);
 
   // userStateFunc
   const timeState = document.querySelector('.box--time .time-state');

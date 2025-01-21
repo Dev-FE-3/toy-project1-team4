@@ -8,7 +8,7 @@
  * 등등
  */
 
-export { formatDateTime, approveStatusStyle, getType };
+export { formatDateTime, approveStatusStyle, getType, timerFunc };
 
 // 데이터 타입 확인
 function getType(data) {
@@ -50,4 +50,19 @@ function approveStatusStyle(str) {
       break;
   }
   return str;
+}
+
+// 현재 시각 타이머
+function timerFunc(item) {
+  const updateTime = () => {
+    let date = new Date();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    
+    item.innerHTML = `${hours}:${minutes}:${seconds}`;
+  };
+  
+  updateTime();
+  setInterval(updateTime, 1000);
 }
