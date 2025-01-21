@@ -23,9 +23,9 @@
     },
     {
       "cardNum": 3,
-      "cardImg": "./../public/images/img_조세호.png",
-      "cardTitle": "[야유회 일정 공지]",
-      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "cardImg": "./../public/images/img_공지_확성기.jpg",
+      "cardTitle": "[신규 입사자 OT 안내]",
+      "cardDescription": "인사팀에서 신규 입사자 오리엔테이션(OT) 관련 일정을 안내드립니다. 원활한 회사 적응과 업무 이해를 돕기 위한 필수 프로그램이니 아래 내용을 참고하여 참여 부탁드립니다.",
       "authorImg": "./../public/images/img_profile.png",
       "authorPosition": "CS 팀",
       "authorName": "김빵긋",
@@ -33,9 +33,9 @@
     },
     {
       "cardNum": 4,
-      "cardImg": "./../public/images/img_sport.png",
-      "cardTitle": "[야유회 일정 공지]",
-      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "cardImg": "./../public/images/img_설.jpg",
+      "cardTitle": "[설명절 공지]",
+      "cardDescription": "본사에서 명절 선물을 준비했습니다. 본사에서 명절 선물을 준비했습니다. 본사에서 명절 선물을 준비했습니다. 본사에서 명절 선물을 준비했습니다. ",
       "authorImg": "./../public/images/img_profile.png",
       "authorPosition": "CS 팀",
       "authorName": "김빵긋",
@@ -44,6 +44,26 @@
     {
       "cardNum": 5,
       "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[미사용 PC 제출 안내]",
+      "cardDescription": "회사 보안 정책에 따라 사용하지 않는 PC 및 장비는 빠짐없이 회수하고자 하오니, 아래 내용을 참고하여 기한 내에 제출해 주시기 바랍니다.",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 6,
+      "cardImg": "./../public/images/img_sport.png ",
+      "cardTitle": "[시스템 점검 안내]",
+      "cardDescription": "2025년 1월 27일(월) 오전 2시부터 4시까지 시스템 점검이 진행됩니다. 점검 시간 동안 회사의 모든 시스템이 일시적으로 중단됩니다. 작업 중에는 업무에 불편을 드리지 않도록 최선을 다하겠습니다.",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 7,
+      "cardImg": "./../public/images/img_sport.png",
       "cardTitle": "[야유회 일정 공지]",
       "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
       "authorImg": "./../public/images/img_profile.png",
@@ -52,7 +72,647 @@
       "date": "2025-01-20"
     },
     {
-      "cardNum": 6,
+      "cardNum": 8,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 9,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 10,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 11,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 12,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 13,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 14,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 15,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 16,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 17,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 18,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 19,
+      "cardImg": "./../public/images/img_IT.png",
+      "cardTitle": "[신규 프로젝트 런칭 안내: Project Phoenix ]",
+      "cardDescription": "본사에서 신규 프로젝트인 \"Project Phoenix\"를 다음 달부터 진행합니다. 참여 희망자는 개발팀 김민재 팀장에게 문의주세요",
+      "authorImg": "./../public/images/img_men.png",
+      "authorPosition": "백그라운드개발드림팀",
+      "authorName": "김수완거북이와두루미삼척갑사동방석",
+      "date": "2025-01-14"
+    },
+    {
+      "cardNum": 20,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 21,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 22,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 23,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 24,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 25,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 26,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 27,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 28,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 29,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 30,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 31,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 32,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 33,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 34,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 35,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 36,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 37,
+      "cardImg": "./../public/images/img_IT.png",
+      "cardTitle": "[신규 프로젝트 런칭 안내: Project Phoenix ]",
+      "cardDescription": "본사에서 신규 프로젝트인 \"Project Phoenix\"를 다음 달부터 진행합니다. 참여 희망자는 개발팀 김민재 팀장에게 문의주세요",
+      "authorImg": "./../public/images/img_men.png",
+      "authorPosition": "백그라운드개발드림팀",
+      "authorName": "김수완거북이와두루미삼척갑사동방석",
+      "date": "2025-01-14"
+    },
+    {
+      "cardNum": 38,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 39,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 40,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 41,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 42,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 43,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 44,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 45,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 46,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 47,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 48,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 49,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 50,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 51,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 52,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 53,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 54,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 55,
+      "cardImg": "./../public/images/img_IT.png",
+      "cardTitle": "[신규 프로젝트 런칭 안내: Project Phoenix ]",
+      "cardDescription": "본사에서 신규 프로젝트인 \"Project Phoenix\"를 다음 달부터 진행합니다. 참여 희망자는 개발팀 김민재 팀장에게 문의주세요",
+      "authorImg": "./../public/images/img_men.png",
+      "authorPosition": "백그라운드개발드림팀",
+      "authorName": "김수완거북이와두루미삼척갑사동방석",
+      "date": "2025-01-14"
+    },
+    {
+      "cardNum": 56,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 57,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 58,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 59,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 60,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 61,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 62,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 63,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 64,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 65,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 66,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 67,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 68,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 69,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 70,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 71,
+      "cardImg": "./../public/images/img_sport.png",
+      "cardTitle": "[야유회 일정 공지]",
+      "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
+      "authorImg": "./../public/images/img_profile.png",
+      "authorPosition": "CS 팀",
+      "authorName": "김빵긋",
+      "date": "2025-01-20"
+    },
+    {
+      "cardNum": 72,
       "cardImg": "./../public/images/img_sport.png",
       "cardTitle": "[야유회 일정 공지]",
       "cardDescription": "본사에서 진행하는 야유회에 참석하실 직원들께서는 CS 팀 ∙ 고객 성공 매니저 김빵긋 매니저에게 문의해주세요",
