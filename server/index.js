@@ -27,13 +27,45 @@ app.post('/api/login', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [id]);
+    conn.release();
     res.send(rows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('사용자 조회 중 오류가 발생했습니다.');
   }
 })
+
+// 본인 정보 가져오기
+app.get('/api/user/:num', async (req, res) => {
+  const { num } = req.params;
+
+  const query = 'SELECT * FROM USERS where num = ?';
+  try {
+    const conn = await poolDb();
+    const rows = await conn.query(query, [ num ]);
+    conn.release();
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('사용자 조회 중 오류가 발생했습니다.');
+  }
+})
+
+// 모든 User 정보 가져오기
+app.get('/api/users', async (req, res) => {
+
+  const query = 'SELECT * FROM USERS';
+  try {
+    const conn = await poolDb();
+    const rows = await conn.query(query);
+    conn.release();
+    res.send(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('사용자 조회 중 오류가 발생했습니다.');
+  }
+})
+
 
 // 메뉴
 app.get('/api/menu/:role', async (req, res) => {
@@ -43,8 +75,8 @@ app.get('/api/menu/:role', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query,[role]);
+    conn.release();
     res.send(rows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('메뉴 조회 중 오류가 발생했습니다.');
@@ -53,12 +85,13 @@ app.get('/api/menu/:role', async (req, res) => {
 
 // 공지사항
 app.get('/api/notice', async (req, res) => {
-  const query = 'SELECT * FROM notice';
+  const query = 'SELECT notice.title, notice.content, notice.notice_num , notice.img_path, notice.insert_date, users.num as user_num, users.department, users.position, users.name ' 
+              + 'FROM notice left join users on users.num = notice.num';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query);
+    conn.release();
     res.send(rows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('공지사항 조회 중 오류가 발생했습니다.');
@@ -74,8 +107,8 @@ app.post('/api/meet', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
+    conn.release();
     res.send(rows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('미팅 일정 조회 중 오류가 발생했습니다.');
@@ -90,8 +123,8 @@ app.post('/api/work', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
+    conn.release();
     res.send(rows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('근태 갯수 중 오류가 발생했습니다.');
@@ -106,8 +139,8 @@ app.post('/api/absence', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
+    conn.release();
     res.send(rows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('근태 일정 조회 중 오류가 발생했습니다.');
@@ -128,9 +161,8 @@ app.post('/api/approve', async (req, res) => {
       typeof value === 'bigint' ? value.toString() : value
     ));
 
-    console.log(sanitizedRows);
+    conn.release();
     res.send(sanitizedRows);
-    conn.end();
   } catch (err) {
     console.error(err);
     res.status(500).send('근태 신청 중 오류가 발생했습니다.');
