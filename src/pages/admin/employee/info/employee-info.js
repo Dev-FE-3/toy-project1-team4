@@ -97,77 +97,120 @@ const addBtnEventListender = function () {};
 
 export const employeeInfo = function (content) {
   content.innerHTML = `
-<div id="employee-info">
-  <section class="col-7">
-    <div class="box name-photo">
-      <div class="name-photo__contents">
-        <div class="contents--background-img">
-          <img
-            src="${'../../../../public/images/img_profile.png'}"
-            alt="profile image"
-            class="contents--profile-img"
-          />
+    <div class="menu">
+      <div class="menu__inner">
+        <div class="menu__wrap">
+          <h1 class="logo">
+            <a href="/" class="logo__link">
+              <img src="./../public/images/img_logo.png" class="logo__img" alt="PPangGeut">
+            </a>
+          </h1>
+          <nav class="nav">
+            <h6 class="nav__title">메뉴</h6>
+            <ul class="nav__list">
+              <li class="nav__item item--dashboard active"><a href="/">대시 보드</a></li>
+              <li class="nav__item item--work"><a href="/work">근태 관리</a></li>
+              <li class="nav__item item--notice"><a href="/notice">사내 공지</a></li>
+            </ul>
+          </nav>
+          <div class="bookmark">
+            <h6 class="bookmark__title">즐겨찾기</h6>
+            <ul class="bookmark__list">
+              <li class="bookmark__item item--dashboard"><a href="/">대시 보드</a></li>
+            </ul>
+          </div>
         </div>
-        <h5 class="contents--name">${'이름 없음'}</h5>
-        <p class="contents--position">${'부서 미지정'} ∙ ${'직책 미지정'}</p>
-      </div>
-      <div class="name-photo__edit-details">
-        <span class="edit-details__date">${'날짜 미지정'} 수정됨</span>
-        <div class="edit-details--btns">
-          <button type="button" class="btn btn--primary">
-            프로필 사진 수정하기
-          </button>
-          <button type="button" class="btn btn--secondary invisible">
-            삭제하기
-          </button>
-          <button type="button" class="btn btn--secondary invisible">
-            저장하기
-          </button>
+        <div class="logout">
+          <button type="" class="logout__button">로그아웃</button>
         </div>
       </div>
     </div>
-  </section>
-  <section class="col-5">
-    <div class="box work-period">
-      <div class="box__top">
-        <h5 class="box__title">근무 정보</h5>
-        <a href="#" class="box__more">
-          더보기
-        </a>
-      </div>
-      <div class="box__bottom box__contents">
-        <p class="work-period__text">
-          ${'--'}년 ${'--'}개월
-        </p>
+    <div class="wrap">
+      <header class="header">
+        <ul class="top-menu">
+          <li class="top-menu__item item--settings"><a href="#">설정</a></li>
+          <li class="top-menu__item item--share"><a href="#">공유</a></li>
+          <li class="top-menu__item item--notification"><a href="#">알림</a></li>
+        </ul>
+        <div class="page-title">
+          <h2 class="page-title__name">페이지명</h2>
+          <span class="page-title__user">안녕하세요, 빵긋님</span>
+        </div>
+      </header>
+      <div class="container">
+        <div id="employee-info">
+          <section class="col-7">
+            <div class="box name-photo">
+              <div class="name-photo__contents">
+                <div class="contents--background-img">
+                  <img
+                    src="${'../../../../public/images/img_profile.png'}"
+                    alt="profile image"
+                    class="contents--profile-img"
+                  />
+                </div>
+                <h5 class="contents--name">${'이름 없음'}</h5>
+                <p class="contents--position">${'부서 미지정'} ∙ ${'직책 미지정'}</p>
+              </div>
+              <div class="name-photo__edit-details">
+                <span class="edit-details__date">${'날짜 미지정'} 수정됨</span>
+                <div class="edit-details--btns">
+                  <button type="button" class="btn btn--primary">
+                    프로필 사진 수정하기
+                  </button>
+                  <button type="button" class="btn btn--secondary invisible">
+                    삭제하기
+                  </button>
+                  <button type="button" class="btn btn--secondary invisible">
+                    저장하기
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="col-5">
+            <div class="box work-period">
+              <div class="box__top">
+                <h5 class="box__title">근무 정보</h5>
+                <a href="#" class="box__more">
+                  더보기
+                </a>
+              </div>
+              <div class="box__bottom box__contents">
+                <p class="work-period__text">
+                  ${'--'}년 ${'--'}개월
+                </p>
+              </div>
+            </div>
+            <div class="box contact">
+              <div class="box__top">
+                <h5 class="box__title">연락처</h5>
+                <a href="#" class="box__more">
+                  더보기
+                </a>
+              </div>
+              <div class="box__bottom box__contents">
+                <p class="contact__text">${'전화번호 없음'}</p>
+                <p class="contact__text">${'이메일 없음'}</p>
+              </div>
+            </div>
+            <div class="box performance">
+              <div class="box__top">
+                <h5 class="box__title">직원평가</h5>
+                <a href="#" class="box__more">
+                  더보기
+                </a>
+              </div>
+              <div class="box__bottom box__contents">
+                <p class="performance__text">
+                  <span class="performance__text--my-rate">${'0'}</span>/5
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
-    <div class="box contact">
-      <div class="box__top">
-        <h5 class="box__title">연락처</h5>
-        <a href="#" class="box__more">
-          더보기
-        </a>
-      </div>
-      <div class="box__bottom box__contents">
-        <p class="contact__text">${'전화번호 없음'}</p>
-        <p class="contact__text">${'이메일 없음'}</p>
-      </div>
-    </div>
-    <div class="box performance">
-      <div class="box__top">
-        <h5 class="box__title">직원평가</h5>
-        <a href="#" class="box__more">
-          더보기
-        </a>
-      </div>
-      <div class="box__bottom box__contents">
-        <p class="performance__text">
-          <span class="performance__text--my-rate">${'0'}</span>/5
-        </p>
-      </div>
-    </div>
-  </section>
-</div>
   `;
   getEmployeeInfo();
 };
