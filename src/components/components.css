@@ -21,13 +21,17 @@
 /* layout */
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  background-color: var(--background);
+}
+
+#content {
+  max-width: 1920px;
 }
 
 .wrap {
   width: calc(100% - 236px);
   margin-left: 236px;
   padding: 24px;
-  background-color: var(--background);
   box-sizing: border-box;
 }
 
