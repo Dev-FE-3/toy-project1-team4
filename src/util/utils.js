@@ -7,8 +7,16 @@
  * 랜덤 생성 함수
  * 등등
  */
+import axios from 'axios';
 
-export { formatDateTime, approveStatusStyle, getType, timerFunc };
+export {
+  getType,
+  formatDateTime,
+  approveStatusStyle,
+  timerFunc,
+  getFetchData,
+  postFetchData,
+};
 
 // 데이터 타입 확인
 function getType(data) {
@@ -59,10 +67,28 @@ function timerFunc(item) {
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
-    
+
     item.innerHTML = `${hours}:${minutes}:${seconds}`;
   };
-  
+
   updateTime();
   setInterval(updateTime, 1000);
+}
+
+async function getFetchData(url) {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function postFetchData(url, body) {
+  try {
+    const response = await axios.post(url, body);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
