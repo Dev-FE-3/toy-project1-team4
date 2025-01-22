@@ -37,9 +37,48 @@ export const guide = function (content) {
       <option value="3">Three</option>
     </select>
 
-    <h1>4. table</h1>
+    <h1>4-1. table (basic)</h1>
 
     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">제목1</th>
+          <th scope="col">제목2</th>
+          <th scope="col">제목3</th>
+          <th scope="col">제목4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>내용1</td>
+          <td>내용2</td>
+          <td>내용3</td>
+          <td><span class="label label--red">결근</span></td>
+        </tr>
+        <tr>
+          <td>내용1</td>
+          <td>내용2</td>
+          <td>내용3</td>
+          <td><span class="label label--orange">휴가</span></td>
+        </tr>
+        <tr>
+          <td>내용1</td>
+          <td>내용2</td>
+          <td>내용3</td>
+          <td><span class="label label--green">근무중</span></td>
+        </tr>
+        <tr>
+          <td>내용1</td>
+          <td>내용2</td>
+          <td>내용3</td>
+          <td><span class="label label--purple">자리비움</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>4-2. table (center)</h1>
+
+    <table class="table table--center">
       <thead>
         <tr>
           <th scope="col">제목1</th>

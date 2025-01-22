@@ -201,6 +201,11 @@ body {
   background-color: #fff;
 }
 
+.table.table--center thead tr th,
+.table.table--center tbody tr td {
+  text-align: center;
+}
+
 .table thead tr th {
   padding: 4px 12px;
   font-size: 14px;
