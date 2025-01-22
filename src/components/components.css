@@ -31,7 +31,7 @@ body {
   box-sizing: border-box;
 }
 
-#content {
+.container {
   min-height: calc(100vh - 176px - 48px);
 }
 

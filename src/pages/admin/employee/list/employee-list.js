@@ -138,58 +138,101 @@ export const employeeList = async function (content) {
   };
 
   content.innerHTML = `
-    <div id="employee-list">
-      <section class="box" id="employee-tile">
-        <div id="employee-tile__action-button">
-          <div class="button-container">
-            <button type="button" class="btn btn--secondary">csv 저장</button>
-            <button type="button" class="btn btn--secondary">excel 저장</button>
-          </div>
-          <div class="button-container">
-            <button type="button" class="btn btn--primary">직원 목록 편집</button>
+    <div class="menu">
+      <div class="menu__inner">
+        <div class="menu__wrap">
+          <h1 class="logo">
+            <a href="/" class="logo__link">
+              <img src="./../public/images/img_logo.png" class="logo__img" alt="PPangGeut">
+            </a>
+          </h1>
+          <nav class="nav">
+            <h6 class="nav__title">메뉴</h6>
+            <ul class="nav__list">
+              <li class="nav__item item--dashboard active"><a href="/">대시 보드</a></li>
+              <li class="nav__item item--work"><a href="/work">근태 관리</a></li>
+              <li class="nav__item item--notice"><a href="/notice">사내 공지</a></li>
+            </ul>
+          </nav>
+          <div class="bookmark">
+            <h6 class="bookmark__title">즐겨찾기</h6>
+            <ul class="bookmark__list">
+              <li class="bookmark__item item--dashboard"><a href="/">대시 보드</a></li>
+            </ul>
           </div>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col" class="table__name">
-                이름
-              </th>
-              <th scope="col" class="table__id">
-                사원번호
-              </th>
-              <th scope="col" class="table__department">
-                소속
-              </th>
-              <th scope="col" class="table__position">
-                직급
-              </th>
-              <th scope="col" class="table__status">
-                근무 상태
-              </th>
-            </tr>
-          </thead>
-          <tbody class="table__employee-list">
-            <tr>
-              <td class="table__name">로딩중..</td>
-              <td class="table__id"></td>
-              <td class="table__department"></td>
-              <td class="table__position"></td>
-              <td class="table__status">
-                <span class="label label--green">근무상태</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        <div class="logout">
+          <button type="" class="logout__button">로그아웃</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <header class="header">
+        <ul class="top-menu">
+          <li class="top-menu__item item--settings"><a href="#">설정</a></li>
+          <li class="top-menu__item item--share"><a href="#">공유</a></li>
+          <li class="top-menu__item item--notification"><a href="#">알림</a></li>
+        </ul>
+        <div class="page-title">
+          <h2 class="page-title__name">페이지명</h2>
+          <span class="page-title__user">안녕하세요, 빵긋님</span>
+        </div>
+      </header>
+      <div class="container">
+        <div id="employee-list">
+          <section class="box" id="employee-tile">
+            <div id="employee-tile__action-button">
+              <div class="button-container">
+                <button type="button" class="btn btn--secondary">csv 저장</button>
+                <button type="button" class="btn btn--secondary">excel 저장</button>
+              </div>
+              <div class="button-container">
+                <button type="button" class="btn btn--primary">직원 목록 편집</button>
+              </div>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="table__name">
+                    이름
+                  </th>
+                  <th scope="col" class="table__id">
+                    사원번호
+                  </th>
+                  <th scope="col" class="table__department">
+                    소속
+                  </th>
+                  <th scope="col" class="table__position">
+                    직급
+                  </th>
+                  <th scope="col" class="table__status">
+                    근무 상태
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="table__employee-list">
+                <tr>
+                  <td class="table__name">로딩중..</td>
+                  <td class="table__id"></td>
+                  <td class="table__department"></td>
+                  <td class="table__position"></td>
+                  <td class="table__status">
+                    <span class="label label--green">근무상태</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
 
-      <section class="pagination">
-      <a href="javascript:;" class="pagination--prev">prev</a> 
-          <a href="javascript:;" class="pagination--index active">1</a>
-          <a href="javascript:;" class="pagination--index">2</a>
-          <a href="javascript:;" class="pagination--index">3</a>
-          <a href="javascript:;" class="pagination--next">next</a>
-      </section>
+          <section class="pagination">
+            <a href="javascript:;" class="pagination--prev">prev</a> 
+            <a href="javascript:;" class="pagination--index active">1</a>
+            <a href="javascript:;" class="pagination--index">2</a>
+            <a href="javascript:;" class="pagination--index">3</a>
+            <a href="javascript:;" class="pagination--next">next</a>
+          </section>
+        </div>
+      </div>
     </div>
     `;
   await putEmployees();
