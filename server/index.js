@@ -68,19 +68,33 @@ app.get('/api/users', async (req, res) => {
 
 //프로필 사진 변경
 app.post('/api/profile', async (req, res) => {
-  const { userId, profileImageName, profileImage } = req.body;
+  const { userNum, profileImageName, profileImage } = req.body;
   const image = Buffer.from(profileImage, 'base64');
+  const imagePath = './public/images/' + profileImageName;
+  fs.writeFileSync(imagePath, image);
 
-  fs.writeFileSync('./public/images/' + profileImageName, image);
+  const query = 'UPDATE users SET img_location = ? where num = ?';
 
-  res.send();
+  try {
+    const conn = await poolDb();
+    const rows = await conn.query(query, [imagePath.slice(1), userNum]);
+
+    // BigInt 처리
+    const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
+
+    conn.end();
+    res.send(sanitizedRows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('프로필 사진 변경 중 오류가 발생했습니다.');
+  }
 });
 
 // 메뉴
 app.get('/api/menu/:role', async (req, res) => {
   const { role } = req.params;
 
-  const query = 'SELECT * FROM menu where role = ?';
+  const query = 'SELECT * FROM menu WHERE role = ?';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [role]);
@@ -112,7 +126,7 @@ app.get('/api/notice', async (req, res) => {
 app.post('/api/meet', async (req, res) => {
   const { num } = req.body;
 
-  const query = 'SELECT * FROM meeting where num = ? order by time asc';
+  const query = 'SELECT * FROM meeting WHERE num = ? order by time asc';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
@@ -128,7 +142,7 @@ app.post('/api/meet', async (req, res) => {
 app.post('/api/work', async (req, res) => {
   const { num } = req.body;
 
-  const query = 'SELECT * FROM dayoff where num = ?';
+  const query = 'SELECT * FROM dayoff WHERE num = ?';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
@@ -144,7 +158,7 @@ app.post('/api/work', async (req, res) => {
 app.post('/api/absence', async (req, res) => {
   const { num } = req.body;
 
-  const query = 'SELECT * FROM approve where num = ? order by start_date desc';
+  const query = 'SELECT * FROM approve WHERE num = ? order by start_date desc';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
