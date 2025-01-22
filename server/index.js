@@ -17,7 +17,8 @@ app.use((req, res, next) => {
 
 app.use(morgan('dev'));
 app.use(express.static('dist'));
-app.use(express.json());
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 // 로그인 체크
 app.post('/api/login', async (req, res) => {
@@ -63,6 +64,15 @@ app.get('/api/users', async (req, res) => {
     console.error(err);
     res.status(500).send('사용자 조회 중 오류가 발생했습니다.');
   }
+});
+
+//프로필 사진 변경
+app.post('/api/profile', async (req, res) => {
+  const { userId, profileImageName, profileImage } = req.body;
+
+  fs.writeFileSync('./public/images/' + profileImageName, profileImage);
+
+  res.send();
 });
 
 // 메뉴
@@ -149,25 +159,13 @@ app.post('/api/absence', async (req, res) => {
 app.post('/api/approve', async (req, res) => {
   const { num, type, start_date, end_date, reason, status } = req.body;
 
-  const query =
-    'insert into approve ( num, type, start_date, end_date, reason, status ) values (?, ?, ?, ?, ?, ?)';
+  const query = 'insert into approve ( num, type, start_date, end_date, reason, status ) values (?, ?, ?, ?, ?, ?)';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [
-      num,
-      type,
-      start_date,
-      end_date,
-      reason,
-      status,
-    ]);
+    const rows = await conn.query(query, [num, type, start_date, end_date, reason, status]);
 
     // BigInt 처리
-    const sanitizedRows = JSON.parse(
-      JSON.stringify(rows, (key, value) =>
-        typeof value === 'bigint' ? value.toString() : value,
-      ),
-    );
+    const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
 
     conn.end();
     res.send(sanitizedRows);
