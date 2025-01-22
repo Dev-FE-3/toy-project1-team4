@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const nav = `
   <div class="menu">
     <div class="menu__inner">
@@ -10,9 +12,7 @@ export const nav = `
         <nav class="nav">
           <h6 class="nav__title">메뉴</h6>
           <ul class="nav__list">
-            <li class="nav__item item--dashboard active"><a href="/">대시 보드</a></li>
-            <li class="nav__item item--work"><a href="/work">근태 관리</a></li>
-            <li class="nav__item item--notice"><a href="/notice">사내 공지</a></li>
+            
           </ul>
         </nav>
         <div class="bookmark">
@@ -23,10 +23,51 @@ export const nav = `
         </div>
       </div>
       <div class="logout">
-        <button type="" class="logout__button">로그아웃</button>
+        <button type="button" class="logout__button">로그아웃</button>
       </div>
     </div>
   </div>
 `
 
-export default nav;
+function navItemClass(path) {
+  const pathMap = {
+    '/': 'item--dashboard active',
+    '/work': 'item--work',
+    '/notice': 'item--notice',
+  };
+
+  return pathMap[path] || '';
+}
+
+async function getNav() {
+  try {
+    const navList = document.querySelector('.menu .nav .nav__list');
+    const response = await axios.get('/api/menu/0', { params: { num : 2 } });
+    const navItem = response.data.map((item) => {
+      return `
+        <li class="nav__item ${navItemClass(item.MENU_PATH)}"><a href="${item.MENU_PATH}">${item.MENU_LIST}</a></li>
+      `
+    }).join('');
+
+    // return navItem;
+
+    navList.innerHTML = navItem;
+
+    // console.log(navList);
+    // console.log(navItem);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+// getNav();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const content = document.querySelector('#content');
+
+  console.log(nav);
+
+  // content.innerHTML = nav;
+  getNav();
+});

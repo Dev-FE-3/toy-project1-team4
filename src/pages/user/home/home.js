@@ -1,5 +1,5 @@
 import header from './../../../components/header/header.js';
-import nav from './../../../components/nav/nav.js';
+import { nav } from './../../../components/nav/nav.js';
 import './home.css';
 import axios from 'axios';
 import { formatDateTime, approveStatusStyle, timerFunc } from './../../../util/utils.js';
