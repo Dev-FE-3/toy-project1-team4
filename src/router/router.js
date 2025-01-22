@@ -29,14 +29,12 @@ export const route = function () {
   }
 };
 
-//로그인 상태 확인
+//세션 로그인 상태 확인 후 route
 const checkAuth = function () {
   let path = window.location.pathname;
   const content = document.querySelector('#content');
 
-  // if (path !== '/login') {
   if (sessionStorage.getItem('num') === null) {
-    // alert('로그인이 필요합니다.');
     path = '/login';
     history.pushState(null, null, '/login');
     login(content);
@@ -44,5 +42,4 @@ const checkAuth = function () {
     const component = routes[path];
     component(content);
   }
-  // }
 };
