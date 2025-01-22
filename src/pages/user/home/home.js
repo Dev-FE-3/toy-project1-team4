@@ -2,11 +2,15 @@ import header from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './home.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle, timerFunc } from './../../../util/utils.js';
+import {
+  formatDateTime,
+  approveStatusStyle,
+  timerFunc,
+} from './../../../util/utils.js';
 
-export const home = function (content) {
+export const home = async function (content) {
   content.innerHTML = `
-    ${nav}
+    ${await nav()}
     <div class="wrap">
       ${header}
       <div class="container">
@@ -126,16 +130,18 @@ export const home = function (content) {
   async function getUser() {
     try {
       const boxBottom = document.querySelector('.box--user .box__bottom');
-      const response = await axios.get('/api/user/2', { num : 2 });
-      const userInfo = response.data.map((item) => {
-        return `
+      const response = await axios.get('/api/user/2', { num: 2 });
+      const userInfo = response.data
+        .map(item => {
+          return `
           <img src="${item.IMG_LOCATION}" class="user-img" alt="profile">
           <div class="user-info">
             <span class="user-info__name">${item.NAME}</span>
             <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
           </div>
-        `
-      }).join('');
+        `;
+        })
+        .join('');
 
       boxBottom.innerHTML = userInfo;
     } catch (error) {
@@ -146,16 +152,21 @@ export const home = function (content) {
   async function getWork() {
     try {
       const workTbody = document.querySelector('.box--work .table tbody');
-      const response = await axios.post('api/absence', { num : 2 });
-      const workTableTr = response.data.slice(0, 4).map((item) => {
-        return `
+      const response = await axios.post('api/absence', { num: 2 });
+      const workTableTr = response.data
+        .slice(0, 4)
+        .map(item => {
+          return `
           <tr>
             <td>${formatDateTime(item.START_DATE)}</td>
             <td>${item.TYPE}</td>
-            <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
+            <td><span class="label ${approveStatusStyle(item.STATUS)}">${
+            item.STATUS
+          }</span></td>
           </tr>
-        `
-      }).join('');
+        `;
+        })
+        .join('');
 
       workTbody.innerHTML = workTableTr;
     } catch (error) {
@@ -166,12 +177,15 @@ export const home = function (content) {
   async function getNotice() {
     try {
       const noticeList = document.querySelector('.box--notice .notice-list');
-      const response = await axios.get('api/notice', { num : 2 });
-      const noticeItem = response.data.slice(0, 7).map((item) => {
-        return `
+      const response = await axios.get('api/notice', { num: 2 });
+      const noticeItem = response.data
+        .slice(0, 7)
+        .map(item => {
+          return `
           <li><a href="javascript:;">${item.title}</a></li>
-        `
-      }).join('');
+        `;
+        })
+        .join('');
 
       noticeList.innerHTML = noticeItem;
     } catch (error) {
@@ -182,17 +196,23 @@ export const home = function (content) {
   async function getMeeting() {
     try {
       const meetingList = document.querySelector('.box--meeting .meeting-list');
-      const response = await axios.post('api/meet', { num : 2 });
-      const meetingItem = response.data.slice(0, 4).map((item) => {
-        return `
+      const response = await axios.post('api/meet', { num: 2 });
+      const meetingItem = response.data
+        .slice(0, 4)
+        .map(item => {
+          return `
           <li class="meeting-list__item">
             <a href="javascript:;" class="item__link">
               <p class="item__title">${item.TITLE}</p>
-              <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
+              <span class="item__time">${formatDateTime(
+                item.TIME,
+                'time',
+              )}</span>
             </a>
           </li>
-        `
-      }).join('');
+        `;
+        })
+        .join('');
 
       meetingList.innerHTML = meetingItem;
     } catch (error) {
@@ -206,19 +226,19 @@ export const home = function (content) {
   getMeeting();
 
   // graphFunc
-  function graphFunc () {
+  function graphFunc() {
     const graphList = document.querySelector('.box--graph .graph__list');
     const graphItems = graphList.querySelectorAll('.graph__item');
-  
-    graphItems.forEach((item) => {
-      item.querySelector('.graph__bar').classList.add('active')
-    });
-  };
 
-  window.onload = function() {
+    graphItems.forEach(item => {
+      item.querySelector('.graph__bar').classList.add('active');
+    });
+  }
+
+  window.onload = function () {
     graphFunc();
   };
-  
+
   // timerFunc
   const time = document.querySelector('#home .box--time .time-view .time');
   timerFunc(time);
@@ -232,7 +252,9 @@ export const home = function (content) {
 
   function userStateFunc() {
     isChecked = !isChecked;
-    isChecked ? nowLabel.innerHTML = '근무 시작' : nowLabel.innerHTML = '근무 종료';
+    isChecked
+      ? (nowLabel.innerHTML = '근무 시작')
+      : (nowLabel.innerHTML = '근무 종료');
     switchInput.classList.toggle('active');
     nowLabel.classList.toggle('active');
   }
@@ -256,4 +278,4 @@ export const home = function (content) {
   btnSbmit.addEventListener('click', function () {
     workStateModal.close();
   });
-}
+};
