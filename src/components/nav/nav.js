@@ -12,15 +12,6 @@ function navItemClass(path) {
 export async function nav() {
   try {
     const response = await axios.get('/api/menu/0');
-    const navItem = response.data
-      .map(item => {
-        return `
-        <li class="nav__item ${navItemClass(item.MENU_PATH)}"><a href="${
-          item.MENU_PATH
-        }">${item.MENU_LIST}</a></li>
-        `;
-      })
-      .join('');
 
     return `
         <div class="menu">
@@ -34,7 +25,15 @@ export async function nav() {
               <nav class="nav">
                 <h6 class="nav__title">메뉴</h6>
                 <ul class="nav__list">
-                  ${navItem}
+                  ${response.data
+                    .map(item => {
+                      return `
+                      <li class="nav__item ${navItemClass(
+                        item.MENU_PATH,
+                      )}"><a href="${item.MENU_PATH}">${item.MENU_LIST}</a></li>
+                      `;
+                    })
+                    .join('')}
                 </ul>
               </nav>
               <div class="bookmark">
