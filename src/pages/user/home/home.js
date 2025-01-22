@@ -1,4 +1,4 @@
-import header from './../../../components/header/header.js';
+import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './home.css';
 import axios from 'axios';
@@ -12,7 +12,7 @@ export const home = async function (content) {
   content.innerHTML = `
     ${await nav()}
     <div class="wrap">
-      ${header}
+      ${await header()}
       <div class="container">
         <div id="home" class="row">
           <section class="box box--user col-3">
