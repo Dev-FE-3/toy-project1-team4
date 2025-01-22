@@ -50,6 +50,13 @@ export const notice = function (content) {
           
           </ul>
         </div>
+        <section class="pagination">
+            <a href="javascript:;" class="pagination--prev">prev</a> 
+            <a href="javascript:;" class="pagination--index active">1</a>
+            <a href="javascript:;" class="pagination--index">2</a>
+            <a href="javascript:;" class="pagination--index">3</a>
+            <a href="javascript:;" class="pagination--next">next</a>
+          </section>
       </div>
     </div>
   `;
