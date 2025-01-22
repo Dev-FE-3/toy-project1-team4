@@ -35,12 +35,12 @@ const getEmployeeInfo = async function () {
         <button type="button" class="btn btn--primary btn--edit-change">
           프로필 사진 수정하기
         </button>
-        <button type="button" class="btn btn--secondary btn--edit-remove">
+        <!--<button type="button" class="btn btn--secondary btn--edit-remove">
           삭제하기
         </button>
         <button type="button" class="btn btn--secondary btn--edit-save">
           저장하기
-        </button>
+        </button>-->
         <input type="file" class="btn--file-input" accept="image/*"/>
       </div>
     </div>
@@ -98,7 +98,6 @@ const getEmployeeInfo = async function () {
     }
   }
 };
-
 const removeButton = document.querySelector('.btn--edit-remove');
 const saveButton = document.querySelector('.btn--edit-save');
 
@@ -117,24 +116,20 @@ const attachChangeProfilePictureEvent = function () {
       const reader = new FileReader();
       reader.onload = async function () {
         const base64String = reader.result.split(',')[1];
-
         try {
-          console.log(userId, base64String);
+          // console.log(userId, base64String, file.name, file.size);
           const response = await axios.post('/api/profile', {
             userId,
             profileImage: base64String,
+            profileImageName: file.name,
           });
-
-          if (response.status === 200) {
-            alert('프로필 사진이 성공적으로 업데이트되었습니다.');
-            getEmployeeInfo();
-          }
+          alert('프로필 사진이 성공적으로 업데이트되었습니다.');
+          getEmployeeInfo();
         } catch (error) {
           console.error('Error uploading profile picture:', error);
           alert('프로필 사진 업로드 중 오류가 발생했습니다.');
         }
       };
-
       reader.readAsDataURL(file);
     }
   });
