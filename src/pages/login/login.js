@@ -57,6 +57,7 @@ export const login = function (content) {
     if (response.data.length > 0) {
       sessionStorage.setItem('num', response.data[0].NUM);
       sessionStorage.setItem('name', response.data[0].NAME);
+      sessionStorage.setItem('role', response.data[0].ROLE);
       return true;
     }
 
