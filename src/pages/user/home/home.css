@@ -136,10 +136,10 @@
 
 #home .box--time .time-state .time-state__now .now__title {
   display: block;
+  margin-bottom: 6px;
   color: var(--black-700-black);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 24px;
 }
 
 #home .box--time .time-state .time-state__now .now__switch {
@@ -147,6 +147,7 @@
   position: relative;
   width: 60px;
   height: 30px;
+  vertical-align: middle;
 }
 
 #home .box--time .time-state .time-state__now .now__switch .switch__input {
@@ -188,9 +189,9 @@
 
 #home .box--time .time-state .time-state__now .now__label {
   color: var(--grey2);
-  font-size: 40px;
+  font-size: 26px;
   font-weight: 700;
-  line-height: 44px;
+  vertical-align: middle;
 }
 
 #home .box--time .time-state .time-state__now .now__label.active {
@@ -207,13 +208,13 @@
   margin-top: auto;
 }
 
-#home .box--notice .notice-list li:last-child a {
-  padding-bottom: 0;
+#home .box--notice .notice-list li {
+  border-bottom: 1px solid var(--grey4);
 }
 
 #home .box--notice .notice-list li a {
   display: block;
-  padding: 8px 0;
+  padding: 8px;
   color: var(--Black);
   font-size: 16px;
   font-weight: 500;
