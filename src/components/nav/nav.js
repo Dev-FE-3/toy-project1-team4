@@ -9,11 +9,8 @@ function navItemClass(path) {
   return pathMap[path] || '';
 }
 
-export async function nav() {
-  try {
-    const response = await axios.get('/api/menu/0');
-
-    return `
+function navList(response) {
+  return `
         <div class="menu">
           <div class="menu__inner">
             <div class="menu__wrap">
@@ -25,7 +22,7 @@ export async function nav() {
               <nav class="nav">
                 <h6 class="nav__title">메뉴</h6>
                 <ul class="nav__list">
-                  ${response.data
+                  ${response
                     .map(item => {
                       return `
                       <li class="nav__item ${navItemClass(
@@ -49,6 +46,21 @@ export async function nav() {
           </div>
         </div>
         `;
+}
+
+async function fetchData(url) {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function nav() {
+  try {
+    const [response] = await Promise.all([await fetchData('/api/menu/0')]);
+    return navList(response);
   } catch (error) {
     console.error(error);
   }
