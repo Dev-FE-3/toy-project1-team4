@@ -1,3 +1,108 @@
 #employee-info {
-  color: #000;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
 }
+
+#employee-info > section {
+  height: 616px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#employee-info > section:nth-child(2) > div {
+  height: calc(100% / 3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#employee-info .name-photo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#employee-info .name-photo__contents {
+  text-align: center;
+}
+
+#employee-info .contents--background-img {
+  background-image: url(../../../../../public/images/profile_background.png);
+  height: 213px;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  border-radius: 16px;
+  margin-bottom: 112px;
+}
+
+#employee-info .contents--profile-img {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+#employee-info .contents--name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: center;
+  color: var(--Black);
+  margin-bottom: 4px;
+}
+
+#employee-info .contents--position {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--grey);
+}
+
+#employee-info .name-photo__edit-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+#employee-info .edit-details__date {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--Black);
+}
+
+#employee-info .box__contents {
+  text-align: right;
+}
+
+#employee-info .work-period__text,
+.performance__text {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  color: var(--Black);
+}
+
+#employee-info .contact__text {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--Black);
+}
+
+#employee-info .performance__text--my-rate {
+  color: var(--pointColor);
+}
+
+/* #employee-info .invisible {
+  display: none;
+} */

@@ -1,68 +1,48 @@
 import './home.css';
-import homeJson from './../../../../server/data/home.json';
+import axios from 'axios';
+import { formatDateTime, approveStatusStyle, timerFunc } from './../../../util/utils.js';
 
 export const home = function (content) {
-  const user = homeJson.user;
-  const graph = homeJson.graph;
-  const work = homeJson.work;
-  const notice = homeJson.notice;
-  const meeting = homeJson.meeting;
-
-  const graphItems = graph.bar.map((item) => `
-    <li class="graph__item">
-      <div class="graph__bar" style="height: ${item.height}%"></div>
-      <span class="graph__title">${item.title}</span>
-    </li>
-  `).join('');
-
-  const workItems = work.map((item) => `
-    <tr>
-      <td>${item.date}</td>
-      <td>${item.type}</td>
-      <td><span class="label label--${item.label === true ? 'purple' : 'green'}">${item.state}</span></td>
-    </tr>
-  `).join('');
-
-  const noticeItems = notice.map((item) => `
-    <li><a href="#">${item}</a></li>
-  `).join('');
-
-  const meetingItems = meeting.map((item) => `
-    <li class="meeting-list__item">
-      <a href="#" class="item__link">
-        <p class="item__title">${item.title}</p>
-        <span class="item__time">${item.time}</span>
-      </a>
-    </li>
-  `).join('');
-
   content.innerHTML = `
     <div id="home" class="row">
       <section class="box box--user col-3">
-        <div class="box__bottom">
-          <img src="${user.imgSrc}" class="user-img" alt="profile">
-          <div class="user-info">
-            <span class="user-info__name">${user.name}</span>
-            <span class="user-info__position">${user.position}</span>
-          </div>
-        </div>
+        <div class="box__bottom"></div>
       </section>
       <section class="box box--graph col-5">
         <div class="box__top">
           <h5 class="box__title">이번주 근무 시간</h5>
-          <a href="#" class="box__more">더보기</a>
+          <a href="javascript:;" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
-          <span class="graph__time">${graph.time}</span>
+          <span class="graph__time">25시간 39분</span>
           <ul class="graph__list">
-            ${graphItems}
+            <li class="graph__item">
+              <div class="graph__bar" style="height: 60%;"></div>
+              <span class="graph__title">01/08</span>
+            </li>
+            <li class="graph__item">
+              <div class="graph__bar" style="height: 80%;"></div>
+              <span class="graph__title">01/09</span>
+            </li>
+            <li class="graph__item">
+              <div class="graph__bar" style="height: 40%;"></div>
+              <span class="graph__title">01/10</span>
+            </li>
+            <li class="graph__item">
+              <div class="graph__bar" style="height: 20%;"></div>
+              <span class="graph__title">01/11</span>
+            </li>
+            <li class="graph__item">
+              <div class="graph__bar" style="height: 90%;"></div>
+              <span class="graph__title">01/12</span>
+            </li>
           </ul>
         </div>
       </section>
       <section class="box box--time col-4">
         <div class="box__top">
           <h5 class="box__title">남은 근무시간</h5>
-          <a href="#" class="box__more">더보기</a>
+          <a href="javascript:;" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
           <div class="time-view">
@@ -99,7 +79,7 @@ export const home = function (content) {
       <section class="box box--work col-5">
         <div class="box__top">
           <h5 class="box__title">근태 신청 현황</h5>
-          <a href="#" class="box__more">더보기</a>
+          <a href="javascript:;" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
           <table class="table">
@@ -110,36 +90,112 @@ export const home = function (content) {
                 <th scope="col">결재 상태</th>
               </tr>
             </thead>
-            <tbody>
-              ${workItems}
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </section>
       <section class="box box--notice col-4">
         <div class="box__top">
           <h5 class="box__title">사내 공지</h5>
-          <a href="#" class="box__more">더보기</a>
+          <a href="javascript:;" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
-          <ul class="notice-list">
-            ${noticeItems}
-          </ul>
+          <ul class="notice-list"></ul>
         </div>
       </section>
       <section class="box box--meeting col-3">
         <div class="box__top">
-          <h5 class="box__title">1월 10일</h5>
-          <a href="#" class="box__more">더보기</a>
+          <h5 class="box__title">회의</h5>
+          <a href="javascript:;" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
-          <ul class="meeting-list">
-            ${meetingItems}
-          </ul>
+          <ul class="meeting-list"></ul>
         </div>
       </section>
     </div>
   `;
+
+  async function getUser() {
+    try {
+      const boxBottom = document.querySelector('.box--user .box__bottom');
+      const response = await axios.get('/api/user/2', { num : 2 });
+      const userInfo = response.data.map((item) => {
+        return `
+          <img src="${item.IMG_LOCATION}" class="user-img" alt="profile">
+          <div class="user-info">
+            <span class="user-info__name">${item.NAME}</span>
+            <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
+          </div>
+        `
+      }).join('');
+
+      boxBottom.innerHTML = userInfo;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function getWork() {
+    try {
+      const workTbody = document.querySelector('.box--work .table tbody');
+      const response = await axios.post('api/absence', { num : 2 });
+      const workTableTr = response.data.slice(0, 4).map((item) => {
+        return `
+          <tr>
+            <td>${formatDateTime(item.START_DATE)}</td>
+            <td>${item.TYPE}</td>
+            <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
+          </tr>
+        `
+      }).join('');
+
+      workTbody.innerHTML = workTableTr;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function getNotice() {
+    try {
+      const noticeList = document.querySelector('.box--notice .notice-list');
+      const response = await axios.get('api/notice', { num : 2 });
+      const noticeItem = response.data.slice(0, 7).map((item) => {
+        return `
+          <li><a href="javascript:;">${item.title}</a></li>
+        `
+      }).join('');
+
+      noticeList.innerHTML = noticeItem;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function getMeeting() {
+    try {
+      const meetingList = document.querySelector('.box--meeting .meeting-list');
+      const response = await axios.post('api/meet', { num : 2 });
+      const meetingItem = response.data.slice(0, 4).map((item) => {
+        return `
+          <li class="meeting-list__item">
+            <a href="javascript:;" class="item__link">
+              <p class="item__title">${item.TITLE}</p>
+              <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
+            </a>
+          </li>
+        `
+      }).join('');
+
+      meetingList.innerHTML = meetingItem;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  getUser();
+  getWork();
+  getNotice();
+  getMeeting();
 
   // graphFunc
   function graphFunc () {
@@ -156,39 +212,24 @@ export const home = function (content) {
   };
   
   // timerFunc
-  function timerFunc () {
-    let date = new Date();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    const boxTime = document.querySelector('#home .box--time');
-    const time = boxTime.querySelector('.time-view .time');
-
-    time.innerHTML = `${hours}:${minutes}:${seconds}`;
-  };
-
-  timerFunc();
-  setInterval(timerFunc, 1000);
+  const time = document.querySelector('#home .box--time .time-view .time');
+  timerFunc(time);
 
   // userStateFunc
   const timeState = document.querySelector('.box--time .time-state');
   const switchInput = timeState.querySelector('.switch__input');
   const nowSwitch = timeState.querySelector('.now__switch');
   const nowLabel = timeState.querySelector('.now__label');
+  let isChecked = switchInput.checked;
 
-  function userStateFunc () {
-    if (switchInput.checked === true) {
-      nowLabel.innerHTML = '근무 시작'
-      nowLabel.classList.add('active')
-    } else {
-      nowLabel.innerHTML = '근무 종료'
-      nowLabel.classList.remove('active')
-    };
-  };
+  function userStateFunc() {
+    isChecked = !isChecked;
+    isChecked ? nowLabel.innerHTML = '근무 시작' : nowLabel.innerHTML = '근무 종료';
+    switchInput.classList.toggle('active');
+    nowLabel.classList.toggle('active');
+  }
 
-  nowSwitch.addEventListener('click', function () {
-    userStateFunc();
-  });
+  nowSwitch.addEventListener('click', userStateFunc);
 
   // modal
   const workStateModal = document.getElementById('workStateModal');

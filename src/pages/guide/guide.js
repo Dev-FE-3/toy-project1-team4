@@ -1,6 +1,4 @@
-// import style from './components.module.css';
-
-export const components = function (content) {
+export const guide = function (content) {
   
   content.innerHTML = `
     <h1>1. box</h1>

@@ -5,16 +5,44 @@ import { formatDateTime, approveStatusStyle } from '/src/util/utils.js';
 export const work = function (content) {
   content.innerHTML = `
     <div id="work" class="row">
-      <section class="box col-5">
+
+      <section class="box box--time col-5">
         <div class="box__top">
-          <h5 class="box__title">이번주 근무 시간</h5>
+          <h5 class="box__title">남은 근무시간</h5>
           <a href="#" class="box__more">더보기</a>
         </div>
         <div class="box__bottom">
-          내용
+          <div class="time-view">
+            <span class="time-view__countdown">04:28</span>
+            <span class="time-view__now">현재 시각: <b class="time">00:00:00</b></span>
+          </div>
+          <div class="time-state">
+            <div class="time-state__now">
+              <span class="now__title">현재 상태</span>
+              <label for="btn-toggle" class="now__switch">
+                <input type="checkbox" id="btn-toggle" class="switch__input">
+              </label>
+              <span class="now__label">근무 종료</span>
+            </div>
+            <button type="button" class="btn btn--primary">근무 시작</button>
+
+            <!-- modal -->
+            <dialog class="modal" id="workStateModal">
+              <div class="modal__header">
+                <h5 class="modal__title">근무 시작</h5>
+              </div>
+              <div class="modal__body">
+                <p class="modal__content">근무를 시작하시겠습니까?</p>
+              </div>
+              <div class="modal__footer">
+                <button type="button" class="btn btn--secondary btn__close">취소</button>
+                <button type="button" class="btn btn--primary btn__sbmit">저장</button>
+              </div>
+            </dialog>
+          </div>
         </div>
       </section>
-
+      
       <section class="box col-7 holiday">
         <div class="box__top">
           <h5 class="box__title">잔여 휴가</h5>
@@ -191,12 +219,18 @@ export const work = function (content) {
 
   modalBtn.addEventListener('click', function () {
     modal.showModal();
+    modal.classList.add('absence--show');
     document.body.style.overflow = 'hidden';
     userNum.value = '2';
   });
 
   absenceModalClose.addEventListener('click', function () {
-    modal.close();
+    modal.classList.remove('absence--show');
+
+    // absence--modal transition 시간과 맞추기
+    setTimeout(function () {
+      modal.close();
+    }, 600);
   });
 
   modal.addEventListener('close', function () {
