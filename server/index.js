@@ -69,8 +69,9 @@ app.get('/api/users', async (req, res) => {
 //프로필 사진 변경
 app.post('/api/profile', async (req, res) => {
   const { userId, profileImageName, profileImage } = req.body;
+  const image = Buffer.from(profileImage, 'base64');
 
-  fs.writeFileSync('./public/images/' + profileImageName, profileImage);
+  fs.writeFileSync('./public/images/' + profileImageName, image);
 
   res.send();
 });
