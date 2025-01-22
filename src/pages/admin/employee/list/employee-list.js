@@ -94,6 +94,7 @@ const putPaginationBtns = async function () {
 };
 
 export const employeeList = async function (content) {
+
   const paginationBtnsAddEvent = function () {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
