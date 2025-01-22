@@ -7,12 +7,13 @@ const triggerRender = function (content) {
 
  // 데이터를 카드로 만듬
 const noticeItems = noticeData.data;
+  console.log("노션아이템들 확인 ::::   "+noticeItems)
 const cardsHTML = noticeItems.map((item) => {
   return `
       <li class="notice-card col-4" data-notion-num="${item.cardNum}">
-        <a href="#" class="notice-card__link">
+        <a href="#" class="notice-card__link"> 
           <div class="card-image__container">
-            <img src="${item.cardImg}" alt="게시글 이미지" class="card-image" />
+            <div class="card-image__style" style="background-image: url(${item.cardImg})"></div>  
           </div>
           <div class="card__details">
             <h4 class="detail__title">${item.cardTitle}</h4>
@@ -32,19 +33,18 @@ const cardsHTML = noticeItems.map((item) => {
       </li>
     `;
   })
-  // .join(''); 
   
-  const listLength = 6; // 한 페이지에 들어갈 card 수
-  const indexLength = 8; // pagination bar 에 표시할 최대 인덱스 버튼 개수 indexSize
-  const initialIndex = 1; // 처음 접속 시 인덱스 값 initIndex
-  const totalIndex = Math.ceil(noticeItems.length / listLength); // 총 인덱스 개수
-  let paginationBarIndex = 1; // 현재 페이지네이션 바 인덱스 currentIndexSet
-  let currentIndex = initialIndex; // 현재 페이지
+  const listLength = 6; 
+  const indexLength = 8; 
+  const initialIndex = 1; 
+  const totalIndex = Math.ceil(noticeItems.length / listLength); 
+  let paginationBarIndex = 1; 
+  let currentIndex = initialIndex; 
 
   export const notice = function (content) {
 
-    const paginationBtnsRender = function () { //prev, next 같이 그리면 안되나? pageBtnRender
-      const paginationBtnList = []; //pageBustItems
+    const paginationBtnsRender = function () { 
+      const paginationBtnList = [];  
       for (
         let i = 1 + indexLength * (paginationBarIndex - 1); 
         i <= indexLength * paginationBarIndex && i <= totalIndex; 
@@ -61,9 +61,8 @@ const cardsHTML = noticeItems.map((item) => {
       const indexBtn = document.querySelectorAll('.pagination--index');
       indexBtn.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          // console.log(btn.dataset.btnIndex);
           currentIndex = btn.dataset.btnIndex;
-          triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
+          triggerRender(content); 
         });
       });
   
@@ -111,12 +110,10 @@ const cardsHTML = noticeItems.map((item) => {
           )
           .join('')}
         </ul>
-        <div class="notice__bottom">
-          <section class="pagination">
-            <a href="#" class="pagination--prev"> prev </a>
+        <div class="pagination">
+          <a href="#" class="pagination--prev"> prev </a>
             ${paginationBtns}
-            <a href="#" class="pagination--next"> next </a>
-          </section>
+          <a href="#" class="pagination--next"> next </a>
         </div>
       </div>
     `;
