@@ -68,10 +68,10 @@ app.get('/api/users', async (req, res) => {
 
 //프로필 사진 변경
 app.post('/api/profile', async (req, res) => {
-  const { userNum, profileImageName, profileImage } = req.body;
-  const image = Buffer.from(profileImage, 'base64');
-  const imagePath = './public/images/' + profileImageName;
-  fs.writeFileSync(imagePath, image);
+  const { userNum, imageName, image } = req.body;
+  const decodeImage = Buffer.from(image, 'base64');
+  const imagePath = './public/images/' + imageName;
+  fs.writeFileSync(imagePath, decodeImage);
 
   const query = 'UPDATE users SET img_location = ? where num = ?';
 
