@@ -119,9 +119,9 @@ const attachChangeProfilePictureEvent = function () {
         try {
           // console.log(userId, base64String, file.name, file.size);
           const response = await axios.post('/api/profile', {
-            userId,
-            profileImage: base64String,
-            profileImageName: file.name,
+            userNum: userId,
+            image: base64String,
+            imageName: file.name,
           });
           alert('프로필 사진이 성공적으로 업데이트되었습니다.');
           getEmployeeInfo();
