@@ -25,7 +25,7 @@ function navList(response) {
               ${response
                 .map(item => {
                   return `
-                    <li class="nav__item ${navItemClass(item.MENU_PATH,)}">
+                    <li class="nav__item ${navItemClass(item.MENU_PATH)}">
                       <a href="${item.MENU_PATH}">${item.MENU_LIST}</a>
                     </li>
                   `;
