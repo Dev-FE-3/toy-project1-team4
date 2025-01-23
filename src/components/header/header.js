@@ -2,6 +2,9 @@ import axios from 'axios';
 
 function getPageTitle(menuItem, currentPath) {
   const currentItem = menuItem.find(item => item.MENU_PATH === currentPath);
+
+  console.log(`currentItem`, currentItem);
+
   return currentItem 
     ? `<h2 class="page-title__name">${currentItem.MENU_LIST}</h2>`
     : '';
@@ -23,11 +26,16 @@ async function fetchData(url) {
 }
 
 export async function header() {
-  const [menuData, userData] = await Promise.all([
-    fetchData('/api/menu/0'),
-    fetchData('/api/user/2')
-  ]);
+  const currentStorage = window.sessionStorage;
   const currentPath = window.location.pathname;
+
+  console.log(`currentStorage.role`, currentStorage.role);
+  console.log(`urrentStorage.num`, currentStorage.num);
+
+  const [menuData, userData] = await Promise.all([
+    fetchData(`/api/menu/${currentStorage.role}`),
+    fetchData(`/api/user/${currentStorage.num}`)
+  ]);
   const pageTitle = getPageTitle(menuData, currentPath);
   const userName = getUserName(userData);
 
