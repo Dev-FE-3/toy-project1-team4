@@ -9,7 +9,7 @@ const userNum = 2;
 const getEmployeeInfo = async function () {
   try {
     const employeeObjects = document.querySelector('#employee-info');
-    const response = await axios.get(`/api/user/${userId}`);
+    const response = await axios.get(`/api/user/${userNum}`);
 
     const employeeDetails = response.data[0];
     employeeObjects.innerHTML = `
