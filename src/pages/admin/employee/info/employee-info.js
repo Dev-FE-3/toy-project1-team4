@@ -2,40 +2,40 @@ import './employee-info.css';
 import axios from 'axios';
 import { formatDateTime } from '/src/util/utils.js';
 
-const userId = 2;
+const userNum = 2;
 
 const getEmployeeInfo = async function () {
   try {
     const employeeObjects = document.querySelector('#employee-info');
-    const response = await axios.get(`/api/user/${userId}`);
+    const response = await axios.get(`/api/user/${userNum}`);
 
     const employeeDetails = response.data[0];
-    console.log(employeeDetails);
     employeeObjects.innerHTML = `
     <section class="col-7">
     <div class="box name-photo">
       <div class="name-photo__contents">
         <div class="contents--background-img">
           <img
-            src="../../../../${
-              employeeDetails.IMG_LOCATION || 'public/images/img_profile.png'
-            }"
+            src="../../../../${employeeDetails.IMG_LOCATION || 'public/images/img_profile.png'}"
             alt="profile image"
             class="contents--profile-img"
           />
         </div>
         <h5 class="contents--name">${employeeDetails.NAME}</h5>
-        <p class="contents--position">${employeeDetails.DEPARTMENT} ∙ ${
-      employeeDetails.POSITION
-    }</p>
+        <p class="contents--position">${employeeDetails.DEPARTMENT} ∙ ${employeeDetails.POSITION}</p>
       </div>
       <div class="name-photo__edit-details">
-        <span class="edit-details__date">${formatDateTime(
-          employeeDetails.MODIFIED_DATE,
-        )} 수정됨</span>
-        <button type="button" class="btn btn--primary">
+        <span class="edit-details__date">${formatDateTime(employeeDetails.MODIFIED_DATE)} 수정됨</span>
+        <button type="button" class="btn btn--primary btn--edit-change">
           프로필 사진 수정하기
         </button>
+        <!--<button type="button" class="btn btn--secondary btn--edit-remove">
+          삭제하기
+        </button>
+        <button type="button" class="btn btn--secondary btn--edit-save">
+          저장하기
+        </button>-->
+        <input type="file" class="btn--file-input" accept="image/*"/>
       </div>
     </div>
   </section>
@@ -74,26 +74,55 @@ const getEmployeeInfo = async function () {
       </div>
       <div class="box__bottom box__contents">
         <p class="performance__text">
-          <span class="performance__text--my-rate">${
-            employeeDetails.PERFORMANCE_RATE
-          }</span>/5
+          <span class="performance__text--my-rate">${employeeDetails.PERFORMANCE_RATE}</span>/5
         </p>
       </div>
     </div>
   </section>
-  
       `;
+    attachChangeProfilePictureEvent();
   } catch (error) {
     console.error('Error fetching employee data:', error);
     const employeeObjects = document.querySelector('#employee-info');
     if (employeeObjects) {
-      employeeObjects.innerHTML =
-        '<p>직원 정보를 불러오는 중 오류가 발생했습니다.</p>';
+      employeeObjects.innerHTML = '<p>직원 정보를 불러오는 중 오류가 발생했습니다.</p>';
     }
   }
 };
+const removeButton = document.querySelector('.btn--edit-remove');
+const saveButton = document.querySelector('.btn--edit-save');
 
-const addBtnEventListender = function () {};
+const attachChangeProfilePictureEvent = function () {
+  const changeButton = document.querySelector('.btn--edit-change');
+  const fileInput = document.querySelector('.btn--file-input');
+  changeButton.addEventListener('click', () => {
+    fileInput.click();
+  });
+  fileInput.addEventListener('click', event => event.stopImmediatePropagation());
+  fileInput.addEventListener('change', async event => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async function () {
+        const base64String = reader.result.split(',')[1];
+        try {
+          // console.log(userId, base64String, file.name, file.size);
+          const response = await axios.post('/api/profile', {
+            userNum,
+            image: base64String,
+            imageName: file.name,
+          });
+          alert('프로필 사진이 성공적으로 업데이트되었습니다.');
+          getEmployeeInfo();
+        } catch (error) {
+          console.error('Error uploading profile picture:', error);
+          alert('프로필 사진 업로드 중 오류가 발생했습니다.');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+};
 
 export const employeeInfo = function (content) {
   content.innerHTML = `
@@ -138,7 +167,7 @@ export const employeeInfo = function (content) {
         </div>
       </header>
       <div class="container">
-        <div id="employee-info">
+        <div id="employee-info" class="row">
           <section class="col-7">
             <div class="box name-photo">
               <div class="name-photo__contents">
@@ -157,12 +186,6 @@ export const employeeInfo = function (content) {
                 <div class="edit-details--btns">
                   <button type="button" class="btn btn--primary">
                     프로필 사진 수정하기
-                  </button>
-                  <button type="button" class="btn btn--secondary invisible">
-                    삭제하기
-                  </button>
-                  <button type="button" class="btn btn--secondary invisible">
-                    저장하기
                   </button>
                 </div>
               </div>
