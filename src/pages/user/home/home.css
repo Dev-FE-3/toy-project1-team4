@@ -203,11 +203,6 @@
   margin-top: auto;
 }
 
-#home .box--work .box__bottom .table thead tr th,
-#home .box--work .box__bottom .table tbody tr td {
-  text-align: center;
-}
-
 /* box--notice */
 #home .box--notice .box__bottom {
   margin-top: auto;
