@@ -245,7 +245,7 @@ export const work = function (content) {
     modal.showModal();
     modal.classList.add('absence--show');
     document.body.style.overflow = 'hidden';
-    userNum.value = '2';
+    userNum.value = sessionStorage.getItem('num');
   });
 
   absenceModalClose.addEventListener('click', function () {
@@ -260,7 +260,6 @@ export const work = function (content) {
   modal.addEventListener('close', function () {
     document.body.style.overflow = 'auto';
     // 모달이 닫힌 후 UI 갱신
-    getDayOff();
     getHolidayAndAbsenceList();
   });
 
@@ -290,7 +289,7 @@ export const work = function (content) {
     };
 
     try {
-      const response = await axios.post('/api/approve', absence);
+      await axios.post('/api/approve', absence);
 
       alert('신청이 완료되었습니다.');
       modal.close();
