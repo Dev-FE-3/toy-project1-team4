@@ -106,3 +106,7 @@
 /* #employee-info .invisible {
   display: none;
 } */
+
+#employee-info .btn--file-input {
+  display: none;
+}
