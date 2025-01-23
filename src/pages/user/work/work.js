@@ -193,20 +193,15 @@ export const work = function (content) {
   // 초기 데이터 로드
   getHolidayAndAbsenceList();
 
-  // 휴가별 Styling, 추후 다른 폴더로 이동 (상수, ENUM)
-  function dayoffStyle(str) {
-    switch (str) {
-      case '연차휴가':
-        str = 'left__annual';
-        break;
-      case '보상휴가':
-        str = 'left__compensatory';
-        break;
-      case '기타휴가':
-        str = 'left__etc';
-        break;
-    }
-    return str;
+  // Promise all 사용
+  async function getHolidayAndAbsenceList() {
+    const [holiday, absence] = await Promise.all([
+      postFetchData('api/work', { num: 2 }),
+      postFetchData('api/absence', { num: 2 }),
+    ]);
+
+    listingHoliday(holiday);
+    listingAbsenceList(absence);
   }
 
   //남은 휴가
@@ -247,15 +242,20 @@ export const work = function (content) {
       .join('');
   }
 
-  // Promise all 사용
-  async function getHolidayAndAbsenceList() {
-    const [holiday, absence] = await Promise.all([
-      postFetchData('api/work', { num: 2 }),
-      postFetchData('api/absence', { num: 2 }),
-    ]);
-
-    listingHoliday(holiday);
-    listingAbsenceList(absence);
+  // 휴가별 Styling, 추후 다른 폴더로 이동 (상수, ENUM)
+  function dayoffStyle(str) {
+    switch (str) {
+      case '연차휴가':
+        str = 'left__annual';
+        break;
+      case '보상휴가':
+        str = 'left__compensatory';
+        break;
+      case '기타휴가':
+        str = 'left__etc';
+        break;
+    }
+    return str;
   }
 
   //부재 신청서 버튼 클릭시 modal & 스크롤 방지
