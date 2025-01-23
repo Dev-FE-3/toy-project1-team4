@@ -11,7 +11,7 @@ export const work = async function (content) {
       ${await header()}
       <div class="container">
         <div id="work" class="row">
-          <section class="box box--time col-5">
+          <section class="box box--time col-5 col-lg-12 col-md-12">
             <div class="box__top">
               <h5 class="box__title">남은 근무시간</h5>
               <a href="#" class="box__more">더보기</a>
@@ -48,7 +48,7 @@ export const work = async function (content) {
             </div>
           </section>
           
-          <section class="box col-7 holiday">
+          <section class="box col-7 col-lg-12 col-md-12 holiday">
             <div class="box__top">
               <h5 class="box__title">잔여 휴가</h5>
               <a href="#" class="box__more">더보기</a>
@@ -67,7 +67,7 @@ export const work = async function (content) {
             </div>
           </section>
 
-          <section class="box col-12 absence">
+          <section class="box col-12 col-lg-12 col-md-12 absence">
             <div class="box__top">
               <h5 class="box__title">부재신청 목록</h5>
               <button class="btn btn--primary absence--approve__modal">부재 신청서 작성</button>
