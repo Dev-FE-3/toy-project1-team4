@@ -67,7 +67,6 @@ export const notice = function (content) {
     try {
       const response = await axios.get('api/notice');
       allCardItem = response.data;
-      console.log('allCardItem확인:   ' + JSON.stringify(allCardItem));
       renderNoticeCard(nowPage);
       cardPagingBtn();
     } catch (error) {
@@ -83,10 +82,6 @@ export const notice = function (content) {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = page * itemsPerPage;
     const pageCardData = allCardItem.slice(startIndex, endIndex);
-    console.log('startIndex##########:', startIndex);
-    console.log('endIndex 수??!?!?!??:', endIndex);
-
-    console.log('6개 cardItem확인:   ' + JSON.stringify(pageCardData));
 
     noticeCard.innerHTML = pageCardData
       .map(item => {
@@ -94,12 +89,10 @@ export const notice = function (content) {
             <li class="notice-card col-4" data-notice-num="${item.notice_num}">
               <a href="#" class="notice-card__link"> 
                 <div class="card-image__container">
-                  <div class="card-image__style" style="background-image: url(${
-                    item.img_path
-                  })"></div>  
+                  <div class="card-image__style" style="background-image: url(${item.img_path})"></div>  
                 </div>
                 <div class="card__details">
-                  <h4 class="detail__title">${item.title}</h4>
+                  <h4 class="detail__title">${item.department}팀 ${item.title}</h4>
                   <p class="detail__description">${item.content}</p>
                 </div>
                 <div class="card__author">
@@ -125,29 +118,19 @@ export const notice = function (content) {
     let paginationBar = '';
     const totalPages = Math.ceil(allCardItem.length / itemsPerPage);
 
-    console.log('총 데이터 수:', allCardItem.length);
-    console.log('itemsPerPage:', itemsPerPage);
-    console.log('계산된 totalPages:', totalPages);
-
     // pre 버튼
     if (nowPage > 1) {
-      paginationBar += `<a href="#" class="pagination--prev" data-page="${
-        nowPage - 1
-      }">prev</a> `;
+      paginationBar += `<a href="#" class="pagination--prev" data-page="${nowPage - 1}">prev</a> `;
     }
 
     // 페이지 index 번호 버튼
     for (let i = 1; i <= totalPages; i++) {
-      paginationBar += `<a href="#" class="pagination--index ${
-        i === nowPage ? 'active' : ''
-      }" data-page="${i}">${i}</a>`;
+      paginationBar += `<a href="#" class="pagination--index ${i === nowPage ? 'active' : ''}" data-page="${i}">${i}</a>`;
     }
 
     //next 버튼
     if (nowPage < totalPages) {
-      paginationBar += `<a href="#" class="pagination--next" data-page="${
-        nowPage + 1
-      }">next</a>`;
+      paginationBar += `<a href="#" class="pagination--next" data-page="${nowPage + 1}">next</a>`;
     }
 
     pagination.innerHTML = paginationBar;
@@ -155,7 +138,6 @@ export const notice = function (content) {
     // 버튼 클릭 이벤트
     document.querySelectorAll('.pagination a').forEach(button => {
       button.addEventListener('click', () => {
-        console.log('클릭됨');
         const clickBtn = parseInt(button.getAttribute('data-page'));
         nowPage = clickBtn;
         renderNoticeCard(nowPage);
