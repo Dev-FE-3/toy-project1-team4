@@ -54,6 +54,13 @@ export const login = function (content) {
 
     const response = await axios.post('/api/login', request);
 
-    return response.data.length > 0 ? true : false;
+    if (response.data.length > 0) {
+      sessionStorage.setItem('num', response.data[0].NUM);
+      sessionStorage.setItem('name', response.data[0].NAME);
+      sessionStorage.setItem('role', response.data[0].ROLE);
+      return true;
+    }
+
+    return false;
   }
 };
