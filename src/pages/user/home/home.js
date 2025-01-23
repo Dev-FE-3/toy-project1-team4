@@ -46,10 +46,10 @@ export const home = function (content) {
       </header>
       <div class="container">
         <div id="home" class="row">
-          <section class="box box--user col-3">
+          <section class="box box--user col-3 col-lg-4 col-md-6">
             <div class="box__bottom"></div>
           </section>
-          <section class="box box--graph col-5">
+          <section class="box box--graph col-5 col-lg-8 col-md-6">
             <div class="box__top">
               <h5 class="box__title">이번주 근무 시간</h5>
               <a href="javascript:;" class="box__more">더보기</a>
@@ -80,7 +80,7 @@ export const home = function (content) {
               </ul>
             </div>
           </section>
-          <section class="box box--time col-4">
+          <section class="box box--time col-4 col-lg-5 col-md-5">
             <div class="box__top">
               <h5 class="box__title">남은 근무시간</h5>
               <a href="javascript:;" class="box__more">더보기</a>
@@ -117,7 +117,7 @@ export const home = function (content) {
               </div>
             </div>
           </section>
-          <section class="box box--work col-5">
+          <section class="box box--work col-5 col-lg-7 col-md-7">
             <div class="box__top">
               <h5 class="box__title">근태 신청 현황</h5>
               <a href="javascript:;" class="box__more">더보기</a>
@@ -135,7 +135,7 @@ export const home = function (content) {
               </table>
             </div>
           </section>
-          <section class="box box--notice col-4">
+          <section class="box box--notice col-4 col-lg-6 col-md-6">
             <div class="box__top">
               <h5 class="box__title">사내 공지</h5>
               <a href="javascript:;" class="box__more">더보기</a>
@@ -144,7 +144,7 @@ export const home = function (content) {
               <ul class="notice-list"></ul>
             </div>
           </section>
-          <section class="box box--meeting col-3">
+          <section class="box box--meeting col-3 col-lg-6 col-md-6">
             <div class="box__top">
               <h5 class="box__title">회의</h5>
               <a href="javascript:;" class="box__more">더보기</a>
