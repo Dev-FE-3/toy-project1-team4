@@ -190,6 +190,9 @@ export const work = function (content) {
     </div>
   `;
 
+  // 초기 데이터 로드
+  getHolidayAndAbsenceList();
+
   // 휴가별 Styling, 추후 다른 폴더로 이동 (상수, ENUM)
   function dayoffStyle(str) {
     switch (str) {
@@ -254,9 +257,6 @@ export const work = function (content) {
     listingHoliday(holiday);
     listingAbsenceList(absence);
   }
-
-  // 초기 데이터 로드
-  getHolidayAndAbsenceList();
 
   //부재 신청서 버튼 클릭시 modal & 스크롤 방지
   const modalBtn = document.querySelector('.absence--approve__modal');
