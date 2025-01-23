@@ -171,98 +171,99 @@ function renderMeetingBox() {
   `;
 }
 
+async function fetchData(method, url, data = {}) {
+  try {
+    const response = await axios({method, url, data});
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function initializePage() {
-  await Promise.all([getUser(), getWork(), getNotice(), getMeeting()]);
+  const currentStorage = window.sessionStorage;
+  const [userData, absenceData, noticeData, meetData] = await Promise.all([
+    fetchData('get', `/api/user/${currentStorage.num}`),
+    fetchData('post', '/api/absence', { num: currentStorage.num }),
+    fetchData('get', '/api/notice', { num: currentStorage.num }),
+    fetchData('post', '/api/meet', { num: currentStorage.num })
+  ]);
+
+  getUser(userData);
+  getWork(absenceData);
+  getNotice(noticeData);
+  getMeeting(meetData);
 
   const time = document.querySelector('#home .box--time .time-view .time');
   timerFunc(time);
+
   graphFunc();
   userStateFunc();
   modalFunc();
 }
 
-async function getUser() {
-  try {
-    const boxBottom = document.querySelector('.box--user .box__bottom');
-    const response = await axios.get('/api/user/2');
-    const userInfo = response.data
-      .map(
-        item => `
-        <img src="${item.IMG_LOCATION}" class="user-img" alt="profile">
-        <div class="user-info">
-          <span class="user-info__name">${item.NAME}</span>
-          <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
-        </div>
-      `
-      )
-      .join('');
+function getUser(userData) {
+  const boxBottom = document.querySelector('.box--user .box__bottom');
+  const userInfo = userData
+    .map(
+      item => `
+      <img src="${item.IMG_LOCATION}" class="user-img" alt="profile">
+      <div class="user-info">
+        <span class="user-info__name">${item.NAME}</span>
+        <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
+      </div>
+    `
+    )
+    .join('');
 
-    boxBottom.innerHTML = userInfo;
-  } catch (error) {
-    console.error(error);
-  }
+  boxBottom.innerHTML = userInfo;
 }
 
-async function getWork() {
-  try {
-    const workTbody = document.querySelector('.box--work .table tbody');
-    const response = await axios.post('api/absence', { num: 2 });
-    const workTableTr = response.data
-      .slice(0, 4)
-      .map(
-        item => `
-        <tr>
-          <td>${formatDateTime(item.START_DATE)}</td>
-          <td>${item.TYPE}</td>
-          <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
-        </tr>
-      `
-      )
-      .join('');
+function getWork(absenceData) {
+  const workTbody = document.querySelector('.box--work .table tbody');
+  const workTableTr = absenceData
+    .slice(0, 4)
+    .map(
+      item => `
+      <tr>
+        <td>${formatDateTime(item.START_DATE)}</td>
+        <td>${item.TYPE}</td>
+        <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
+      </tr>
+    `
+    )
+    .join('');
 
-    workTbody.innerHTML = workTableTr;
-  } catch (error) {
-    console.error(error);
-  }
+  workTbody.innerHTML = workTableTr;
 }
 
-async function getNotice() {
-  try {
-    const noticeList = document.querySelector('.box--notice .notice-list');
-    const response = await axios.get('api/notice', { num: 2 });
-    const noticeItem = response.data
-      .slice(0, 7)
-      .map(item => `<li><a href="javascript:;">${item.title}</a></li>`)
-      .join('');
+function getNotice(noticeData) {
+  const noticeList = document.querySelector('.box--notice .notice-list');
+  const noticeItem = noticeData
+    .slice(0, 7)
+    .map(item => `<li><a href="javascript:;">${item.title}</a></li>`)
+    .join('');
 
-    noticeList.innerHTML = noticeItem;
-  } catch (error) {
-    console.error(error);
-  }
+  noticeList.innerHTML = noticeItem;
 }
 
-async function getMeeting() {
-  try {
-    const meetingList = document.querySelector('.box--meeting .meeting-list');
-    const response = await axios.post('api/meet', { num: 2 });
-    const meetingItem = response.data
-      .slice(0, 4)
-      .map(
-        item => `
-        <li class="meeting-list__item">
-          <a href="javascript:;" class="item__link">
-            <p class="item__title">${item.TITLE}</p>
-            <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
-          </a>
-        </li>
-      `
-      )
-      .join('');
+function getMeeting(meetData) {
+  const meetingList = document.querySelector('.box--meeting .meeting-list');
+  const meetingItem = meetData
+    .slice(0, 4)
+    .map(
+      item => `
+      <li class="meeting-list__item">
+        <a href="javascript:;" class="item__link">
+          <p class="item__title">${item.TITLE}</p>
+          <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
+        </a>
+      </li>
+    `
+    )
+    .join('');
 
-    meetingList.innerHTML = meetingItem;
-  } catch (error) {
-    console.error(error);
-  }
+  meetingList.innerHTML = meetingItem;
 }
 
 function graphFunc() {
