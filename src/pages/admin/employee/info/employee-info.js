@@ -16,22 +16,16 @@ const getEmployeeInfo = async function () {
       <div class="name-photo__contents">
         <div class="contents--background-img">
           <img
-            src="../../../../${
-              employeeDetails.IMG_LOCATION || 'public/images/img_profile.png'
-            }"
+            src="../../../../${employeeDetails.IMG_LOCATION || 'public/images/img_profile.png'}"
             alt="profile image"
             class="contents--profile-img"
           />
         </div>
         <h5 class="contents--name">${employeeDetails.NAME}</h5>
-        <p class="contents--position">${employeeDetails.DEPARTMENT} ∙ ${
-      employeeDetails.POSITION
-    }</p>
+        <p class="contents--position">${employeeDetails.DEPARTMENT} ∙ ${employeeDetails.POSITION}</p>
       </div>
       <div class="name-photo__edit-details">
-        <span class="edit-details__date">${formatDateTime(
-          employeeDetails.MODIFIED_DATE,
-        )} 수정됨</span>
+        <span class="edit-details__date">${formatDateTime(employeeDetails.MODIFIED_DATE)} 수정됨</span>
         <button type="button" class="btn btn--primary btn--edit-change">
           프로필 사진 수정하기
         </button>
@@ -80,9 +74,7 @@ const getEmployeeInfo = async function () {
       </div>
       <div class="box__bottom box__contents">
         <p class="performance__text">
-          <span class="performance__text--my-rate">${
-            employeeDetails.PERFORMANCE_RATE
-          }</span>/5
+          <span class="performance__text--my-rate">${employeeDetails.PERFORMANCE_RATE}</span>/5
         </p>
       </div>
     </div>
@@ -93,8 +85,7 @@ const getEmployeeInfo = async function () {
     console.error('Error fetching employee data:', error);
     const employeeObjects = document.querySelector('#employee-info');
     if (employeeObjects) {
-      employeeObjects.innerHTML =
-        '<p>직원 정보를 불러오는 중 오류가 발생했습니다.</p>';
+      employeeObjects.innerHTML = '<p>직원 정보를 불러오는 중 오류가 발생했습니다.</p>';
     }
   }
 };
@@ -107,9 +98,7 @@ const attachChangeProfilePictureEvent = function () {
   changeButton.addEventListener('click', () => {
     fileInput.click();
   });
-  fileInput.addEventListener('click', event =>
-    event.stopImmediatePropagation(),
-  );
+  fileInput.addEventListener('click', event => event.stopImmediatePropagation());
   fileInput.addEventListener('change', async event => {
     const file = event.target.files[0];
     if (file) {
@@ -178,7 +167,7 @@ export const employeeInfo = function (content) {
         </div>
       </header>
       <div class="container">
-        <div id="employee-info">
+        <div id="employee-info" class="row">
           <section class="col-7">
             <div class="box name-photo">
               <div class="name-photo__contents">
