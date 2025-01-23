@@ -94,7 +94,7 @@ app.post('/api/profile', async (req, res) => {
 app.get('/api/menu/:role', async (req, res) => {
   const { role } = req.params;
 
-  const query = 'SELECT * FROM menu WHERE role = ?';
+  const query = 'SELECT * FROM menu WHERE role = ? order by MENU_PATH asc';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [role]);
@@ -109,7 +109,7 @@ app.get('/api/menu/:role', async (req, res) => {
 // 공지사항
 app.get('/api/notice', async (req, res) => {
   const query =
-    'SELECT notice.title, notice.content, notice.notice_num , notice.img_path, notice.insert_date, users.num as user_num, users.department, users.position, users.name ' +
+    'SELECT notice.title, notice.content, notice.notice_num , notice.img_path, notice.insert_date, users.num as user_num, users.department, users.position, users.name, users.img_location ' +
     'FROM notice left join users on users.num = notice.num';
   try {
     const conn = await poolDb();
