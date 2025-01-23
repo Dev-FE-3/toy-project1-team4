@@ -1,10 +1,6 @@
 import './work.css';
 import axios from 'axios';
-import {
-  formatDateTime,
-  approveStatusStyle,
-  postFetchData,
-} from '/src/util/utils.js';
+import { formatDateTime, approveStatusStyle, postFetchData } from '/src/util/utils.js';
 
 export const work = function (content) {
   content.innerHTML = `
@@ -101,18 +97,7 @@ export const work = function (content) {
                 </svg>
               </div>
               <ul class="holiday__left">
-                <li class="left__annual">
-                  <h6>연차휴가</h6>
-                  <strong>0일</strong>
-                </li>
-                <li class="left__compensatory">
-                  <h6>보상휴가</h6>
-                  <strong>0일</strong>
-                </li>
-                <li class="left__etc">
-                  <h6>기타휴가</h6>
-                  <strong>0일</strong>            
-                </li>
+                
               </ul>
             </div>
           </section>
@@ -165,7 +150,7 @@ export const work = function (content) {
               </dialog>
             </div>
             <div class="box__bottom">
-              <table class="table absence--list">
+              <table class="table table--center absence--list">
                 <thead>
                   <tr>
                     <th scope="col">신청자</th>
@@ -175,12 +160,7 @@ export const work = function (content) {
                   </tr>
                 </thead>
                 <tbody class="absence--list__content">
-                  <tr>
-                    <td>Jeffrey Bezos</td>
-                    <td>2025-01-01</td>
-                    <td>연차</td>
-                    <td><span class="label label--red">결제 중</span></td>
-                  </tr>
+                  
                 </tbody>
               </table>
             </div>
@@ -195,10 +175,7 @@ export const work = function (content) {
 
   // Promise all 사용
   async function getHolidayAndAbsenceList() {
-    const [holiday, absence] = await Promise.all([
-      postFetchData('api/work', { num: 2 }),
-      postFetchData('api/absence', { num: 2 }),
-    ]);
+    const [holiday, absence] = await Promise.all([postFetchData('api/work', { num: sessionStorage.getItem('num') }), postFetchData('api/absence', { num: sessionStorage.getItem('num') })]);
 
     listingHoliday(holiday);
     listingAbsenceList(absence);
@@ -232,7 +209,7 @@ export const work = function (content) {
 
         return `
       <tr>
-        <td>Jeffrey Bezos</td>
+        <td>${sessionStorage.getItem('name')}</td>
         <td>${startDate} ~ ${endDate}</td>
         <td>${item.TYPE}</td>
         <td><span class="label ${statusStyle}">${item.STATUS}</span></td>
