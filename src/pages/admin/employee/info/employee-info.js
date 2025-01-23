@@ -2,7 +2,7 @@ import './employee-info.css';
 import axios from 'axios';
 import { formatDateTime } from '/src/util/utils.js';
 
-const userId = 2;
+const userNum = 2;
 
 const getEmployeeInfo = async function () {
   try {
@@ -119,7 +119,7 @@ const attachChangeProfilePictureEvent = function () {
         try {
           // console.log(userId, base64String, file.name, file.size);
           const response = await axios.post('/api/profile', {
-            userNum: userId,
+            userNum,
             image: base64String,
             imageName: file.name,
           });
