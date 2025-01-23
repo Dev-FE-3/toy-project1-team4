@@ -41,7 +41,7 @@ function navList(response) {
           </div>
         </div>
         <div class="logout">
-          <button type="button" class="logout__button">로그아웃</button>
+          <a href="/logout" class="logout__button">로그아웃</a>
         </div>
       </div>
     </div>
