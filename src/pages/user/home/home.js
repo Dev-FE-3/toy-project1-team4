@@ -123,7 +123,7 @@ export const home = function (content) {
               <a href="javascript:;" class="box__more">더보기</a>
             </div>
             <div class="box__bottom">
-              <table class="table">
+              <table class="table table--center">
                 <thead>
                   <tr>
                     <th scope="col">근태 날짜</th>
