@@ -13,12 +13,12 @@ const getEmployeeInfo = async function () {
 
     const employeeDetails = response.data[0];
     employeeObjects.innerHTML = `
-    <section class="col-7">
+    <section class="col-7 col-md-12">
     <div class="box name-photo">
       <div class="name-photo__contents">
         <div class="contents--background-img">
           <img
-            src="../../../../${employeeDetails.IMG_LOCATION || 'public/images/img_profile.png'}"
+            src="../../../../${employeeDetails.IMG_LOCATION}"
             alt="profile image"
             class="contents--profile-img"
           />
@@ -41,7 +41,7 @@ const getEmployeeInfo = async function () {
       </div>
     </div>
   </section>
-  <section class="col-5">
+  <section class="col-5 col-md-12">
     <div class="box work-period">
       <div class="box__top">
         <h5 class="box__title">근무 정보</h5>
@@ -133,21 +133,13 @@ export const employeeInfo = async function (content) {
       ${await header()}
       <div class="container">
         <div id="employee-info" class="row">
-          <section class="col-7">
+          <section class="col-7 col-md-12">
             <div class="box name-photo">
               <div class="name-photo__contents">
-                <div class="contents--background-img">
-                  <img
-                    src="${'../../../../public/images/img_profile.png'}"
-                    alt="profile image"
-                    class="contents--profile-img"
-                  />
-                </div>
-                <h5 class="contents--name">${'이름 없음'}</h5>
-                <p class="contents--position">${'부서 미지정'} ∙ ${'직책 미지정'}</p>
+                <div class="contents--background-img"></div>
               </div>
               <div class="name-photo__edit-details">
-                <span class="edit-details__date">${'날짜 미지정'} 수정됨</span>
+                <span class="edit-details__date">${'수정 날짜 미지정'}</span>
                 <div class="edit-details--btns">
                   <button type="button" class="btn btn--primary">
                     프로필 사진 수정하기
@@ -156,7 +148,7 @@ export const employeeInfo = async function (content) {
               </div>
             </div>
           </section>
-          <section class="col-5">
+          <section class="col-5 col-md-12">
             <div class="box work-period">
               <div class="box__top">
                 <h5 class="box__title">근무 정보</h5>
