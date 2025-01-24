@@ -3,17 +3,17 @@ import morgan from 'morgan';
 import fs from 'fs';
 import { poolDb } from './database.js';
 
-const THRESHOLD = 2000;
+// const THRESHOLD = 2000;
 const port = process.env.PORT || 5174;
 const app = express();
 
-app.use((req, res, next) => {
-  const delayTime = Math.floor(Math.random() * THRESHOLD);
+// app.use((req, res, next) => {
+//   const delayTime = Math.floor(Math.random() * THRESHOLD);
 
-  setTimeout(() => {
-    next();
-  }, delayTime);
-});
+//   setTimeout(() => {
+//     next();
+//   }, delayTime);
+// });
 
 app.use(morgan('dev'));
 app.use(express.static('dist'));
@@ -28,7 +28,7 @@ app.post('/api/login', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [id]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -44,7 +44,7 @@ app.get('/api/user/:num', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -58,7 +58,7 @@ app.get('/api/users', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -73,7 +73,7 @@ app.post('/api/profile', async (req, res) => {
   const imagePath = './public/images/' + imageName;
   fs.writeFileSync(imagePath, decodeImage);
 
-  const query = 'UPDATE users SET img_location = ? where num = ?';
+  const query = 'UPDATE users SET img_location = ?, modified_date = current_timestamp() where num = ?';
 
   try {
     const conn = await poolDb();
@@ -82,7 +82,7 @@ app.post('/api/profile', async (req, res) => {
     // BigInt 처리
     const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
 
-    conn.end();
+    conn.release();
     res.send(sanitizedRows);
   } catch (err) {
     console.error(err);
@@ -98,7 +98,7 @@ app.get('/api/menu/:role', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [role]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -110,11 +110,11 @@ app.get('/api/menu/:role', async (req, res) => {
 app.get('/api/notice', async (req, res) => {
   const query =
     'SELECT notice.title, notice.content, notice.notice_num , notice.img_path, notice.insert_date, users.num as user_num, users.department, users.position, users.name, users.img_location ' +
-    'FROM notice left join users on users.num = notice.num';
+    'FROM notice left join users on users.num = notice.num order by notice.insert_date desc';
   try {
     const conn = await poolDb();
     const rows = await conn.query(query);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -130,7 +130,7 @@ app.post('/api/meet', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -146,7 +146,7 @@ app.post('/api/work', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -162,7 +162,7 @@ app.post('/api/absence', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -182,7 +182,7 @@ app.post('/api/approve', async (req, res) => {
     // BigInt 처리
     const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
 
-    conn.end();
+    conn.release();
     res.send(sanitizedRows);
   } catch (err) {
     console.error(err);

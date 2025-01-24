@@ -9,14 +9,7 @@
  */
 import axios from 'axios';
 
-export {
-  getType,
-  formatDateTime,
-  approveStatusStyle,
-  timerFunc,
-  getFetchData,
-  postFetchData,
-};
+export { getType, formatDateTime, approveStatusStyle, timerFunc, getFetchData, postFetchData, workStatusStyle };
 
 // 데이터 타입 확인
 function getType(data) {
@@ -54,6 +47,22 @@ function approveStatusStyle(str) {
       str = 'label--green';
       break;
     case '반려됨':
+      str = 'label--red';
+      break;
+  }
+  return str;
+}
+
+// 근무 상태 css style class
+function workStatusStyle(str) {
+  switch (str) {
+    case '자리비움':
+      str = 'label--purple';
+      break;
+    case '근무중':
+      str = 'label--green';
+      break;
+    case '결근':
       str = 'label--red';
       break;
   }
