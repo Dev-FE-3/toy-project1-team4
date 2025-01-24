@@ -67,13 +67,13 @@ const putEmployees = async function () {
 const renderPaginationBtns = function () {
   const paginationBtnList = [];
   for (let i = 1 + indexLength * (paginationBarIndex - 1); i <= indexLength * paginationBarIndex && i <= totalIndex; i++) {
-    paginationBtnList[i] = `<a href="javascript:;"
+    paginationBtnList[i] = `<button
     data-btn-index = "${i}"
-    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</a>`;
+    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`;
   }
-  return `<a href="javascript:;" class="pagination--prev">prev</a> 
+  return `<button class="pagination--prev">prev</button> 
           ${paginationBtnList.join('')} 
-          <a href="javascript:;" class="pagination--next">next</a>`;
+          <button class="pagination--next">next</button>`;
 };
 
 const putPaginationBtns = async function () {
@@ -175,11 +175,11 @@ export const employeeList = async function (content) {
           </section>
 
           <section class="pagination">
-            <a href="javascript:;" class="pagination--prev">prev</a> 
-            <a href="javascript:;" class="pagination--index active">1</a>
-            <a href="javascript:;" class="pagination--index">2</a>
-            <a href="javascript:;" class="pagination--index">3</a>
-            <a href="javascript:;" class="pagination--next">next</a>
+            <button class="pagination--prev">prev</ㅠ> 
+            <button class="pagination--index active">1</button>
+            <button class="pagination--index">2</button>
+            <button class="pagination--index">3</button>
+            <button class="pagination--next">next</button>
           </section>
         </div>
       </div>
