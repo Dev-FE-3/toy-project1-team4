@@ -69,7 +69,7 @@ export const work = async function (content) {
               <h5 class="box__title">부재신청 목록</h5>
               <div>
                 <select class="select filterStatus">
-                  <option selected="">결제 상태</option>
+                  <option selected="">전체</option>
                   <option value="1">결제 중</option>
                   <option value="2">결제 완료</option>
                   <option value="3">반려됨</option>
@@ -227,7 +227,7 @@ function changeAbsenceList(selectText, absence) {
   // const arrayLength = document.querySelector('.absence--list__content').childElementCount;
   const filterAbsence = absence.filter(item => item.STATUS === selectText);
 
-  selectText === '결제 상태' ? listingAbsenceList(absence) : listingAbsenceList(filterAbsence);
+  selectText === '전체' ? listingAbsenceList(absence) : listingAbsenceList(filterAbsence);
 }
 
 function activateAbsenceModalButton() {
