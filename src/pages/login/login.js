@@ -19,13 +19,13 @@ export const login = function (content) {
             </div>    
             <div class="input-wrap form__pw">
               <label for="login__pw" class="input-label">패스워드</label>
-              <input type="password" class="input-text" id="login__pw" placeholder="">
+              <input type="password" class="input-text" id="login__pw" placeholder="비밀번호를 입력해주세요" autocomplete="off">
               <div class="login--form__find">
-                <a href="javascript:void(0)">아이디/패스워드 <span class="search">찾기</span></a>
+                <a href="#">아이디/패스워드 <span class="search">찾기</span></a>
               </div>
             </div>
-            <a href="javascript:void(0)" class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
-            <span class="register__recommand">아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
+            <input type="submit" class="btn btn--primary login--submit" value="로그인">
+            <span class="register__recommand">아직 회원이 아니신가요? <a href="#">회원가입</a></span>
         </form>
       </div>
     </section>
@@ -35,9 +35,7 @@ export const login = function (content) {
   loginSubmit.addEventListener('click', async function () {
     let path = '/login';
 
-    (await checkLogin())
-      ? (path = '/')
-      : alert('사용자 정보를 다시 확인해 주세요');
+    (await checkLogin()) ? (path = '/') : alert('사용자 정보를 다시 확인해 주세요');
 
     history.pushState(null, null, path);
     route();
