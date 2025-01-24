@@ -11,7 +11,7 @@ export const login = function (content) {
         </a>
       </div>
       <div class="login--form">
-        <form action="javascipt:void(0)" method="post">
+        <form method="post">
             <p class="login--form__title">로그인</p>
             <div class="input-wrap form__id">
                 <label for="login__id" class="input-label">아이디</label>
