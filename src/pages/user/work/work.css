@@ -71,12 +71,7 @@
   cursor: pointer;
 }
 
-#work
-  .box--time
-  .time-state
-  .time-state__now
-  .now__switch
-  .switch__input::before {
+#work .box--time .time-state .time-state__now .now__switch .switch__input::before {
   content: '';
   position: absolute;
   top: 5px;
@@ -88,36 +83,16 @@
   transition: transform 0.2s ease-in-out;
 }
 
-#work
-  .box--time
-  .time-state
-  .time-state__now
-  .now__switch
-  .switch__input:checked {
+#work .box--time .time-state .time-state__now .now__switch .switch__input:checked {
   background-color: var(--pointColor);
 }
 
-#work
-  .box--time
-  .time-state
-  .time-state__now
-  .now__switch
-  .switch__input:checked::before,
-#work
-  .box--time
-  .time-state
-  .time-state__now
-  .now__switch
-  .switch__input:checked::after {
+#work .box--time .time-state .time-state__now .now__switch .switch__input:checked::before,
+#work .box--time .time-state .time-state__now .now__switch .switch__input:checked::after {
   transform: translateX(calc(60px - 20px - 12px));
 }
 
-#work
-  .box--time
-  .time-state
-  .time-state__now
-  .now__switch
-  .switch__input:checked::after {
+#work .box--time .time-state .time-state__now .now__switch .switch__input:checked::after {
   opacity: 1;
 }
 
@@ -226,22 +201,12 @@
   transition: 0.6s;
 }
 
-#work
-  .absence
-  .box__top
-  .absence--modal
-  .absence--title
-  .absence--modal__close {
+#work .absence .box__top .absence--modal .absence--title .absence--modal__close {
   position: absolute;
   top: 15px;
   right: 22px;
 }
-#work
-  .absence
-  .box__top
-  .absence--modal
-  .absence--title
-  .absence--modal__close::after {
+#work .absence .box__top .absence--modal .absence--title .absence--modal__close::after {
   content: '\00d7';
   font-size: 30px;
 }
@@ -277,13 +242,7 @@
   width: 100%;
 }
 
-#work
-  .absence
-  .box__top
-  .absence--modal
-  .absence--propose
-  form
-  input[type='submit'] {
+#work .absence .box__top .absence--modal .absence--propose form input[type='submit'] {
   border: none;
 }
 

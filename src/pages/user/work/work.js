@@ -133,46 +133,66 @@ export const work = async function (content) {
         </div>
       </div>
     </div>
+    
   `;
 
   // 초기 데이터 로드
-  getHolidayAndAbsenceList();
+  initializePage();
+};
 
-  // Promise all 사용
-  async function getHolidayAndAbsenceList() {
-    const [holiday, absence] = await Promise.all([postFetchData('api/work', { num: sessionStorage.getItem('num') }), postFetchData('api/absence', { num: sessionStorage.getItem('num') })]);
+async function initializePage() {
+  // Promise.all 사용
+  const [holiday, absence] = await Promise.all([postFetchData('api/work', { num: sessionStorage.getItem('num') }), postFetchData('api/absence', { num: sessionStorage.getItem('num') })]);
 
-    listingHoliday(holiday);
-    listingAbsenceList(absence);
-  }
+  listingHoliday(holiday);
+  listingAbsenceList(absence);
+  activateAbsenceModalButton();
+  activateAbsenceFormButtion();
+}
 
-  //남은 휴가
-  function listingHoliday(holiday) {
-    const leftAnnual = document.querySelector('.holiday__left');
+//남은 휴가
+function listingHoliday(holiday) {
+  const leftAnnual = document.querySelector('.holiday__left');
 
-    leftAnnual.innerHTML = holiday
-      .map(item => {
-        return `
+  leftAnnual.innerHTML = holiday
+    .map(item => {
+      return `
       <li class="${dayoffStyle(`${item.TYPE}`)}">
         <h6>${item.TYPE}</h6>
         <strong>${item.AMOUNT}일</strong>
       </li>
     `;
-      })
-      .join('');
+    })
+    .join('');
+}
+
+// 휴가별 Styling, 추후 다른 폴더로 이동 (상수, ENUM)
+function dayoffStyle(str) {
+  switch (str) {
+    case '연차휴가':
+      str = 'left__annual';
+      break;
+    case '보상휴가':
+      str = 'left__compensatory';
+      break;
+    case '기타휴가':
+      str = 'left__etc';
+      break;
   }
+  return str;
+}
 
-  //부재 신청 목록
-  function listingAbsenceList(absence) {
-    const absenceList = document.querySelector('.absence--list__content');
+//부재 신청 목록
+function listingAbsenceList(absence) {
+  const absenceList = document.querySelector('.absence--list__content');
 
-    absenceList.innerHTML = absence
-      .map(item => {
-        const startDate = formatDateTime(`${item.START_DATE}`);
-        const endDate = formatDateTime(`${item.END_DATE}`);
-        const statusStyle = approveStatusStyle(`${item.STATUS}`);
+  absenceList.innerHTML = absence
+    .map(item => {
+      const startDate = formatDateTime(`${item.START_DATE}`);
+      const endDate = formatDateTime(`${item.END_DATE}`);
+      const statusStyle = approveStatusStyle(`${item.STATUS}`);
 
-        return `
+      return `
       <tr>
         <td>${sessionStorage.getItem('name')}</td>
         <td>${startDate} ~ ${endDate}</td>
@@ -180,26 +200,11 @@ export const work = async function (content) {
         <td><span class="label ${statusStyle}">${item.STATUS}</span></td>
       </tr>
     `;
-      })
-      .join('');
-  }
+    })
+    .join('');
+}
 
-  // 휴가별 Styling, 추후 다른 폴더로 이동 (상수, ENUM)
-  function dayoffStyle(str) {
-    switch (str) {
-      case '연차휴가':
-        str = 'left__annual';
-        break;
-      case '보상휴가':
-        str = 'left__compensatory';
-        break;
-      case '기타휴가':
-        str = 'left__etc';
-        break;
-    }
-    return str;
-  }
-
+function activateAbsenceModalButton() {
   //부재 신청서 버튼 클릭시 modal & 스크롤 방지
   const modalBtn = document.querySelector('.absence--approve__modal');
   const modal = document.querySelector('.absence--modal');
@@ -227,7 +232,9 @@ export const work = async function (content) {
     // 모달이 닫힌 후 UI 갱신
     getHolidayAndAbsenceList();
   });
+}
 
+function activateAbsenceFormButtion() {
   //input type=date에 click 이벤트 주기
   const absenceStartDate = document.querySelector('.absence--start--date');
   const absenceEndDate = document.querySelector('.absence--end--date');
@@ -264,4 +271,4 @@ export const work = async function (content) {
       alert('신청에 실패했습니다. 다시 시도해주세요.');
     }
   });
-};
+}
