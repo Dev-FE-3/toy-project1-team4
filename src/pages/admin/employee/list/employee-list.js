@@ -133,11 +133,11 @@ export const employeeList = async function (content) {
           <section class="box" id="employee-tile">
             <div id="employee-tile__action-button">
               <div class="button-container">
-                <button type="button" class="btn btn--secondary">csv 저장</button>
-                <button type="button" class="btn btn--secondary">excel 저장</button>
+                <button type="button" class="btn btn--primary">직원 목록 편집</button>
               </div>
               <div class="button-container">
-                <button type="button" class="btn btn--primary">직원 목록 편집</button>
+                <button type="button" class="btn btn--secondary">csv 저장</button>
+                <button type="button" class="btn btn--secondary">excel 저장</button>
               </div>
             </div>
             <table class="table">
