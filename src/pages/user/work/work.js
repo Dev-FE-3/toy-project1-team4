@@ -227,11 +227,12 @@ function activateAbsenceModalButton() {
   modal.addEventListener('close', function () {
     document.body.style.overflow = 'auto';
     // 모달이 닫힌 후 UI 갱신
-    getHolidayAndAbsenceList();
+    initializePage();
   });
 }
 
 function activateAbsenceFormButtion() {
+  const modal = document.querySelector('.absence--modal');
   //input type=date에 click 이벤트 주기
   const absenceStartDate = document.querySelector('.absence--start--date');
   const absenceEndDate = document.querySelector('.absence--end--date');
@@ -259,7 +260,7 @@ function activateAbsenceFormButtion() {
 
     try {
       await axios.post('/api/approve', absence);
-
+      debugger;
       alert('신청이 완료되었습니다.');
       modal.close();
     } catch (error) {
