@@ -150,7 +150,7 @@ export const employeeList = async function (content) {
                     이름
                   </th>
                   <th scope="col" class="table__id">
-                    사원번호
+                    아이디
                   </th>
                   <th scope="col" class="table__department">
                     소속
