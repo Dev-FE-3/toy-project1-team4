@@ -28,7 +28,7 @@ app.post('/api/login', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [id]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -44,7 +44,7 @@ app.get('/api/user/:num', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -58,7 +58,7 @@ app.get('/api/users', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -82,7 +82,7 @@ app.post('/api/profile', async (req, res) => {
     // BigInt 처리
     const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
 
-    conn.end();
+    conn.release();
     res.send(sanitizedRows);
   } catch (err) {
     console.error(err);
@@ -98,7 +98,7 @@ app.get('/api/menu/:role', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [role]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -114,7 +114,7 @@ app.get('/api/notice', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -130,7 +130,7 @@ app.post('/api/meet', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -146,7 +146,7 @@ app.post('/api/work', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -162,7 +162,7 @@ app.post('/api/absence', async (req, res) => {
   try {
     const conn = await poolDb();
     const rows = await conn.query(query, [num]);
-    conn.end();
+    conn.release();
     res.send(rows);
   } catch (err) {
     console.error(err);
@@ -182,7 +182,7 @@ app.post('/api/approve', async (req, res) => {
     // BigInt 처리
     const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
 
-    conn.end();
+    conn.release();
     res.send(sanitizedRows);
   } catch (err) {
     console.error(err);
