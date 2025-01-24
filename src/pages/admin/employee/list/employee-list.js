@@ -67,13 +67,13 @@ const putEmployees = async function () {
 const renderPaginationBtns = function () {
   const paginationBtnList = [];
   for (let i = 1 + indexLength * (paginationBarIndex - 1); i <= indexLength * paginationBarIndex && i <= totalIndex; i++) {
-    paginationBtnList[i] = `<button
+    paginationBtnList[i] = `<button type="button"
     data-btn-index = "${i}"
     class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`;
   }
-  return `<button class="pagination--prev">prev</button> 
+  return `<button type="button" class="pagination--prev">prev</button> 
           ${paginationBtnList.join('')} 
-          <button class="pagination--next">next</button>`;
+          <button type="button" class="pagination--next">next</button>`;
 };
 
 const putPaginationBtns = async function () {
@@ -133,7 +133,7 @@ export const employeeList = async function (content) {
           <section class="box" id="employee-tile">
             <div id="employee-tile__action-button">
               <div class="button-container">
-                <button type="button" class="btn btn--primary">직원 목록 편집</button>
+                <button type="button" class="btn btn--primary">편집하기</button>
               </div>
               <div class="button-container">
                 <button type="button" class="btn btn--secondary">csv 저장</button>
@@ -175,11 +175,11 @@ export const employeeList = async function (content) {
           </section>
 
           <section class="pagination">
-            <button class="pagination--prev">prev</ㅠ> 
-            <button class="pagination--index active">1</button>
-            <button class="pagination--index">2</button>
-            <button class="pagination--index">3</button>
-            <button class="pagination--next">next</button>
+            <button type="button" class="pagination--prev">prev</button> 
+            <button type="button" class="pagination--index active">1</button>
+            <button type="button" class="pagination--index">2</button>
+            <button type="button" class="pagination--index">3</button>
+            <button type="button" class="pagination--next">next</button>
           </section>
         </div>
       </div>
