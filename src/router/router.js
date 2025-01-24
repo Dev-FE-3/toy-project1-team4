@@ -34,6 +34,10 @@ const checkAuth = function () {
   let path = window.location.pathname;
   const content = document.querySelector('#content');
 
+  if (path === '/logout') {
+    window.sessionStorage.clear();
+  }
+
   if (sessionStorage.getItem('num') === null) {
     path = '/login';
     history.pushState(null, null, '/login');

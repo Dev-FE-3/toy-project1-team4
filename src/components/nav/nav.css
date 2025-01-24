@@ -95,6 +95,7 @@
 }
 
 .menu .logout .logout__button {
+  display: inline-block;
   position: relative;
   padding-left: 24px;
   font-size: 14px;
