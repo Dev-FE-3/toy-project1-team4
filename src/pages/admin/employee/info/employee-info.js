@@ -18,7 +18,7 @@ const getEmployeeInfo = async function () {
       <div class="name-photo__contents">
         <div class="contents--background-img">
           <img
-            src="../../../../${employeeDetails.IMG_LOCATION || 'public/images/img_profile.png'}"
+            src="../../../../${employeeDetails.IMG_LOCATION}"
             alt="profile image"
             class="contents--profile-img"
           />
@@ -138,7 +138,7 @@ export const employeeInfo = async function (content) {
               <div class="name-photo__contents">
                 <div class="contents--background-img">
                   <img
-                    src="${'../../../../public/images/img_profile.png'}"
+                    src=""
                     alt="profile image"
                     class="contents--profile-img"
                   />
@@ -147,7 +147,7 @@ export const employeeInfo = async function (content) {
                 <p class="contents--position">${'부서 미지정'} ∙ ${'직책 미지정'}</p>
               </div>
               <div class="name-photo__edit-details">
-                <span class="edit-details__date">${'날짜 미지정'} 수정됨</span>
+                <span class="edit-details__date">${'수정 날짜 미지정'}</span>
                 <div class="edit-details--btns">
                   <button type="button" class="btn btn--primary">
                     프로필 사진 수정하기
