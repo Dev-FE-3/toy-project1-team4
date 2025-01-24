@@ -24,7 +24,7 @@ export const login = function (content) {
                 <a href="javascript:void(0)">아이디/패스워드 <span class="search">찾기</span></a>
               </div>
             </div>
-            <a href="javascript:void(0)" class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
+            <a class="login--submit"><input type="submit" class="btn btn--primary btn--submit" value="로그인"></a>
             <span class="register__recommand">아직 회원이 아니신가요? <a href="javascript:void(0)">회원가입</a></span>
         </form>
       </div>
