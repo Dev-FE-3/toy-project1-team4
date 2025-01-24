@@ -136,10 +136,7 @@ export const employeeInfo = async function (content) {
           <section class="col-7 col-md-12">
             <div class="box name-photo">
               <div class="name-photo__contents">
-                <div class="contents--background-img">
-                </div>
-                <h5 class="contents--name">${'이름 없음'}</h5>
-                <p class="contents--position">${'부서 미지정'} ∙ ${'직책 미지정'}</p>
+                <div class="contents--background-img"></div>
               </div>
               <div class="name-photo__edit-details">
                 <span class="edit-details__date">${'수정 날짜 미지정'}</span>
