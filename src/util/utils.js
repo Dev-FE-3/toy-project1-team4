@@ -8,7 +8,7 @@
  * 등등
  */
 
-export { formatDateTime, approveStatusStyle, getType, timerFunc };
+export { formatDateTime, approveStatusStyle, getType, timerFunc, workStatusStyle };
 
 // 데이터 타입 확인
 function getType(data) {
@@ -52,6 +52,22 @@ function approveStatusStyle(str) {
   return str;
 }
 
+// 근무 상태 css style class
+function workStatusStyle(str) {
+  switch (str) {
+    case '자리비움':
+      str = 'label--purple';
+      break;
+    case '근무중':
+      str = 'label--green';
+      break;
+    case '결근':
+      str = 'label--red';
+      break;
+  }
+  return str;
+}
+
 // 현재 시각 타이머
 function timerFunc(item) {
   const updateTime = () => {
@@ -59,10 +75,10 @@ function timerFunc(item) {
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
-    
+
     item.innerHTML = `${hours}:${minutes}:${seconds}`;
   };
-  
+
   updateTime();
   setInterval(updateTime, 1000);
 }

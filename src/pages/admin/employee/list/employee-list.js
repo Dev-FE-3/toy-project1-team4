@@ -1,5 +1,6 @@
 import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
+import { workStatusStyle } from '../../../../util/utils.js';
 import './employee-list.css';
 import axios from 'axios';
 
@@ -21,7 +22,7 @@ const getEmployees = async function () {
   try {
     const response = await axios.get('/api/users');
     const employeeDataList = response.data;
-    // console.log(employeeDataList);
+    console.log(employeeDataList);
     const employeeHtmlList = employeeDataList.map(function (item) {
       return `
             <tr>
@@ -30,7 +31,7 @@ const getEmployees = async function () {
               <td class="table__department">${item.DEPARTMENT}</td>
               <td class="table__position">${item.POSITION}</td>
               <td class="table__status">
-                <span class="label label--green">근무중</span>
+                <span class="label ${workStatusStyle(item.WORKING_STATUS)}">${item.WORKING_STATUS}</span>
               </td>
             </tr>
             `;
@@ -51,13 +52,7 @@ const makeEmployees = async function (content) {
     employeeHtmlList = cachedEmployees;
   }
   totalIndex = Math.ceil(employeeHtmlList.length / listLength);
-  const employeeHtmlResult = employeeHtmlList
-    .slice(
-      (currentIndex - 1) * listLength,
-      (currentIndex - 1) * listLength + listLength,
-    )
-    .join('');
-  console.log(employeeHtmlResult ? 'good' : 'bad');
+  const employeeHtmlResult = employeeHtmlList.slice((currentIndex - 1) * listLength, (currentIndex - 1) * listLength + listLength).join('');
   // triggerRender(content);
   return employeeHtmlResult;
 };
@@ -72,11 +67,7 @@ const putEmployees = async function () {
 
 const renderPaginationBtns = function () {
   const paginationBtnList = [];
-  for (
-    let i = 1 + indexLength * (paginationBarIndex - 1);
-    i <= indexLength * paginationBarIndex && i <= totalIndex;
-    i++
-  ) {
+  for (let i = 1 + indexLength * (paginationBarIndex - 1); i <= indexLength * paginationBarIndex && i <= totalIndex; i++) {
     paginationBtnList[i] = `<a href="javascript:;"
     data-btn-index = "${i}"
     class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</a>`;
@@ -87,16 +78,13 @@ const renderPaginationBtns = function () {
 };
 
 const putPaginationBtns = async function () {
-  const paginationBtnContainer = document.querySelector(
-    '#employee-list .pagination',
-  );
+  const paginationBtnContainer = document.querySelector('#employee-list .pagination');
   const paginationBtns = await renderPaginationBtns();
   paginationBtnContainer.innerHTML = paginationBtns;
   return;
 };
 
 export const employeeList = async function (content) {
-
   const paginationBtnsAddEvent = async function () {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
