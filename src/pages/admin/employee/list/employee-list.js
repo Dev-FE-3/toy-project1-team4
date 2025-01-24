@@ -22,7 +22,6 @@ const getEmployees = async function () {
   try {
     const response = await axios.get('/api/users');
     const employeeDataList = response.data;
-    console.log(employeeDataList);
     const employeeHtmlList = employeeDataList.map(function (item) {
       return `
             <tr>
@@ -89,7 +88,6 @@ export const employeeList = async function (content) {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        // console.log(btn.dataset.btnIndex);
         currentIndex = btn.dataset.btnIndex;
         triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
       });
@@ -101,7 +99,6 @@ export const employeeList = async function (content) {
     };
 
     moveBtn.prev.addEventListener('click', function () {
-      console.log('prev clicked');
       if (currentIndex > indexLength) {
         currentIndex -= indexLength;
         paginationBarIndex--;
