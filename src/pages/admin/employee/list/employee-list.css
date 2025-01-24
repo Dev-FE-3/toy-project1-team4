@@ -59,7 +59,17 @@
 #employee-list .pagination {
   position: fixed;
   /* left: calc((100vw - 236px) / 2 + 236px); */
-  left: calc(50vw + 118px);
+  left: 1078px;
   bottom: 16px;
   transform: translate(-50%);
+}
+
+@media screen and (max-width: 1920px) {
+  #employee-list .pagination {
+    position: fixed;
+    /* left: calc((100vw - 236px) / 2 + 236px); */
+    left: calc(50vw + 118px);
+    bottom: 16px;
+    transform: translate(-50%);
+  }
 }
