@@ -73,7 +73,7 @@ app.post('/api/profile', async (req, res) => {
   const imagePath = './public/images/' + imageName;
   fs.writeFileSync(imagePath, decodeImage);
 
-  const query = 'UPDATE users SET img_location = ? where num = ?';
+  const query = 'UPDATE users SET img_location = ?, modified_date = current_timestamp() where num = ?';
 
   try {
     const conn = await poolDb();
