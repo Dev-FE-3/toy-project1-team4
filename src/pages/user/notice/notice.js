@@ -48,7 +48,6 @@ export const notice = async function (content) {
 
     pagination.addEventListener('click', function (event) {
       pageNumber = event.target.getAttribute('data-num');
-      debugger;
       const startIndex = (pageNumber - 1) * 6;
       const endIndex = pageNumber * 6;
       putCards(response.data.slice(startIndex, endIndex));
