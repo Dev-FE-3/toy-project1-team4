@@ -39,7 +39,7 @@
   margin-bottom: 10px;
 }
 
-#login form .btn--submit {
+#login form .login--submit {
   border: none;
   cursor: pointer;
 }
