@@ -22,7 +22,6 @@ const getEmployees = async function () {
   try {
     const response = await axios.get('/api/users');
     const employeeDataList = response.data;
-    console.log(employeeDataList);
     const employeeHtmlList = employeeDataList.map(function (item) {
       return `
             <tr>
@@ -68,13 +67,13 @@ const putEmployees = async function () {
 const renderPaginationBtns = function () {
   const paginationBtnList = [];
   for (let i = 1 + indexLength * (paginationBarIndex - 1); i <= indexLength * paginationBarIndex && i <= totalIndex; i++) {
-    paginationBtnList[i] = `<a href="javascript:;"
+    paginationBtnList[i] = `<button type="button"
     data-btn-index = "${i}"
-    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</a>`;
+    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`;
   }
-  return `<a href="javascript:;" class="pagination--prev">prev</a> 
+  return `<button type="button" class="pagination--prev">prev</button> 
           ${paginationBtnList.join('')} 
-          <a href="javascript:;" class="pagination--next">next</a>`;
+          <button type="button" class="pagination--next">next</button>`;
 };
 
 const putPaginationBtns = async function () {
@@ -89,7 +88,6 @@ export const employeeList = async function (content) {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        // console.log(btn.dataset.btnIndex);
         currentIndex = btn.dataset.btnIndex;
         triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
       });
@@ -101,7 +99,6 @@ export const employeeList = async function (content) {
     };
 
     moveBtn.prev.addEventListener('click', function () {
-      console.log('prev clicked');
       if (currentIndex > indexLength) {
         currentIndex -= indexLength;
         paginationBarIndex--;
@@ -136,11 +133,11 @@ export const employeeList = async function (content) {
           <section class="box" id="employee-tile">
             <div id="employee-tile__action-button">
               <div class="button-container">
-                <button type="button" class="btn btn--secondary">csv 저장</button>
-                <button type="button" class="btn btn--secondary">excel 저장</button>
+                <button type="button" class="btn btn--primary">편집하기</button>
               </div>
               <div class="button-container">
-                <button type="button" class="btn btn--primary">직원 목록 편집</button>
+                <button type="button" class="btn btn--secondary">csv 저장</button>
+                <button type="button" class="btn btn--secondary">excel 저장</button>
               </div>
             </div>
             <table class="table">
@@ -178,11 +175,11 @@ export const employeeList = async function (content) {
           </section>
 
           <section class="pagination">
-            <a href="javascript:;" class="pagination--prev">prev</a> 
-            <a href="javascript:;" class="pagination--index active">1</a>
-            <a href="javascript:;" class="pagination--index">2</a>
-            <a href="javascript:;" class="pagination--index">3</a>
-            <a href="javascript:;" class="pagination--next">next</a>
+            <button type="button" class="pagination--prev">prev</button> 
+            <button type="button" class="pagination--index active">1</button>
+            <button type="button" class="pagination--index">2</button>
+            <button type="button" class="pagination--index">3</button>
+            <button type="button" class="pagination--next">next</button>
           </section>
         </div>
       </div>
