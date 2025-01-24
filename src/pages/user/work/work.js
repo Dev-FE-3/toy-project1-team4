@@ -24,9 +24,6 @@ export const work = async function (content) {
               <div class="time-state">
                 <div class="time-state__now">
                   <span class="now__title">현재 상태</span>
-                  <label for="btn-toggle" class="now__switch">
-                    <input type="checkbox" id="btn-toggle" class="switch__input">
-                  </label>
                   <span class="now__label">근무 종료</span>
                 </div>
                 <button type="button" class="btn btn--primary">근무 시작</button>

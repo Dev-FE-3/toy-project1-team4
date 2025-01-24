@@ -18,7 +18,6 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "mariadb": "^3.4.0",
-    "morgan": "^1.10.0",
-    "sqlite3": "^5.1.7"
+    "morgan": "^1.10.0"
   }
 }
