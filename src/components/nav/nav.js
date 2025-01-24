@@ -1,15 +1,6 @@
 import axios from 'axios';
 
-function navItemClass(path) {
-  const pathMap = {
-    '/': 'item--dashboard active',
-    '/work': 'item--work',
-    '/notice': 'item--notice',
-  };
-  return pathMap[path] || '';
-}
-
-function navList(response) {
+function navList(manuList) {
   return `
     <div class="menu">
       <div class="menu__inner">
@@ -22,15 +13,7 @@ function navList(response) {
           <nav class="nav">
             <h6 class="nav__title">메뉴</h6>
             <ul class="nav__list">
-              ${response
-                .map(item => {
-                  return `
-                    <li class="nav__item ${navItemClass(item.MENU_PATH)}">
-                      <a href="${item.MENU_PATH}">${item.MENU_LIST}</a>
-                    </li>
-                  `;
-                })
-                .join('')}
+              ${manuList}
             </ul>
           </nav>
           <div class="bookmark">
@@ -48,6 +31,22 @@ function navList(response) {
     `;
 }
 
+// const pathMap = {
+//   '/': 'item--dashboard',
+//   '/work': 'item--work',
+//   '/notice': 'item--notice',
+// };
+
+export async function nav() {
+  try {
+    const currentStorage = window.sessionStorage;
+    const [response] = await Promise.all([await fetchData(`/api/menu/${currentStorage.role}`)]);
+    return navList(navItemClass(response));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function fetchData(url) {
   try {
     const response = await axios.get(url);
@@ -57,12 +56,16 @@ async function fetchData(url) {
   }
 }
 
-export async function nav() {
-  try {
-    const currentStorage = window.sessionStorage;
-    const [response] = await Promise.all([await fetchData(`/api/menu/${currentStorage.role}`)]);
-    return navList(response);
-  } catch (error) {
-    console.error(error);
-  }
+function navItemClass(response) {
+  const menuList = response
+    .map(item => {
+      return `
+      <li class="nav__item ${window.location.pathname === item.MENU_PATH ? 'active' : ''}">
+        <a href="${item.MENU_PATH}">${item.MENU_LIST}</a>
+      </li>
+    `;
+    })
+    .join('');
+
+  return menuList;
 }
