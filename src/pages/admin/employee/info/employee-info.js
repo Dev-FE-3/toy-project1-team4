@@ -13,7 +13,7 @@ const getEmployeeInfo = async function () {
 
     const employeeDetails = response.data[0];
     employeeObjects.innerHTML = `
-    <section class="col-7">
+    <section class="col-7 col-md-12">
     <div class="box name-photo">
       <div class="name-photo__contents">
         <div class="contents--background-img">
@@ -41,7 +41,7 @@ const getEmployeeInfo = async function () {
       </div>
     </div>
   </section>
-  <section class="col-5">
+  <section class="col-5 col-md-12">
     <div class="box work-period">
       <div class="box__top">
         <h5 class="box__title">근무 정보</h5>
@@ -133,7 +133,7 @@ export const employeeInfo = async function (content) {
       ${await header()}
       <div class="container">
         <div id="employee-info" class="row">
-          <section class="col-7">
+          <section class="col-7 col-md-12">
             <div class="box name-photo">
               <div class="name-photo__contents">
                 <div class="contents--background-img">
@@ -156,7 +156,7 @@ export const employeeInfo = async function (content) {
               </div>
             </div>
           </section>
-          <section class="col-5">
+          <section class="col-5 col-md-12">
             <div class="box work-period">
               <div class="box__top">
                 <h5 class="box__title">근무 정보</h5>
