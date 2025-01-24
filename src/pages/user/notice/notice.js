@@ -46,15 +46,27 @@ export const notice = async function (content) {
       <button type="button" data-num="${i + 1}">${i + 1}</a>`;
     }
     pagination.innerHTML = str;
+    pagination.querySelector('button').classList.add('active');
 
     pagination.addEventListener('click', function (event) {
       pageNumber = event.target.getAttribute('data-num');
+
       const startIndex = (pageNumber - 1) * 6;
       const endIndex = pageNumber * 6;
       putCards(response.data.slice(startIndex, endIndex));
+      activePageNumber(event, pageNumber);
     });
 
     return pageNumber;
+  }
+
+  //페이지 버튼 활성화
+  function activePageNumber(event, pageNumber) {
+    // event.target.classList.add('active');
+    const activeButton = event.currentTarget.querySelectorAll('button');
+    Array.from(activeButton).filter(item => {
+      item.dataset.num === pageNumber ? item.classList.add('active') : item.classList.remove('active');
+    });
   }
 
   function putCards(response) {
