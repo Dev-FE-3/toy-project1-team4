@@ -67,7 +67,15 @@ export const work = async function (content) {
           <section class="box col-12 col-lg-12 col-md-12 absence">
             <div class="box__top">
               <h5 class="box__title">부재신청 목록</h5>
-              <button class="btn btn--primary absence--approve__modal">부재 신청서 작성</button>
+              <div>
+                <select class="select filterStatus">
+                  <option selected="">결제 상태</option>
+                  <option value="1">결제 중</option>
+                  <option value="2">결제 완료</option>
+                  <option value="3">반려됨</option>
+                </select>
+                <button class="btn btn--primary absence--approve__modal">부재 신청서 작성</button>
+              </div>
               <dialog class="absence--modal">
                 <div class="absence--title">
                   <h2>근태 신청하기</h2>
@@ -135,6 +143,8 @@ export const work = async function (content) {
 
   // 초기 데이터 로드
   initializePage();
+  activateAbsenceModalButton();
+  activateAbsenceFormButtion();
 };
 
 async function initializePage() {
@@ -143,8 +153,7 @@ async function initializePage() {
 
   listingHoliday(holiday);
   listingAbsenceList(absence);
-  activateAbsenceModalButton();
-  activateAbsenceFormButtion();
+  filterStatus(absence);
 }
 
 //남은 휴가
@@ -199,6 +208,26 @@ function listingAbsenceList(absence) {
     `;
     })
     .join('');
+}
+
+//결제 상태에 따른 필터링
+function filterStatus(absence) {
+  const filterStatus = document.querySelector('.filterStatus');
+
+  filterStatus.addEventListener('change', function () {
+    // select element에서 선택된 option의 text가 저장된다.
+    const selectText = filterStatus.options[filterStatus.selectedIndex].text;
+
+    changeAbsenceList(selectText, absence);
+  });
+}
+
+// 필터링 된 리스트를 뿌려준다
+function changeAbsenceList(selectText, absence) {
+  // const arrayLength = document.querySelector('.absence--list__content').childElementCount;
+  const filterAbsence = absence.filter(item => item.STATUS === selectText);
+
+  selectText === '결제 상태' ? listingAbsenceList(absence) : listingAbsenceList(filterAbsence);
 }
 
 function activateAbsenceModalButton() {
@@ -260,7 +289,6 @@ function activateAbsenceFormButtion() {
 
     try {
       await axios.post('/api/approve', absence);
-      debugger;
       alert('신청이 완료되었습니다.');
       modal.close();
     } catch (error) {
