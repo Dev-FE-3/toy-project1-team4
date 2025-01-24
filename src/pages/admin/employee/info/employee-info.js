@@ -137,11 +137,6 @@ export const employeeInfo = async function (content) {
             <div class="box name-photo">
               <div class="name-photo__contents">
                 <div class="contents--background-img">
-                  <img
-                    src=""
-                    alt="profile image"
-                    class="contents--profile-img"
-                  />
                 </div>
                 <h5 class="contents--name">${'이름 없음'}</h5>
                 <p class="contents--position">${'부서 미지정'} ∙ ${'직책 미지정'}</p>
