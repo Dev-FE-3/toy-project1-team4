@@ -16,9 +16,9 @@ export const notice = async function (content) {
           </ul>
         </div>
         <section class="pagination">
-            <a href="javascript:void(0)" class="pagination--prev">prev</a> 
+            <button type="button" class="pagination--prev">prev</button>  
             <div class="pagination--num"></div>
-            <a href="javascript:void(0)" class="pagination--next">next</a>
+            <button type="button" class="pagination--next">next</button>
           </section>
       </div>
     </div>
@@ -42,18 +42,31 @@ export const notice = async function (content) {
     let pageNumber = '1';
 
     for (let i = 0; i <= responseLength % 6; i++) {
-      str += `<a href="javascript:" data-num="${i + 1}">${i + 1}</a>`;
+      str += `
+      <button type="button" data-num="${i + 1}">${i + 1}</a>`;
     }
     pagination.innerHTML = str;
+    pagination.querySelector('button').classList.add('active');
 
     pagination.addEventListener('click', function (event) {
       pageNumber = event.target.getAttribute('data-num');
+
       const startIndex = (pageNumber - 1) * 6;
       const endIndex = pageNumber * 6;
       putCards(response.data.slice(startIndex, endIndex));
+      activePageNumber(event, pageNumber);
     });
 
     return pageNumber;
+  }
+
+  //페이지 버튼 활성화
+  function activePageNumber(event, pageNumber) {
+    // event.target.classList.add('active');
+    const activeButton = event.currentTarget.querySelectorAll('button');
+    Array.from(activeButton).filter(item => {
+      item.dataset.num === pageNumber ? item.classList.add('active') : item.classList.remove('active');
+    });
   }
 
   function putCards(response) {
