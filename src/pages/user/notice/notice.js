@@ -46,15 +46,27 @@ export const notice = async function (content) {
       <button type="button" data-num="${i + 1}">${i + 1}</a>`;
     }
     pagination.innerHTML = str;
+    pagination.querySelector('button').classList.add('active');
 
     pagination.addEventListener('click', function (event) {
       pageNumber = event.target.getAttribute('data-num');
+
       const startIndex = (pageNumber - 1) * 6;
       const endIndex = pageNumber * 6;
       putCards(response.data.slice(startIndex, endIndex));
+      activePageNumber(event, pageNumber);
     });
 
     return pageNumber;
+  }
+
+  //페이지 버튼 활성화
+  function activePageNumber(event, pageNumber) {
+    // event.target.classList.add('active');
+    const activeButton = event.currentTarget.querySelectorAll('button');
+    Array.from(activeButton).filter(item => {
+      item.dataset.num === pageNumber ? item.classList.add('active') : item.classList.remove('active');
+    });
   }
 
   function putCards(response) {
@@ -62,7 +74,7 @@ export const notice = async function (content) {
     noticeCard.innerHTML = response
       .map(item => {
         return `
-        <li class="notice-card col-4" data-notice-num="${item.noticeNum}">
+        <li class="notice-card col-4 col-lg-6 col-md-12" data-notice-num="${item.noticeNum}">
           <a href="#" class="notice-card__link"> 
             <div class="card-image__container">
               <div class="card-image__style" style="background-image: url(${item.img_path})"></div>  
