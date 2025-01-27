@@ -26,8 +26,8 @@ const getEmployees = async function () {
     const employeeHtmlList = employeeDataList.map(function (item) {
       return `
             <tr>
-              <td class="table__name">${item.NAME}</td>
               <td class="table__num">${item.NUM}</td>
+              <td class="table__name">${item.NAME}</td>
               <td class="table__id">${item.ID}</td>
               <td class="table__department">${item.DEPARTMENT}</td>
               <td class="table__position">${item.POSITION}</td>
@@ -145,11 +145,11 @@ export const employeeList = async function (content) {
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col" class="table__name">
-                    이름
-                  </th>
                   <th scope="col" class="table__num">
                     사원번호
+                  </th>
+                  <th scope="col" class="table__name">
+                    이름
                   </th>
                   <th scope="col" class="table__id">
                     아이디
