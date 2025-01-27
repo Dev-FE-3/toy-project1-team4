@@ -4,12 +4,10 @@ import './employee-info.css';
 import axios from 'axios';
 import { formatDateTime } from '/src/util/utils.js';
 
-const userNum = 2;
-
 const getEmployeeInfo = async function () {
   try {
     const employeeObjects = document.querySelector('#employee-info');
-    const response = await axios.get(`/api/user/${userNum}`);
+    const response = await axios.get(`/api/user/${history.state}`);
 
     const employeeDetails = response.data[0];
     employeeObjects.innerHTML = `
@@ -110,7 +108,7 @@ const attachChangeProfilePictureEvent = function () {
         try {
           // console.log(userId, base64String, file.name, file.size);
           const response = await axios.post('/api/profile', {
-            userNum,
+            userNum: history.state,
             image: base64String,
             imageName: file.name,
           });
