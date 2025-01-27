@@ -224,7 +224,6 @@ function filterStatus(absence) {
 
 // 필터링 된 리스트를 뿌려준다
 function changeAbsenceList(selectText, absence) {
-  // const arrayLength = document.querySelector('.absence--list__content').childElementCount;
   const filterAbsence = absence.filter(item => item.STATUS === selectText);
 
   selectText === '전체' ? listingAbsenceList(absence) : listingAbsenceList(filterAbsence);
