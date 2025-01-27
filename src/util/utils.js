@@ -7,8 +7,9 @@
  * 랜덤 생성 함수
  * 등등
  */
+import axios from 'axios';
 
-export { formatDateTime, approveStatusStyle, getType, timerFunc, workStatusStyle };
+export { getType, formatDateTime, approveStatusStyle, timerFunc, getFetchData, postFetchData, workStatusStyle };
 
 // 데이터 타입 확인
 function getType(data) {
@@ -81,4 +82,22 @@ function timerFunc(item) {
 
   updateTime();
   setInterval(updateTime, 1000);
+}
+
+async function getFetchData(url) {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function postFetchData(url, body) {
+  try {
+    const response = await axios.post(url, body);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
