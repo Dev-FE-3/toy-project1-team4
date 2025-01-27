@@ -3,6 +3,7 @@ import { nav } from './../../../../components/nav/nav.js';
 import { workStatusStyle } from '../../../../util/utils.js';
 import './employee-list.css';
 import axios from 'axios';
+import { route } from '/src/router/router.js';
 
 const listLength = 9; // 한 페이지에 들어갈 직원 수
 const indexLength = 8; // pagination bar 에 표시할 최대 인덱스 버튼 개수
@@ -25,6 +26,7 @@ const getEmployees = async function () {
     const employeeHtmlList = employeeDataList.map(function (item) {
       return `
             <tr>
+              <td class="table__num">${item.NUM}</td>
               <td class="table__name">${item.NAME}</td>
               <td class="table__id">${item.ID}</td>
               <td class="table__department">${item.DEPARTMENT}</td>
@@ -143,6 +145,9 @@ export const employeeList = async function (content) {
             <table class="table">
               <thead>
                 <tr>
+                  <th scope="col" class="table__num">
+                    사원번호
+                  </th>
                   <th scope="col" class="table__name">
                     이름
                   </th>
@@ -188,5 +193,17 @@ export const employeeList = async function (content) {
   await putEmployees();
   await putPaginationBtns();
   paginationBtnsAddEvent();
+  employeeInfoCheck();
   return;
 };
+
+//직원 리스트 클릭하였을때 직원 상세로 이동
+function employeeInfoCheck() {
+  const employeeList = document.querySelector('.table__employee-list');
+  employeeList.addEventListener('click', function (event) {
+    const employeeNum = event.target.parentElement.querySelector('.table__num').innerText;
+
+    history.pushState(employeeNum, null, '/admin/employee-info');
+    route();
+  });
+}

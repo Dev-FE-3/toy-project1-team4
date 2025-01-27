@@ -74,7 +74,7 @@ export const notice = async function (content) {
     noticeCard.innerHTML = response
       .map(item => {
         return `
-        <li class="notice-card col-4" data-notice-num="${item.noticeNum}">
+        <li class="notice-card col-4 col-lg-6 col-md-12" data-notice-num="${item.noticeNum}">
           <a href="#" class="notice-card__link"> 
             <div class="card-image__container">
               <div class="card-image__style" style="background-image: url(${item.img_path})"></div>  

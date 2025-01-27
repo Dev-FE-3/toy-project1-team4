@@ -19,20 +19,19 @@
   gap: 4px;
 }
 
-#employee-list .table__name {
-  width: 15%;
+#employee-list .table__employee-list {
+  cursor: pointer;
 }
-#employee-list .table__id {
-  width: 15%;
-}
-#employee-list .table__department {
-  width: 15%;
-}
-#employee-list .table__position {
-  width: auto;
-}
+
+#employee-list .table__name,
+#employee-list .table__id,
+#employee-list .table__department,
 #employee-list .table__status {
   width: 15%;
+}
+
+#employee-list .table__position {
+  width: auto;
 }
 
 /*.employee-table__position(직급) 가로폭 178px 되는 지점*/
