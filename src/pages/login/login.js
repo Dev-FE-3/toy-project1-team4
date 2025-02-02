@@ -10,8 +10,8 @@ export const login = function (content) {
           <img src="./../public/images/img_logo.png" class="logo__img" alt="PPangGeut">
         </a>
       </div>
-      <div class="login--form">
-        <form method="post">
+      <div class="login">
+        <form method="post" class="login--form">
             <p class="login--form__title">로그인</p>
             <div class="input-wrap form__id">
                 <label for="login__id" class="input-label">아이디</label>
@@ -32,6 +32,7 @@ export const login = function (content) {
   `;
 
   const loginSubmit = document.querySelector('.login--submit');
+  // const loginSubmit = document.querySelector('.login--form');
   loginSubmit.addEventListener('click', async function () {
     let path = '/login';
 
