@@ -84,7 +84,7 @@ export const work = async function (content) {
                   </form>
                 </div>
                 <div class="absence--propose">
-                  <form method="POST">
+                  <form method="post" class="absence--form">
                     <ul class="absence--propose__info">
                       <li class="input-wrap">
                         <label for="absence--id" class="input-label">사원번호</label>
@@ -261,6 +261,7 @@ function activateAbsenceModalButton() {
 }
 
 function activateAbsenceFormButtion() {
+  const absenceForm = document.querySelector('.absence--form');
   const modal = document.querySelector('.absence--modal');
   //input type=date에 click 이벤트 주기
   const absenceStartDate = document.querySelector('.absence--start--date');
@@ -290,11 +291,13 @@ function activateAbsenceFormButtion() {
     try {
       await axios.post('/api/approve', absence);
       alert('신청이 완료되었습니다.');
+      absenceForm.reset();
       modal.close();
     } catch (error) {
       // 오류 처리
       console.error('Form submission error:', error);
       alert('신청에 실패했습니다. 다시 시도해주세요.');
+    } finally {
     }
   });
 }
