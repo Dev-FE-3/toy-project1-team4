@@ -9,8 +9,6 @@
  */
 import axios from 'axios';
 
-export { getType, formatDateTime, approveStatusStyle, timerFunc, fetchData, workStatusStyle };
-
 // 데이터 타입 확인
 function getType(data) {
   return Object.prototype.toString.call(data).slice(8, -1);
@@ -92,3 +90,5 @@ async function fetchData(method, url, data = {}) {
     console.error(error);
   }
 }
+
+export { getType, formatDateTime, approveStatusStyle, timerFunc, fetchData, workStatusStyle };
