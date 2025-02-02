@@ -35,13 +35,13 @@ export const login = function (content) {
   loginSubmit.addEventListener('click', async function () {
     let path = '/login';
 
-    (await checkLogin()) ? (path = '/') : alert('사용자 정보를 다시 확인해 주세요');
+    (await userLogin()) ? (path = '/') : alert('사용자 정보를 다시 확인해 주세요');
 
     history.pushState(null, null, path);
     route();
   });
 
-  async function checkLogin() {
+  async function userLogin() {
     const userId = document.querySelector('#login__id').value;
     const userPw = document.querySelector('#login__pw').value;
 
