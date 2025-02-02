@@ -31,8 +31,16 @@ export const login = function (content) {
     </section>
   `;
 
+  initializePage();
+};
+
+function initializePage() {
+  loginFormEvent();
+  userLogin();
+}
+
+function loginFormEvent() {
   const loginSubmit = document.querySelector('.login--submit');
-  // const loginSubmit = document.querySelector('.login--form');
   loginSubmit.addEventListener('click', async function () {
     let path = '/login';
 
@@ -41,25 +49,25 @@ export const login = function (content) {
     history.pushState(null, null, path);
     route();
   });
+}
 
-  async function userLogin() {
-    const userId = document.querySelector('#login__id').value;
-    const userPw = document.querySelector('#login__pw').value;
+async function userLogin() {
+  const userId = document.querySelector('#login__id').value;
+  const userPw = document.querySelector('#login__pw').value;
 
-    const request = {
-      id: userId,
-      pw: userPw,
-    };
+  const request = {
+    id: userId,
+    pw: userPw,
+  };
 
-    const response = await axios.post('/api/login', request);
+  const response = await axios.post('/api/login', request);
 
-    if (response.data.length > 0) {
-      sessionStorage.setItem('num', response.data[0].NUM);
-      sessionStorage.setItem('name', response.data[0].NAME);
-      sessionStorage.setItem('role', response.data[0].ROLE);
-      return true;
-    }
-
-    return false;
+  if (response.data.length > 0) {
+    sessionStorage.setItem('num', response.data[0].NUM);
+    sessionStorage.setItem('name', response.data[0].NAME);
+    sessionStorage.setItem('role', response.data[0].ROLE);
+    return true;
   }
-};
+
+  return false;
+}
