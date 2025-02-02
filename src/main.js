@@ -1,6 +1,6 @@
 import { route } from './router/router.js';
 
-const app = async function () {
+const app = function () {
   init();
   route();
 };
