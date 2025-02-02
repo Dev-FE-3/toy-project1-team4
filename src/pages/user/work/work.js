@@ -2,7 +2,7 @@ import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './work.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle, postFetchData } from '/src/util/utils.js';
+import { formatDateTime, approveStatusStyle, fetchData } from '/src/util/utils.js';
 
 export const work = async function (content) {
   content.innerHTML = `
@@ -149,7 +149,7 @@ export const work = async function (content) {
 
 async function initializePage() {
   // Promise.all 사용
-  const [holiday, absence] = await Promise.all([postFetchData('api/work', { num: sessionStorage.getItem('num') }), postFetchData('api/absence', { num: sessionStorage.getItem('num') })]);
+  const [holiday, absence] = await Promise.all([fetchData('post', 'api/work', { num: sessionStorage.getItem('num') }), fetchData('post', 'api/absence', { num: sessionStorage.getItem('num') })]);
 
   listingHoliday(holiday);
   listingAbsenceList(absence);

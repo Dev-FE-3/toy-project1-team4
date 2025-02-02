@@ -9,7 +9,7 @@
  */
 import axios from 'axios';
 
-export { getType, formatDateTime, approveStatusStyle, timerFunc, getFetchData, postFetchData, workStatusStyle };
+export { getType, formatDateTime, approveStatusStyle, timerFunc, fetchData, workStatusStyle };
 
 // 데이터 타입 확인
 function getType(data) {
@@ -84,18 +84,9 @@ function timerFunc(item) {
   setInterval(updateTime, 1000);
 }
 
-async function getFetchData(url) {
+async function fetchData(method, url, data = {}) {
   try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function postFetchData(url, body) {
-  try {
-    const response = await axios.post(url, body);
+    const response = await axios({ method, url, data });
     return response.data;
   } catch (error) {
     console.error(error);
