@@ -58,9 +58,9 @@ const putEmployees = async function () {
 const renderPaginationBtns = function () {
   const paginationBtnList = [];
   for (let i = 1 + indexLength * (paginationBarIndex - 1); i <= indexLength * paginationBarIndex && i <= totalIndex; i++) {
-    paginationBtnList[i] = `<button type="button"
+    paginationBtnList.push(`<button type="button"
     data-btn-index = "${i}"
-    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`;
+    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`);
   }
   return `<button type="button" class="pagination--prev">prev</button> 
           ${paginationBtnList.join('')} 
@@ -95,18 +95,15 @@ export const employeeList = async function (content) {
         paginationBarIndex--;
       } else {
         currentIndex = 1;
+        paginationBarIndex = 1;
       }
 
       triggerRender(content);
     });
     moveBtn.next.addEventListener('click', function () {
-      if (totalIndex > indexLength) {
-        if (currentIndex > Math.floor(totalIndex / indexLength) * indexLength) {
-          currentIndex = totalIndex;
-        } else {
-          currentIndex = indexLength * paginationBarIndex + 1;
-          paginationBarIndex++;
-        }
+      if (currentIndex + indexLength <= totalIndex) {
+        currentIndex += indexLength;
+        paginationBarIndex++;
       } else {
         currentIndex = totalIndex;
       }
