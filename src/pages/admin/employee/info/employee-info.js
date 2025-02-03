@@ -1,7 +1,6 @@
 import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
 import './employee-info.css';
-import axios from 'axios';
 import { formatDateTime, fetchData } from '/src/util/utils.js';
 
 const getEmployeeInfo = async function () {

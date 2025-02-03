@@ -2,7 +2,6 @@ import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
 import { buttonStatusStyle, fetchData } from '../../../../util/utils.js';
 import './employee-list.css';
-import axios from 'axios';
 import { route } from '/src/router/router.js';
 
 const listLength = 9; // 한 페이지에 들어갈 직원 수
