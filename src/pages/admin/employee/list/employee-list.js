@@ -19,11 +19,12 @@ const triggerRender = function (content) {
   return;
 };
 
-const getEmployees = async function () {
-  try {
+const makeEmployees = async function () {
+  let employeeHtmlList = null;
+  //이전 통신에서 불러온 직원 목록 데이터가 있는 경우 불러온 뒤 통신 생략
+  if (cachedEmployees == null) {
     const response = await axios.get('/api/users');
-    const employeeDataList = response.data;
-    const employeeHtmlList = employeeDataList.map(function (item) {
+    employeeHtmlList = response.data.map(function (item) {
       return `
             <tr>
               <td class="table__num">${item.NUM}</td>
@@ -38,23 +39,11 @@ const getEmployees = async function () {
             `;
     });
     cachedEmployees = employeeHtmlList;
-    return employeeHtmlList;
-  } catch (error) {
-    console.error('Error occurred:', error);
-    return [];
-  }
-};
-
-const makeEmployees = async function (content) {
-  let employeeHtmlList = null;
-  if (cachedEmployees == null) {
-    employeeHtmlList = await getEmployees();
   } else {
     employeeHtmlList = cachedEmployees;
   }
   totalIndex = Math.max(1, Math.ceil(employeeHtmlList.length / listLength));
   const employeeHtmlResult = employeeHtmlList.slice((currentIndex - 1) * listLength, (currentIndex - 1) * listLength + listLength).join('');
-  // triggerRender(content);
   return employeeHtmlResult;
 };
 
