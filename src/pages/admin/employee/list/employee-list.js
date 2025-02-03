@@ -90,7 +90,7 @@ export const employeeList = async function (content) {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        currentIndex = btn.dataset.btnIndex;
+        currentIndex = Number(btn.dataset.btnIndex);
         triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
       });
     });
