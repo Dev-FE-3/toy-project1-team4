@@ -31,8 +31,10 @@ export const notice = async function (content) {
       const response = await axios.get('api/notice');
       pageNation(response, response.data.length);
       putCards(response.data.slice(0, 6));
+      return null;
     } catch (error) {
       console.error(error);
+      return null;
     }
   }
 
@@ -41,14 +43,16 @@ export const notice = async function (content) {
     let str = '';
     let pageNumber = '1';
 
-    for (let i = 0; i <= responseLength % 6; i++) {
+    for (let i = 0; i < Math.ceil(responseLength / 6); i++) {
       str += `
-      <button type="button" data-num="${i + 1}">${i + 1}</a>`;
+      <button type="button" data-num="${i + 1}">${i + 1}</button>`;
     }
     pagination.innerHTML = str;
     pagination.querySelector('button').classList.add('active');
 
     pagination.addEventListener('click', function (event) {
+      if (event.target.getAttribute('data-num') === null) return;
+
       pageNumber = event.target.getAttribute('data-num');
 
       const startIndex = (pageNumber - 1) * 6;

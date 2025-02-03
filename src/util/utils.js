@@ -56,10 +56,10 @@ function buttonStatusStyle(page, status) {
 function timerFunc(item) {
   const updateTime = () => {
     let date = new Date();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-
+    const pad = (num) => String(num).padStart(2, '0');
+    const hours = pad(date.getMinutes());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
     item.innerHTML = `${hours}:${minutes}:${seconds}`;
   };
 
@@ -73,6 +73,7 @@ async function fetchData(method, url, data = {}) {
     return response.data;
   } catch (error) {
     console.error(error);
+    return null;
   }
 }
 
