@@ -40,7 +40,8 @@ const checkAuth = function () {
 
   if (sessionStorage.getItem('num') === null) {
     path = '/login';
-    history.pushState(null, null, '/login');
+    history.replaceState(null, null, '/login');
+    // history.pushState(null, null, '/login');
     login(content);
   } else {
     const component = routes[path];

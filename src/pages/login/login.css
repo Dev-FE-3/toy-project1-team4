@@ -12,7 +12,7 @@
   height: 32px;
 }
 
-#login .login--form {
+#login .login {
   width: 360px;
   height: calc(100vh - 82px);
   display: flex;
