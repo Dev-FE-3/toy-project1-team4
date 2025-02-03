@@ -44,6 +44,7 @@ export async function nav() {
     return navList(navItemClass(response));
   } catch (error) {
     console.error(error);
+    return null;
   }
 }
 
@@ -53,6 +54,7 @@ async function fetchData(url) {
     return response.data;
   } catch (error) {
     console.error(error);
+    return null;
   }
 }
 
