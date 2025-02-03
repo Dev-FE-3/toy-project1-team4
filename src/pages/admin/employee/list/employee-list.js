@@ -52,7 +52,7 @@ const makeEmployees = async function (content) {
   } else {
     employeeHtmlList = cachedEmployees;
   }
-  totalIndex = Math.ceil(employeeHtmlList.length / listLength);
+  totalIndex = Math.max(1, Math.ceil(employeeHtmlList.length / listLength));
   const employeeHtmlResult = employeeHtmlList.slice((currentIndex - 1) * listLength, (currentIndex - 1) * listLength + listLength).join('');
   // triggerRender(content);
   return employeeHtmlResult;
