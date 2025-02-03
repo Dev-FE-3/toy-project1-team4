@@ -173,11 +173,17 @@ function renderMeetingBox() {
 
 async function initializePage() {
   const currentStorage = window.sessionStorage;
+  const currentStorageNum = currentStorage.num;
+
+  if (!currentStorageNum) {
+    throw new Error('Number is not found in session storage');
+  }
+
   const [userData, absenceData, noticeData, meetData] = await Promise.all([
-    fetchData(`/api/user/${currentStorage.num}`),
-    fetchData('/api/absence', { num: currentStorage.num }, 'POST'),
-    fetchData('/api/notice', { num: currentStorage.num }),
-    fetchData('/api/meet', { num: currentStorage.num }, 'POST')
+    fetchData(`/api/user/${currentStorageNum}`),
+    fetchData('/api/absence', { num: currentStorageNum }, 'POST'),
+    fetchData('/api/notice', { num: currentStorageNum }),
+    fetchData('/api/meet', { num: currentStorageNum }, 'POST')
   ]);
 
   getUser(userData);
@@ -195,6 +201,12 @@ async function initializePage() {
 
 function getUser(userData) {
   const boxBottom = document.querySelector('.box--user .box__bottom');
+
+  if (!Array.isArray(userData)) {
+    console.error("userData는 배열이어야 합니다.");
+    return;
+  }
+
   const userInfo = userData
     .map(
       item => `
