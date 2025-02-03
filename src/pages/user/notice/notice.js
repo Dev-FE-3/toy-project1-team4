@@ -41,9 +41,9 @@ export const notice = async function (content) {
     let str = '';
     let pageNumber = '1';
 
-    for (let i = 0; i <= responseLength % 6; i++) {
+    for (let i = 0; i < Math.ceil(responseLength / 6); i++) {
       str += `
-      <button type="button" data-num="${i + 1}">${i + 1}</a>`;
+      <button type="button" data-num="${i + 1}">${i + 1}</button>`;
     }
     pagination.innerHTML = str;
     pagination.querySelector('button').classList.add('active');
