@@ -1,6 +1,6 @@
 import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
-import { buttonStatusStyle } from '../../../../util/utils.js';
+import { buttonStatusStyle, fetchData } from '../../../../util/utils.js';
 import './employee-list.css';
 import axios from 'axios';
 import { route } from '/src/router/router.js';
@@ -23,8 +23,8 @@ const makeEmployees = async function () {
   let employeeHtmlList = null;
   //이전 통신에서 불러온 직원 목록 데이터가 있는 경우 불러온 뒤 통신 생략
   if (cachedEmployees == null) {
-    const response = await axios.get('/api/users');
-    employeeHtmlList = response.data.map(function (item) {
+    const response = await fetchData('/api/users');
+    employeeHtmlList = response.map(function (item) {
       return `
             <tr>
               <td class="table__num">${item.NUM}</td>
