@@ -2,7 +2,7 @@ import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './work.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle, fetchData } from '/src/util/utils.js';
+import { formatDateTime, buttonStatusStyle, fetchData } from '/src/util/utils.js';
 
 export const work = async function (content) {
   content.innerHTML = `
@@ -196,7 +196,7 @@ function listingAbsenceList(absence) {
     .map(item => {
       const startDate = formatDateTime(`${item.START_DATE}`);
       const endDate = formatDateTime(`${item.END_DATE}`);
-      const statusStyle = approveStatusStyle(`${item.STATUS}`);
+      const statusStyle = buttonStatusStyle('approve', `${item.STATUS}`);
 
       return `
       <tr>

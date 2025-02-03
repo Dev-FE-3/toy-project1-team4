@@ -1,6 +1,6 @@
 import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
-import { workStatusStyle } from '../../../../util/utils.js';
+import { buttonStatusStyle } from '../../../../util/utils.js';
 import './employee-list.css';
 import axios from 'axios';
 import { route } from '/src/router/router.js';
@@ -32,7 +32,7 @@ const getEmployees = async function () {
               <td class="table__department">${item.DEPARTMENT}</td>
               <td class="table__position">${item.POSITION}</td>
               <td class="table__status">
-                <span class="label ${workStatusStyle(item.WORKING_STATUS)}">${item.WORKING_STATUS}</span>
+                <span class="label ${buttonStatusStyle('work', item.WORKING_STATUS)}">${item.WORKING_STATUS}</span>
               </td>
             </tr>
             `;

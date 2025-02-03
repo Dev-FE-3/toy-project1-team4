@@ -2,11 +2,7 @@ import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './home.css';
 import axios from 'axios';
-import {
-  formatDateTime,
-  approveStatusStyle,
-  timerFunc,
-} from './../../../util/utils.js';
+import { formatDateTime, buttonStatusStyle, timerFunc } from './../../../util/utils.js';
 
 export const home = async function (content) {
   content.innerHTML = `
@@ -70,7 +66,7 @@ function renderGraphItems() {
         <div class="graph__bar" style="height: ${height};"></div>
         <span class="graph__title">${date}</span>
       </li>
-    `
+    `,
     )
     .join('');
 }
@@ -173,7 +169,7 @@ function renderMeetingBox() {
 
 async function fetchData(method, url, data = {}) {
   try {
-    const response = await axios({method, url, data});
+    const response = await axios({ method, url, data });
     return response.data;
   } catch (error) {
     console.error(error);
@@ -186,7 +182,7 @@ async function initializePage() {
     fetchData('get', `/api/user/${currentStorage.num}`),
     fetchData('post', '/api/absence', { num: currentStorage.num }),
     fetchData('get', '/api/notice', { num: currentStorage.num }),
-    fetchData('post', '/api/meet', { num: currentStorage.num })
+    fetchData('post', '/api/meet', { num: currentStorage.num }),
   ]);
 
   getUser(userData);
@@ -212,7 +208,7 @@ function getUser(userData) {
         <span class="user-info__name">${item.NAME}</span>
         <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
       </div>
-    `
+    `,
     )
     .join('');
 
@@ -228,9 +224,9 @@ function getWork(absenceData) {
       <tr>
         <td>${formatDateTime(item.START_DATE)}</td>
         <td>${item.TYPE}</td>
-        <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
+        <td><span class="label ${buttonStatusStyle('approve', item.STATUS)}">${item.STATUS}</span></td>
       </tr>
-    `
+    `,
     )
     .join('');
 
@@ -259,7 +255,7 @@ function getMeeting(meetData) {
           <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
         </a>
       </li>
-    `
+    `,
     )
     .join('');
 
@@ -280,9 +276,7 @@ function userStateFunc() {
 
   function userStateToggle() {
     isChecked = !isChecked;
-    isChecked
-      ? (nowLabel.innerHTML = '근무 시작')
-      : (nowLabel.innerHTML = '근무 종료');
+    isChecked ? (nowLabel.innerHTML = '근무 시작') : (nowLabel.innerHTML = '근무 종료');
     switchInput.classList.toggle('active');
     nowLabel.classList.toggle('active');
   }
