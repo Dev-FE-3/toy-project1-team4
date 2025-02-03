@@ -51,6 +51,8 @@ export const notice = async function (content) {
     pagination.querySelector('button').classList.add('active');
 
     pagination.addEventListener('click', function (event) {
+      if (event.target.getAttribute('data-num') === null) return;
+
       pageNumber = event.target.getAttribute('data-num');
 
       const startIndex = (pageNumber - 1) * 6;
