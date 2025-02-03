@@ -194,7 +194,6 @@ export const employeeList = async function (content) {
   await putPaginationBtns();
   paginationBtnsAddEvent();
   employeeInfoCheck();
-  return;
 };
 
 //직원 리스트 클릭하였을때 직원 상세로 이동
