@@ -201,6 +201,12 @@ async function initializePage() {
 
 function getUser(userData) {
   const boxBottom = document.querySelector('.box--user .box__bottom');
+
+  if (!Array.isArray(userData)) {
+    console.error("userData는 배열이어야 합니다.");
+    return;
+  }
+
   const userInfo = userData
     .map(
       item => `
