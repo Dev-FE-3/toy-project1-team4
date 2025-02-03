@@ -1,6 +1,6 @@
 import './login.css';
 import { route } from '../../router/router.js';
-import axios from 'axios';
+import { fetchData } from '../../util/utils.js';
 
 export const login = function (content) {
   content.innerHTML = `
@@ -60,12 +60,12 @@ async function userLogin() {
     pw: userPw,
   };
 
-  const response = await axios.post('/api/login', request);
+  const response = await fetchData('post', '/api/login', request);
 
-  if (response.data.length > 0) {
-    sessionStorage.setItem('num', response.data[0].NUM);
-    sessionStorage.setItem('name', response.data[0].NAME);
-    sessionStorage.setItem('role', response.data[0].ROLE);
+  if (response.length > 0) {
+    sessionStorage.setItem('num', response[0].NUM);
+    sessionStorage.setItem('name', response[0].NAME);
+    sessionStorage.setItem('role', response[0].ROLE);
     return true;
   }
 
