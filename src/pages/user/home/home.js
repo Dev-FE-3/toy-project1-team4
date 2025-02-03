@@ -1,8 +1,12 @@
 import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './home.css';
-import axios from 'axios';
-import { formatDateTime, buttonStatusStyle, timerFunc } from './../../../util/utils.js';
+import {
+  formatDateTime,
+  buttonStatusStyle,
+  timerFunc,
+  fetchData,
+} from './../../../util/utils.js';
 
 export const home = async function (content) {
   content.innerHTML = `
@@ -167,23 +171,13 @@ function renderMeetingBox() {
   `;
 }
 
-async function fetchData(method, url, data = {}) {
-  try {
-    const response = await axios({ method, url, data });
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
 async function initializePage() {
   const currentStorage = window.sessionStorage;
   const [userData, absenceData, noticeData, meetData] = await Promise.all([
-    fetchData('get', `/api/user/${currentStorage.num}`),
-    fetchData('post', '/api/absence', { num: currentStorage.num }),
-    fetchData('get', '/api/notice', { num: currentStorage.num }),
-    fetchData('post', '/api/meet', { num: currentStorage.num }),
+    fetchData(`/api/user/${currentStorage.num}`),
+    fetchData('/api/absence', { num: currentStorage.num }, 'POST'),
+    fetchData('/api/notice', { num: currentStorage.num }),
+    fetchData('/api/meet', { num: currentStorage.num }, 'POST')
   ]);
 
   getUser(userData);

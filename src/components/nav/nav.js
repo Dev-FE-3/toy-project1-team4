@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { fetchData } from './../../util/utils.js';
 
 function navList(manuList) {
   return `
@@ -42,16 +42,6 @@ export async function nav() {
     const currentStorage = window.sessionStorage;
     const [response] = await Promise.all([await fetchData(`/api/menu/${currentStorage.role}`)]);
     return navList(navItemClass(response));
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-async function fetchData(url) {
-  try {
-    const response = await axios.get(url);
-    return response.data;
   } catch (error) {
     console.error(error);
     return null;

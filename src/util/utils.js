@@ -67,9 +67,14 @@ function timerFunc(item) {
   setInterval(updateTime, 1000);
 }
 
-async function fetchData(method, url, data = {}) {
+async function fetchData(url, data = null, method = 'GET') {
   try {
-    const response = await axios({ method, url, data });
+    const options = {
+      url,
+      method: method.toUpperCase(),
+      ...(method.toUpperCase() !== 'GET' && { data })
+    };
+    const response = await axios(options);
     return response.data;
   } catch (error) {
     console.error(error);
