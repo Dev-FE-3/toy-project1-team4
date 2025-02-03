@@ -31,8 +31,10 @@ export const notice = async function (content) {
       const response = await axios.get('api/notice');
       pageNation(response, response.data.length);
       putCards(response.data.slice(0, 6));
+      return null;
     } catch (error) {
       console.error(error);
+      return null;
     }
   }
 
