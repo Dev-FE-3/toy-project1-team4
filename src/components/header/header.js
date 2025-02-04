@@ -17,7 +17,7 @@ export async function header() {
   const currentStorage = window.sessionStorage;
   const currentPath = window.location.pathname;
   const [menuData, userData] = await Promise.all([
-    fetchData(`/api/menu/${currentStorage.role}`),
+    fetchData(`/api/menu/${currentStorage.getItem.role}`),
     fetchData(`/api/user/${currentStorage.num}`)
   ]);
   const pageTitle = getPageTitle(menuData, currentPath);
