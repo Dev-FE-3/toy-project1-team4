@@ -31,12 +31,6 @@ function navList(manuList) {
     `;
 }
 
-// const pathMap = {
-//   '/': 'item--dashboard',
-//   '/work': 'item--work',
-//   '/notice': 'item--notice',
-// };
-
 export async function nav() {
   try {
     const currentStorage = window.sessionStorage;
@@ -49,10 +43,17 @@ export async function nav() {
 }
 
 function navItemClass(response) {
+  const pathMap = {
+    '/': 'item--dashboard',
+    '/work': 'item--work',
+    '/notice': 'item--notice',
+    '/admin/employee-list': 'item--employee__list',
+  };
+
   const menuList = response
     .map(item => {
       return `
-      <li class="nav__item ${window.location.pathname === item.MENU_PATH ? 'active' : ''}">
+      <li class="nav__item ${pathMap[item.MENU_PATH]} ${window.location.pathname === item.MENU_PATH ? 'active' : ''}">
         <a href="${item.MENU_PATH}">${item.MENU_LIST}</a>
       </li>
     `;
