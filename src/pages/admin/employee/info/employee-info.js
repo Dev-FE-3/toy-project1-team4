@@ -104,15 +104,11 @@ const attachChangeProfilePictureEvent = function () {
         const base64String = reader.result.split(',')[1];
         try {
           // console.log(userId, base64String, file.name, file.size);
-          fetchData(
-            '/api/profile',
-            'POST',
-            {
-              userNum: history.state,
-              image: base64String,
-              imageName: file.name,
-            }
-          );
+          fetchData('/api/profile', 'POST', {
+            userNum: history.state,
+            image: base64String,
+            imageName: file.name,
+          });
           alert('프로필 사진이 성공적으로 업데이트되었습니다.');
           getEmployeeInfo();
         } catch (error) {

@@ -1,12 +1,7 @@
 import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './home.css';
-import {
-  formatDateTime,
-  buttonStatusStyle,
-  timerFunc,
-  fetchData,
-} from './../../../util/utils.js';
+import { formatDateTime, buttonStatusStyle, timerFunc, fetchData } from './../../../util/utils.js';
 
 export const home = async function (content) {
   content.innerHTML = `
@@ -183,7 +178,7 @@ async function initializePage() {
     fetchData(`/api/user/${currentStorageNum}`),
     fetchData('/api/absence', 'POST', { num: currentStorageNum }),
     fetchData('/api/notice'),
-    fetchData('/api/meet', 'POST', { num: currentStorageNum })
+    fetchData('/api/meet', 'POST', { num: currentStorageNum }),
   ]);
 
   getUser(userData);
