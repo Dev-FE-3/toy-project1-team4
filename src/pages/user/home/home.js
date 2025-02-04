@@ -1,11 +1,11 @@
 import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './home.css';
-import axios from 'axios';
 import {
   formatDateTime,
-  approveStatusStyle,
+  buttonStatusStyle,
   timerFunc,
+  fetchData,
 } from './../../../util/utils.js';
 
 export const home = async function (content) {
@@ -70,7 +70,7 @@ function renderGraphItems() {
         <div class="graph__bar" style="height: ${height};"></div>
         <span class="graph__title">${date}</span>
       </li>
-    `
+    `,
     )
     .join('');
 }
@@ -171,23 +171,19 @@ function renderMeetingBox() {
   `;
 }
 
-async function fetchData(method, url, data = {}) {
-  try {
-    const response = await axios({method, url, data});
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
 async function initializePage() {
   const currentStorage = window.sessionStorage;
+  const currentStorageNum = currentStorage.num;
+
+  if (!currentStorageNum) {
+    throw new Error('Number is not found in session storage');
+  }
+
   const [userData, absenceData, noticeData, meetData] = await Promise.all([
-    fetchData('get', `/api/user/${currentStorage.num}`),
-    fetchData('post', '/api/absence', { num: currentStorage.num }),
-    fetchData('get', '/api/notice', { num: currentStorage.num }),
-    fetchData('post', '/api/meet', { num: currentStorage.num })
+    fetchData(`/api/user/${currentStorageNum}`),
+    fetchData('/api/absence', { num: currentStorageNum }, 'POST'),
+    fetchData('/api/notice', { num: currentStorageNum }),
+    fetchData('/api/meet', { num: currentStorageNum }, 'POST')
   ]);
 
   getUser(userData);
@@ -205,6 +201,12 @@ async function initializePage() {
 
 function getUser(userData) {
   const boxBottom = document.querySelector('.box--user .box__bottom');
+
+  if (!Array.isArray(userData)) {
+    console.error("userData는 배열이어야 합니다.");
+    return;
+  }
+
   const userInfo = userData
     .map(
       item => `
@@ -213,7 +215,7 @@ function getUser(userData) {
         <span class="user-info__name">${item.NAME}</span>
         <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
       </div>
-    `
+    `,
     )
     .join('');
 
@@ -229,9 +231,9 @@ function getWork(absenceData) {
       <tr>
         <td>${formatDateTime(item.START_DATE)}</td>
         <td>${item.TYPE}</td>
-        <td><span class="label ${approveStatusStyle(item.STATUS)}">${item.STATUS}</span></td>
+        <td><span class="label ${buttonStatusStyle('approve', item.STATUS)}">${item.STATUS}</span></td>
       </tr>
-    `
+    `,
     )
     .join('');
 
@@ -260,7 +262,7 @@ function getMeeting(meetData) {
           <span class="item__time">${formatDateTime(item.TIME, 'time')}</span>
         </a>
       </li>
-    `
+    `,
     )
     .join('');
 
@@ -281,9 +283,7 @@ function userStateFunc() {
 
   function userStateToggle() {
     isChecked = !isChecked;
-    isChecked
-      ? (nowLabel.innerHTML = '근무 시작')
-      : (nowLabel.innerHTML = '근무 종료');
+    isChecked ? (nowLabel.innerHTML = '근무 시작') : (nowLabel.innerHTML = '근무 종료');
     switchInput.classList.toggle('active');
     nowLabel.classList.toggle('active');
   }

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { fetchData } from './../../util/utils.js';
 
 function getPageTitle(menuItem, currentPath) {
   const currentItem = menuItem.find(item => item.MENU_PATH === currentPath);
@@ -11,16 +11,6 @@ function getUserName(userName) {
   return userName
     .map(item => `<span class="page-title__user">안녕하세요, ${item.NAME}님</span>`)
     .join('');
-}
-
-async function fetchData(url) {
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
 }
 
 export async function header() {

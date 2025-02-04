@@ -1,8 +1,7 @@
 import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
-import { workStatusStyle } from '../../../../util/utils.js';
+import { buttonStatusStyle, fetchData } from '../../../../util/utils.js';
 import './employee-list.css';
-import axios from 'axios';
 import { route } from '/src/router/router.js';
 
 const listLength = 9; // 한 페이지에 들어갈 직원 수
@@ -19,11 +18,12 @@ const triggerRender = function (content) {
   return;
 };
 
-const getEmployees = async function () {
-  try {
-    const response = await axios.get('/api/users');
-    const employeeDataList = response.data;
-    const employeeHtmlList = employeeDataList.map(function (item) {
+const makeEmployees = async function () {
+  let employeeHtmlList = null;
+  //이전 통신에서 불러온 직원 목록 데이터가 있는 경우 불러온 뒤 통신 생략
+  if (cachedEmployees == null) {
+    const response = await fetchData('/api/users');
+    employeeHtmlList = response.map(function (item) {
       return `
             <tr>
               <td class="table__num">${item.NUM}</td>
@@ -32,29 +32,17 @@ const getEmployees = async function () {
               <td class="table__department">${item.DEPARTMENT}</td>
               <td class="table__position">${item.POSITION}</td>
               <td class="table__status">
-                <span class="label ${workStatusStyle(item.WORKING_STATUS)}">${item.WORKING_STATUS}</span>
+                <span class="label ${buttonStatusStyle('work', item.WORKING_STATUS)}">${item.WORKING_STATUS}</span>
               </td>
             </tr>
             `;
     });
     cachedEmployees = employeeHtmlList;
-    return employeeHtmlList;
-  } catch (error) {
-    console.error('Error occurred:', error);
-    return [];
-  }
-};
-
-const makeEmployees = async function (content) {
-  let employeeHtmlList = null;
-  if (cachedEmployees == null) {
-    employeeHtmlList = await getEmployees();
   } else {
     employeeHtmlList = cachedEmployees;
   }
-  totalIndex = Math.ceil(employeeHtmlList.length / listLength);
+  totalIndex = Math.max(1, Math.ceil(employeeHtmlList.length / listLength));
   const employeeHtmlResult = employeeHtmlList.slice((currentIndex - 1) * listLength, (currentIndex - 1) * listLength + listLength).join('');
-  // triggerRender(content);
   return employeeHtmlResult;
 };
 
@@ -69,9 +57,9 @@ const putEmployees = async function () {
 const renderPaginationBtns = function () {
   const paginationBtnList = [];
   for (let i = 1 + indexLength * (paginationBarIndex - 1); i <= indexLength * paginationBarIndex && i <= totalIndex; i++) {
-    paginationBtnList[i] = `<button type="button"
+    paginationBtnList.push(`<button type="button"
     data-btn-index = "${i}"
-    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`;
+    class="pagination--index ${i == currentIndex ? 'active' : ''}">${i}</button>`);
   }
   return `<button type="button" class="pagination--prev">prev</button> 
           ${paginationBtnList.join('')} 
@@ -90,7 +78,7 @@ export const employeeList = async function (content) {
     const indexBtn = document.querySelectorAll('.pagination--index');
     indexBtn.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        currentIndex = btn.dataset.btnIndex;
+        currentIndex = Number(btn.dataset.btnIndex);
         triggerRender(content); // 상태값이 변경되었으므로 페이지 렌더 함수를 재호출
       });
     });
@@ -106,18 +94,15 @@ export const employeeList = async function (content) {
         paginationBarIndex--;
       } else {
         currentIndex = 1;
+        paginationBarIndex = 1;
       }
 
       triggerRender(content);
     });
     moveBtn.next.addEventListener('click', function () {
-      if (totalIndex > indexLength) {
-        if (currentIndex > Math.floor(totalIndex / indexLength) * indexLength) {
-          currentIndex = totalIndex;
-        } else {
-          currentIndex = indexLength * paginationBarIndex + 1;
-          paginationBarIndex++;
-        }
+      if (currentIndex + indexLength <= totalIndex) {
+        currentIndex += indexLength;
+        paginationBarIndex++;
       } else {
         currentIndex = totalIndex;
       }
@@ -194,7 +179,6 @@ export const employeeList = async function (content) {
   await putPaginationBtns();
   paginationBtnsAddEvent();
   employeeInfoCheck();
-  return;
 };
 
 //직원 리스트 클릭하였을때 직원 상세로 이동

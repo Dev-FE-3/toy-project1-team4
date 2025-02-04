@@ -2,7 +2,7 @@ import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './work.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle, fetchData } from '/src/util/utils.js';
+import { formatDateTime, buttonStatusStyle, fetchData } from '/src/util/utils.js';
 
 export const work = async function (content) {
   content.innerHTML = `
@@ -149,7 +149,10 @@ export const work = async function (content) {
 
 async function initializePage() {
   // Promise.all 사용
-  const [holiday, absence] = await Promise.all([fetchData('post', 'api/work', { num: sessionStorage.getItem('num') }), fetchData('post', 'api/absence', { num: sessionStorage.getItem('num') })]);
+  const [holiday, absence] = await Promise.all([
+    fetchData('api/work', { num: sessionStorage.getItem('num')}, 'post'),
+    fetchData('api/absence', { num: sessionStorage.getItem('num')}, 'post')
+  ]);
 
   listingHoliday(holiday);
   listingAbsenceList(absence);
@@ -196,7 +199,7 @@ function listingAbsenceList(absence) {
     .map(item => {
       const startDate = formatDateTime(`${item.START_DATE}`);
       const endDate = formatDateTime(`${item.END_DATE}`);
-      const statusStyle = approveStatusStyle(`${item.STATUS}`);
+      const statusStyle = buttonStatusStyle('approve', `${item.STATUS}`);
 
       return `
       <tr>
