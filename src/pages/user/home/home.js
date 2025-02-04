@@ -201,23 +201,13 @@ async function initializePage() {
 
 function getUser(userData) {
   const boxBottom = document.querySelector('.box--user .box__bottom');
-
-  if (!Array.isArray(userData)) {
-    console.error("userData는 배열이어야 합니다.");
-    return;
-  }
-
-  const userInfo = userData
-    .map(
-      item => `
-      <img src="${item.IMG_LOCATION}" class="user-img" alt="profile">
-      <div class="user-info">
-        <span class="user-info__name">${item.NAME}</span>
-        <span class="user-info__position">${item.DEPARTMENT} / ${item.POSITION}</span>
-      </div>
-    `,
-    )
-    .join('');
+  let userInfo = `
+    <img src="${userData[0].IMG_LOCATION}" class="user-img" alt="profile">
+    <div class="user-info">
+      <span class="user-info__name">${userData[0].NAME}</span>
+      <span class="user-info__position">${userData[0].DEPARTMENT} / ${userData[0].POSITION}</span>
+    </div>
+  `;
 
   boxBottom.innerHTML = userInfo;
 }
