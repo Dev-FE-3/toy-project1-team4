@@ -40,7 +40,7 @@ function navList(manuList) {
 export async function nav() {
   try {
     const currentStorage = window.sessionStorage;
-    const [response] = await Promise.all([await fetchData(`/api/menu/${currentStorage.getItem.role}`)]);
+    const response = await fetchData(`/api/menu/${currentStorage.getItem('role')}`);
     return navList(navItemClass(response));
   } catch (error) {
     console.error(error);
