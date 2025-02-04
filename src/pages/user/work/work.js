@@ -150,8 +150,8 @@ export const work = async function (content) {
 async function initializePage() {
   // Promise.all 사용
   const [holiday, absence] = await Promise.all([
-    fetchData('api/work', { num: sessionStorage.getItem('num')}, 'post'),
-    fetchData('api/absence', { num: sessionStorage.getItem('num')}, 'post')
+    fetchData('api/work', 'post', { num: sessionStorage.getItem('num')}),
+    fetchData('api/absence', 'post', { num: sessionStorage.getItem('num')},)
   ]);
 
   listingHoliday(holiday);

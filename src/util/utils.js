@@ -67,7 +67,7 @@ function timerFunc(item) {
   setInterval(updateTime, 1000);
 }
 
-async function fetchData(url, data = null, method = 'GET') {
+async function fetchData(url, method = 'GET', data = null) {
   try {
     const options = {
       url,

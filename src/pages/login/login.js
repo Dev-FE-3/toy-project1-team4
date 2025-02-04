@@ -60,7 +60,7 @@ async function userLogin() {
     pw: userPw,
   };
 
-  const response = await fetchData('/api/login', request, 'post');
+  const response = await fetchData('/api/login', 'post', request);
 
   if (response.length > 0) {
     sessionStorage.setItem('num', response[0].NUM);

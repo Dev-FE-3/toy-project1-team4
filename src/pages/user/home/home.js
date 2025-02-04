@@ -181,9 +181,9 @@ async function initializePage() {
 
   const [userData, absenceData, noticeData, meetData] = await Promise.all([
     fetchData(`/api/user/${currentStorageNum}`),
-    fetchData('/api/absence', { num: currentStorageNum }, 'POST'),
-    fetchData('/api/notice', { num: currentStorageNum }),
-    fetchData('/api/meet', { num: currentStorageNum }, 'POST')
+    fetchData('/api/absence', 'POST', { num: currentStorageNum }),
+    fetchData('/api/notice'),
+    fetchData('/api/meet', 'POST', { num: currentStorageNum })
   ]);
 
   getUser(userData);
