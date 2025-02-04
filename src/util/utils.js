@@ -57,13 +57,14 @@ function timerFunc(item) {
   const updateTime = () => {
     let date = new Date();
     const pad = (num) => String(num).padStart(2, '0');
-    const hours = pad(date.getMinutes());
+    const hours = pad(date.getHours());
     const minutes = pad(date.getMinutes());
     const seconds = pad(date.getSeconds());
     item.innerHTML = `${hours}:${minutes}:${seconds}`;
   };
 
   updateTime();
+  clearInterval(updateTime);
   setInterval(updateTime, 1000);
 }
 
