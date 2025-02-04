@@ -2,7 +2,7 @@ import { header } from './../../../components/header/header.js';
 import { nav } from './../../../components/nav/nav.js';
 import './work.css';
 import axios from 'axios';
-import { formatDateTime, approveStatusStyle, postFetchData } from '/src/util/utils.js';
+import { formatDateTime, buttonStatusStyle, fetchData } from '/src/util/utils.js';
 
 export const work = async function (content) {
   content.innerHTML = `
@@ -84,7 +84,7 @@ export const work = async function (content) {
                   </form>
                 </div>
                 <div class="absence--propose">
-                  <form method="POST">
+                  <form method="post" class="absence--form">
                     <ul class="absence--propose__info">
                       <li class="input-wrap">
                         <label for="absence--id" class="input-label">사원번호</label>
@@ -149,7 +149,7 @@ export const work = async function (content) {
 
 async function initializePage() {
   // Promise.all 사용
-  const [holiday, absence] = await Promise.all([postFetchData('api/work', { num: sessionStorage.getItem('num') }), postFetchData('api/absence', { num: sessionStorage.getItem('num') })]);
+  const [holiday, absence] = await Promise.all([fetchData('api/work', 'post', { num: sessionStorage.getItem('num') }), fetchData('api/absence', 'post', { num: sessionStorage.getItem('num') })]);
 
   listingHoliday(holiday);
   listingAbsenceList(absence);
@@ -196,7 +196,7 @@ function listingAbsenceList(absence) {
     .map(item => {
       const startDate = formatDateTime(`${item.START_DATE}`);
       const endDate = formatDateTime(`${item.END_DATE}`);
-      const statusStyle = approveStatusStyle(`${item.STATUS}`);
+      const statusStyle = buttonStatusStyle('approve', `${item.STATUS}`);
 
       return `
       <tr>
@@ -261,6 +261,7 @@ function activateAbsenceModalButton() {
 }
 
 function activateAbsenceFormButtion() {
+  const absenceForm = document.querySelector('.absence--form');
   const modal = document.querySelector('.absence--modal');
   //input type=date에 click 이벤트 주기
   const absenceStartDate = document.querySelector('.absence--start--date');
@@ -290,11 +291,13 @@ function activateAbsenceFormButtion() {
     try {
       await axios.post('/api/approve', absence);
       alert('신청이 완료되었습니다.');
+      absenceForm.reset();
       modal.close();
     } catch (error) {
       // 오류 처리
       console.error('Form submission error:', error);
       alert('신청에 실패했습니다. 다시 시도해주세요.');
+    } finally {
     }
   });
 }

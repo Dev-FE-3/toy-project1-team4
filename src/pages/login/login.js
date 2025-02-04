@@ -1,6 +1,6 @@
 import './login.css';
 import { route } from '../../router/router.js';
-import axios from 'axios';
+import { fetchData } from '../../util/utils.js';
 
 export const login = function (content) {
   content.innerHTML = `
@@ -10,8 +10,8 @@ export const login = function (content) {
           <img src="./../public/images/img_logo.png" class="logo__img" alt="PPangGeut">
         </a>
       </div>
-      <div class="login--form">
-        <form method="post">
+      <div class="login">
+        <form method="post" class="login--form">
             <p class="login--form__title">로그인</p>
             <div class="input-wrap form__id">
                 <label for="login__id" class="input-label">아이디</label>
@@ -31,34 +31,43 @@ export const login = function (content) {
     </section>
   `;
 
+  initializePage();
+};
+
+function initializePage() {
+  loginFormEvent();
+  userLogin();
+}
+
+function loginFormEvent() {
   const loginSubmit = document.querySelector('.login--submit');
   loginSubmit.addEventListener('click', async function () {
     let path = '/login';
 
-    (await checkLogin()) ? (path = '/') : alert('사용자 정보를 다시 확인해 주세요');
+    (await userLogin()) ? (path = '/') : alert('사용자 정보를 다시 확인해 주세요');
 
     history.pushState(null, null, path);
     route();
   });
+}
 
-  async function checkLogin() {
-    const userId = document.querySelector('#login__id').value;
-    const userPw = document.querySelector('#login__pw').value;
+async function userLogin() {
+  const userId = document.querySelector('#login__id').value;
+  const userPw = document.querySelector('#login__pw').value;
 
-    const request = {
-      id: userId,
-      pw: userPw,
-    };
+  const request = {
+    id: userId,
+    pw: userPw,
+  };
 
-    const response = await axios.post('/api/login', request);
+  const response = await fetchData('/api/login', 'post', request);
 
-    if (response.data.length > 0) {
-      sessionStorage.setItem('num', response.data[0].NUM);
-      sessionStorage.setItem('name', response.data[0].NAME);
-      sessionStorage.setItem('role', response.data[0].ROLE);
-      return true;
-    }
-
-    return false;
+  if (response.length > 0) {
+    sessionStorage.setItem('num', response[0].NUM);
+    sessionStorage.setItem('name', response[0].NAME);
+    sessionStorage.setItem('role', response[0].ROLE);
+    return true;
   }
-};
+
+  return false;
+}

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { fetchData } from './../../util/utils.js';
 
 function navList(manuList) {
   return `
@@ -31,36 +31,29 @@ function navList(manuList) {
     `;
 }
 
-// const pathMap = {
-//   '/': 'item--dashboard',
-//   '/work': 'item--work',
-//   '/notice': 'item--notice',
-// };
-
 export async function nav() {
   try {
     const currentStorage = window.sessionStorage;
-    const [response] = await Promise.all([await fetchData(`/api/menu/${currentStorage.role}`)]);
+    const response = await fetchData(`/api/menu/${currentStorage.getItem('role')}`);
     return navList(navItemClass(response));
   } catch (error) {
     console.error(error);
-  }
-}
-
-async function fetchData(url) {
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.error(error);
+    return null;
   }
 }
 
 function navItemClass(response) {
+  const pathMap = {
+    '/': 'item--dashboard',
+    '/work': 'item--work',
+    '/notice': 'item--notice',
+    '/admin/employee-list': 'item--employee__list',
+  };
+
   const menuList = response
     .map(item => {
       return `
-      <li class="nav__item ${window.location.pathname === item.MENU_PATH ? 'active' : ''}">
+      <li class="nav__item ${pathMap[item.MENU_PATH]} ${window.location.pathname === item.MENU_PATH ? 'active' : ''}">
         <a href="${item.MENU_PATH}">${item.MENU_LIST}</a>
       </li>
     `;

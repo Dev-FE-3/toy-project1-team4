@@ -37,11 +37,12 @@
 .menu .nav .nav__list .nav__item,
 .menu .bookmark .bookmark__list .bookmark__item {
   position: relative;
+  border: 1px solid transparent;
 }
 
 .menu .nav .nav__list .nav__item::before,
 .menu .bookmark .bookmark__list .bookmark__item::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 8px;
   left: 8px;
@@ -65,8 +66,13 @@
   background-image: url(./../public/images/icon_notice.png);
 }
 
+.menu .nav .nav__list .nav__item.item--employee__list::before,
+.menu .bookmark .bookmark__list .bookmark__item.item--employee__list::before {
+  background-image: url(./../public/images/icon_employee-list.png);
+}
+
 .menu .nav .nav__list .nav__item.active {
-  border: 1px solid var(--pointColor);
+  border-color: var(--pointColor);
   border-radius: 8px;
   background-color: var(--pointColor2);
 }
@@ -106,7 +112,7 @@
 }
 
 .menu .logout .logout__button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

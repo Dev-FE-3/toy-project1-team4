@@ -1,15 +1,14 @@
 import { header } from './../../../../components/header/header.js';
 import { nav } from './../../../../components/nav/nav.js';
 import './employee-info.css';
-import axios from 'axios';
-import { formatDateTime } from '/src/util/utils.js';
+import { formatDateTime, fetchData } from '/src/util/utils.js';
 
 const getEmployeeInfo = async function () {
   try {
     const employeeObjects = document.querySelector('#employee-info');
-    const response = await axios.get(`/api/user/${history.state}`);
+    const response = await fetchData(`/api/user/${history.state}`);
 
-    const employeeDetails = response.data[0];
+    const employeeDetails = response[0];
     employeeObjects.innerHTML = `
     <section class="col-7 col-md-12">
     <div class="box name-photo">
@@ -89,8 +88,6 @@ const getEmployeeInfo = async function () {
     }
   }
 };
-const removeButton = document.querySelector('.btn--edit-remove');
-const saveButton = document.querySelector('.btn--edit-save');
 
 const attachChangeProfilePictureEvent = function () {
   const changeButton = document.querySelector('.btn--edit-change');
@@ -107,7 +104,7 @@ const attachChangeProfilePictureEvent = function () {
         const base64String = reader.result.split(',')[1];
         try {
           // console.log(userId, base64String, file.name, file.size);
-          const response = await axios.post('/api/profile', {
+          fetchData('/api/profile', 'POST', {
             userNum: history.state,
             image: base64String,
             imageName: file.name,

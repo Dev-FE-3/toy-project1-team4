@@ -9,8 +9,6 @@
  */
 import axios from 'axios';
 
-export { getType, formatDateTime, approveStatusStyle, timerFunc, getFetchData, postFetchData, workStatusStyle };
-
 // 데이터 타입 확인
 function getType(data) {
   return Object.prototype.toString.call(data).slice(8, -1);
@@ -38,66 +36,51 @@ function formatDateTime(isoString, mode = 'date') {
 }
 
 // 결제 버튼 css style class
-function approveStatusStyle(str) {
-  switch (str) {
-    case '결제 중':
-      str = 'label--purple';
-      break;
-    case '결제 완료':
-      str = 'label--green';
-      break;
-    case '반려됨':
-      str = 'label--red';
-      break;
-  }
-  return str;
-}
-
-// 근무 상태 css style class
-function workStatusStyle(str) {
-  switch (str) {
-    case '자리비움':
-      str = 'label--purple';
-      break;
-    case '근무중':
-      str = 'label--green';
-      break;
-    case '결근':
-      str = 'label--red';
-      break;
-  }
-  return str;
+function buttonStatusStyle(page, status) {
+  const styles = {
+    approve: {
+      '결제 중': 'label--purple',
+      '결제 완료': 'label--green',
+      반려됨: 'label--red',
+    },
+    work: {
+      자리비움: 'label--purple',
+      근무중: 'label--green',
+      결근: 'label--red',
+    },
+  };
+  return styles[page][status];
 }
 
 // 현재 시각 타이머
 function timerFunc(item) {
   const updateTime = () => {
     let date = new Date();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-
+    const pad = (num) => String(num).padStart(2, '0');
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
     item.innerHTML = `${hours}:${minutes}:${seconds}`;
   };
 
   updateTime();
+  clearInterval(updateTime);
   setInterval(updateTime, 1000);
 }
 
-async function getFetchData(url) {
+async function fetchData(url, method = 'GET', data = null) {
   try {
-    const response = await axios.get(url);
+    const options = {
+      url,
+      method: method.toUpperCase(),
+      ...(method.toUpperCase() !== 'GET' && { data })
+    };
+    const response = await axios(options);
     return response.data;
   } catch (error) {
     console.error(error);
+    return null;
   }
 }
 
-async function postFetchData(url, body) {
-  try {
-    const response = await axios.post(url, body);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
+export { getType, formatDateTime, buttonStatusStyle, timerFunc, fetchData };

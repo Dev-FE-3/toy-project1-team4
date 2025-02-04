@@ -27,7 +27,7 @@ app.post('/api/login', async (req, res) => {
   const query = 'SELECT * FROM USERS where id = ?';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [id]);
+    const rows = await conn.execute(query, [id]);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -43,7 +43,7 @@ app.get('/api/user/:num', async (req, res) => {
   const query = 'SELECT * FROM USERS where num = ?';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.execute(query, [num]);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -57,7 +57,7 @@ app.get('/api/users', async (req, res) => {
   const query = 'SELECT * FROM USERS';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query);
+    const rows = await conn.execute(query);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -77,7 +77,7 @@ app.post('/api/profile', async (req, res) => {
 
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [imagePath.slice(1), userNum]);
+    const rows = await conn.execute(query, [imagePath.slice(1), userNum]);
 
     // BigInt 처리
     const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
@@ -97,7 +97,7 @@ app.get('/api/menu/:role', async (req, res) => {
   const query = 'SELECT * FROM menu WHERE role = ? order by MENU_PATH asc';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [role]);
+    const rows = await conn.execute(query, [role]);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -113,7 +113,7 @@ app.get('/api/notice', async (req, res) => {
     'FROM notice left join users on users.num = notice.num order by notice.insert_date desc';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query);
+    const rows = await conn.execute(query);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -129,7 +129,7 @@ app.post('/api/meet', async (req, res) => {
   const query = 'SELECT * FROM meeting WHERE num = ? order by time asc';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.execute(query, [num]);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -145,7 +145,7 @@ app.post('/api/work', async (req, res) => {
   const query = 'SELECT * FROM dayoff WHERE num = ?';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.execute(query, [num]);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -161,7 +161,7 @@ app.post('/api/absence', async (req, res) => {
   const query = 'SELECT * FROM approve WHERE num = ? order by start_date desc';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num]);
+    const rows = await conn.execute(query, [num]);
     conn.release();
     res.send(rows);
   } catch (err) {
@@ -177,7 +177,7 @@ app.post('/api/approve', async (req, res) => {
   const query = 'insert into approve ( num, type, start_date, end_date, reason, status ) values (?, ?, ?, ?, ?, ?)';
   try {
     const conn = await poolDb();
-    const rows = await conn.query(query, [num, type, start_date, end_date, reason, status]);
+    const rows = await conn.execute(query, [num, type, start_date, end_date, reason, status]);
 
     // BigInt 처리
     const sanitizedRows = JSON.parse(JSON.stringify(rows, (key, value) => (typeof value === 'bigint' ? value.toString() : value)));
