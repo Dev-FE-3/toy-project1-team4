@@ -1,0 +1,117 @@
+.menu {
+  position: fixed;
+  width: 236px;
+  background-color: #fff;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.menu .menu__inner {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.menu .menu__wrap {
+  width: 100%;
+}
+
+.menu .logo {
+  margin-bottom: 60px;
+}
+
+.menu .logo .logo__link .logo__img {
+  height: 32px;
+}
+
+.menu .nav {
+  margin-bottom: 60px;
+}
+
+.menu .nav .nav__title,
+.menu .bookmark .bookmark__title {
+  margin-bottom: 10px;
+}
+
+.menu .nav .nav__list .nav__item,
+.menu .bookmark .bookmark__list .bookmark__item {
+  position: relative;
+}
+
+.menu .nav .nav__list .nav__item::before,
+.menu .bookmark .bookmark__list .bookmark__item::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+}
+
+.menu .nav .nav__list .nav__item.item--dashboard::before,
+.menu .bookmark .bookmark__list .bookmark__item.item--dashboard::before {
+  background-image: url(./../public/images/icon_dashboard.png);
+}
+
+.menu .nav .nav__list .nav__item.item--work::before,
+.menu .bookmark .bookmark__list .bookmark__item.item--work::before {
+  background-image: url(./../public/images/icon_work.png);
+}
+
+.menu .nav .nav__list .nav__item.item--notice::before,
+.menu .bookmark .bookmark__list .bookmark__item.item--notice::before {
+  background-image: url(./../public/images/icon_notice.png);
+}
+
+.menu .nav .nav__list .nav__item.active {
+  border: 1px solid var(--pointColor);
+  border-radius: 8px;
+  background-color: var(--pointColor2);
+}
+
+.menu .nav .nav__list .nav__item a,
+.menu .bookmark .bookmark__list .bookmark__item a {
+  display: block;
+  position: relative;
+  padding: 8px 8px 8px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: var(--Black);
+}
+
+.menu h6 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--grey3);
+}
+
+.menu .logout {
+  align-content: flex-end;
+}
+
+.menu .logout .logout__button {
+  display: inline-block;
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: var(--grey3);
+}
+
+.menu .logout .logout__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url(./../public/images/icon_logout.png);
+  background-size: contain;
+}
